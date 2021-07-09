@@ -1,0 +1,68 @@
+body {
+  font-family: "Poppins";
+  color: #151515;
+}
+
+a {
+  color: #6a983c;
+}
+
+.btn-secondary {
+  background-color: #f9f9f9;
+  color: #151515;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d1d1;
+  color: #151515;
+}
+
+/* SEARCH BAR CSS */
+
+.form-search {
+  background-color: #f9f9f9;
+  border: 1px solid #d1d1d1;
+  border-radius: 12px;
+  width: 500px;
+  font-size: 19px;
+}
+
+.form-search .form-control {
+  background-color: transparent;
+  border: none;
+}
+
+.form-search select.form-control {
+  font-weight: bold;
+  border-radius: 0px;
+  border-right: 1px solid #d1d1d1;
+}
+.input-search-bar {
+  flex: 1;
+}
+
+/* CATEGOIRES NAV LIST */
+
+.categories-nav-list {
+  background-color: #c8deb3;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+/* CATEGORIES LATERAL NAV LIST */
+
+.item-name {
+  color: #6a983c;
+}
+
+.item-list-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item-list {
+  font-size: 14px;
+}
