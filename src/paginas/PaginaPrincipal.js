@@ -1,5 +1,4 @@
 import { useFetch } from "../hooks/useFetch";
-
 import { FaStar, FaArrowRight, FaChevronRight } from "react-icons/fa";
 
 export const PaginaPrincipal = () => {
