@@ -1,9 +1,9 @@
 :root {
   --color-primario: #6a983c;
   --color-primario-oscuro: #46760a;
+  --color-texto: #151515;
   --color-blanco: #f9f9f9;
   --color-fondo-hover: #d1d1d1;
-  --color-texto: #151515;
   --espacio-lateral: 23px;
   --espacio-vertical: 53px;
 }
@@ -15,6 +15,21 @@ body {
 
 a {
   color: #6a983c;
+}
+
+/* BUTTON MAIN STYLES */
+
+.button {
+  color: var(--color-blanco);
+  background-color: var(--color-primario);
+  border: 1px solid var(--color-primario-oscuro);
+  border-radius: 10px;
+  transition: all 300ms;
+}
+
+.button:hover {
+  color: var(--color-blanco);
+  background-color: var(--color-primario-oscuro);
 }
 
 .btn-secondary {
@@ -80,17 +95,7 @@ a {
 /* Login section */
 
 .btn-login {
-  color: var(--color-blanco);
-  background-color: var(--color-primario);
   width: 50%;
-  border: 1px solid var(--color-primario-oscuro);
-  border-radius: 10px;
-  transition: all 300ms;
-}
-
-.btn-login:hover {
-  color: var(--color-blanco);
-  background-color: var(--color-primario-oscuro);
 }
 
 .opcions-login {

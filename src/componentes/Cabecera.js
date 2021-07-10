@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser } from "react-icons/fa";
 
 export const Cabecera = (props) => {
@@ -70,7 +71,9 @@ export const Cabecera = (props) => {
             </button>
           </form>
           <div>
-            <FaUser className="mr-3" />
+            <Link to="./iniciar-sesion">
+              <FaUser className="mr-3" />
+            </Link>
             <FaShoppingBasket />
           </div>
         </div>
