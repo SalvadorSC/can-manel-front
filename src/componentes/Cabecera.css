@@ -1,37 +1,3 @@
-:root {
-  --color-primario: #6a983c;
-  --color-primario-oscuro: #46760a;
-  --color-texto: #151515;
-  --color-blanco: #f9f9f9;
-  --color-fondo-hover: #d1d1d1;
-  --espacio-lateral: 23px;
-  --espacio-vertical: 53px;
-}
-
-body {
-  font-family: "Poppins";
-  color: var(--color-texto);
-}
-
-a {
-  color: #6a983c;
-}
-
-/* BUTTON MAIN STYLES */
-
-.button {
-  color: var(--color-blanco);
-  background-color: var(--color-primario);
-  border: 1px solid var(--color-primario-oscuro);
-  border-radius: 10px;
-  transition: all 300ms;
-}
-
-.button:hover {
-  color: var(--color-blanco);
-  background-color: var(--color-primario-oscuro);
-}
-
 .btn-secondary {
   background-color: var(--color-fondo);
   color: var(--color-texto);
@@ -90,14 +56,4 @@ a {
 
 .item-list {
   font-size: 14px;
-}
-
-/* Login section */
-
-.btn-login {
-  width: 50%;
-}
-
-.opcions-login {
-  font-size: 12px;
 }
