@@ -25,21 +25,21 @@ export const Login = () => {
                       required
                     />
                   </div>
-                  <div className="opcions-login form-group d-md-flex">
-                    <div className="w-50">
+                  <div className="opcions-login form-group ">
+                    <div>
                       <label className="checkbox-wrap">
-                        <input type="checkbox" checked />
+                        <input className="mr-1" type="checkbox" checked />
                         Recorda'm
                       </label>
                     </div>
-                    <div className="w-50 text-md-right">
+                    <div>
                       <span>Heu oblidat la contrasenya?</span>
                     </div>
                   </div>
                   <div className="form-group text-center">
                     <button
                       type="submit"
-                      className="btn-login form-control btn px-3"
+                      className="button btn-login btn form-control mt-2 px-3"
                     >
                       Inicia sessió
                     </button>
