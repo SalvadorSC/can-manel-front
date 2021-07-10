@@ -46,7 +46,9 @@ export const Cabecera = (props) => {
         </nav>
         <hr />
         <div className="d-flex align-items-center justify-content-around">
-          <img src="https://via.placeholder.com/150x50" alt="" />
+          <Link to="./principal">
+            <img src="https://via.placeholder.com/150x50" alt="" />
+          </Link>
           <form className="form-search d-flex align-items-center justify-content-between">
             <div className="form-label-group ">
               <select className="form-control">
