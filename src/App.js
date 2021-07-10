@@ -7,6 +7,8 @@ import {
 import { Cabecera } from "./componentes/Cabecera";
 import { useState, useEffect } from "react";
 import { PaginaPrincipal } from "./paginas/PaginaPrincipal";
+import { Login } from "./paginas/Login";
+
 function App() {
   return (
     <>
@@ -18,6 +20,9 @@ function App() {
           </Route>
           <Route path="/principal" exact>
             <PaginaPrincipal />
+          </Route>
+          <Route path="/iniciar-sesion" exact>
+            <Login />
           </Route>
         </Switch>
       </Router>
