@@ -28,6 +28,6 @@ a {
 }
 
 .button:hover {
-  color: var(--color-blanco);
-  background-color: var(--color-primario-oscuro);
+  color: var(--color-primario);
+  background-color: var(--color-blanco);
 }
