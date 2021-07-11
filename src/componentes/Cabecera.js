@@ -1,4 +1,5 @@
 import "./Cabecera.css";
+import Logo from "../assets/logotip-horitzontal.png";
 import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser } from "react-icons/fa";
 
@@ -49,7 +50,7 @@ export const Cabecera = (props) => {
           <hr />
           <div className="d-flex align-items-center justify-content-around">
             <Link to="./principal">
-              <img src="https://via.placeholder.com/150x50" alt="" />
+              <img className="logo" src={Logo} alt="" />
             </Link>
             <form className="form-search d-flex align-items-center justify-content-between">
               <div className="form-label-group ">
