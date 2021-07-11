@@ -14,14 +14,19 @@ export const Login = () => {
             <div className="col-md-6 col-lg-4">
               <div className="login-wrap p-0">
                 <form className="signin-form">
-                  <span>Email</span>
+                  <label htmlFor="email">Email</label>
                   <div className="form-group">
-                    <input type="text" className="form-control" required />
+                    <input
+                      name="email"
+                      type="text"
+                      className="form-control"
+                      required
+                    />
                   </div>
-                  <span>Contrasenya</span>
+                  <label htmlFor="contrasenya">Contrasenya</label>
                   <div className="opcions-login form-group">
                     <input
-                      id="password-field"
+                      name="contrasenya"
                       type="password"
                       className="form-control"
                       required
