@@ -35,7 +35,11 @@ export const Login = () => {
                   <div className="opcions-login form-group ">
                     <div>
                       <label className="checkbox-wrap">
-                        <input className="mr-1" type="checkbox" checked />
+                        <input
+                          className="mr-1"
+                          type="checkbox"
+                          defaultChecked
+                        />
                         Recorda'm
                       </label>
                     </div>

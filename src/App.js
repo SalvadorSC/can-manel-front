@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import { PaginaPrincipal } from "./paginas/PaginaPrincipal";
 import { Login } from "./paginas/login/Login";
 import { ProductList } from "./paginas/productList/ProductList";
+import { ShoppingBasket } from "./paginas/shoppingBasket/ShoppingBasket";
+
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
           </Route>
           <Route path="/product-list" exact>
             <ProductList />
+          </Route>
+          <Route path="/Listado" exact>
+            <ShoppingBasket />
           </Route>
         </Switch>
       </Router>
