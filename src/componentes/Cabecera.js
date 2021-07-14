@@ -141,7 +141,7 @@ export const Cabecera = (props) => {
               <form className="form-search d-flex align-items-center justify-content-between">
                 <div className="form-label-group ">
                   <select className="form-control">
-                    <option selected>All Categories</option>
+                    <option defaultValue>All Categories</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
