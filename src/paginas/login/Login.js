@@ -3,7 +3,7 @@ import "./Login.css";
 export const Login = () => {
   return (
     <>
-      <section className="login-section">
+      <section className="section">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 text-center my-4">
