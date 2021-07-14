@@ -1,36 +1,21 @@
 .btn-secondary {
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+  background-color: var(--color-white);
+  color: var(--color-text);
   border: none;
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-fondo-hover);
-  color: #151515;
+  background-color: var(--color-background-hover);
+  color: var(--color-text);
 }
 
+.top-navbar {
+  display: none;
+}
 /* SEARCH BAR CSS */
 
-.form-search {
-  background-color: var(--color-blanco);
-  border: 1px solid var(--color-fondo-hover);
-  border-radius: 12px;
-  width: 500px;
-  font-size: 19px;
-}
-
-.form-search .form-control {
-  background-color: transparent;
-  border: none;
-}
-
-.form-search select.form-control {
-  font-weight: bold;
-  border-radius: 0px;
-  border-right: 1px solid var(--color-fondo-hover);
-}
-.input-search-bar {
-  flex: 1;
+.input-search {
+  display: none;
 }
 
 /* CATEGOIRES NAV LIST */
@@ -45,8 +30,18 @@
 
 /* CATEGORIES LATERAL NAV LIST */
 
+.bar-container {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  height: 40px;
+}
+
+.bar-container > p {
+  margin: 0;
+}
+
 .item-name {
-  color: var(--color-primario);
+  color: var(--color-primary);
 }
 
 .item-list-title {
@@ -58,8 +53,72 @@
   font-size: 14px;
 }
 
+.icons-navbar {
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.icon-shopping-basket {
+  font-size: 23px;
+}
+
+/* BURGER MENU */
+
+.navbar-toggler {
+  border: none;
+  color: var(--color-text);
+}
+.navbar-toggler-icon {
+  border: none;
+  color: var(--color-text);
+}
+
+.drop-down-link {
+  color: var(--color-text);
+}
+
 /* LOGO */
 
 .logo {
-  width: 200px;
+  width: 170px;
+}
+
+@media (min-width: 768px) {
+  .top-navbar {
+    display: block;
+  }
+  .form-search {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-background-hover);
+    border-radius: 12px;
+    width: 500px;
+    font-size: 19px;
+    display: none;
+  }
+
+  .form-search .form-control {
+    background-color: transparent;
+    border: none;
+  }
+
+  .form-search select.form-control {
+    font-weight: bold;
+    border-radius: 0px;
+    border-right: 1px solid var(--color-background-hover);
+  }
+  .input-search-bar {
+    flex: 1;
+  }
+  .input-search {
+    display: block;
+  }
+  .logo {
+    width: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-text-bar {
+    display: none;
+  }
 }
