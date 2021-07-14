@@ -1,28 +1,39 @@
 :root {
-  --color-primario: #6a983c;
-  --color-primario-oscuro: #46760a;
-  --color-texto: #151515;
-  --color-blanco: #f9f9f9;
-  --color-fondo-hover: #d1d1d1;
-  --espacio-lateral: 23px;
-  --espacio-vertical: 53px;
+  --color-primary: #c8deb3;
+  --color-primary-dark: #6a983c;
+  --color-border: #46760a;
+  --color-text: #151515;
+  --color-white: #f9f9f9;
+  --color-background-hover: #d1d1d1;
 }
 
 body {
   font-family: "Poppins";
-  color: var(--color-texto);
+  color: var(--color-text);
 }
 
 a {
-  color: var(--color-primario);
+  color: var(--color-primary);
+  text-decoration: inherit;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
 }
 
 /* BUTTON MAIN STYLES */
 
 .button {
   color: var(--color-blanco);
-  background-color: var(--color-primario);
-  border: 1px solid var(--color-primario-oscuro);
+  background-color: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
   transition: all 300ms;
 }
@@ -33,7 +44,7 @@ a {
 
 @media (min-width: 1024px) {
   .button:hover {
-    color: var(--color-primario);
+    color: var(--color-primary-dark);
     background-color: var(--color-blanco);
   }
 }
