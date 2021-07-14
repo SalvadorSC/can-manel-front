@@ -6,7 +6,7 @@ import { FaSearch, FaShoppingBasket, FaUser } from "react-icons/fa";
 export const Cabecera = (props) => {
   return (
     <>
-      <div className="container-fluid">
+      {/* <div className="container-fluid">
         <div className="top-navbar row justify-content-between align-items-center mt-3 mb-4">
           <div className="col-5">
             <ul className="row justify-content-center align-items-center">
@@ -129,14 +129,13 @@ export const Cabecera = (props) => {
 
       <div className="bar-container text-center d-flex align-items-center justify-content-center">
         <p className="mobile-text-bar">Productes ecològics i de proximitat</p>
-      </div>
+      </div> */}
 
-      {/* ------------------------------------------------------------------------------------ */}
       <header className="container-fluid cabecera pt-3">
         <div className="mb-5">
           <div className="d-flex align-items-center justify-content-around">
             <Link to="./principal">
-              <img className="logo" src={Logo} alt="" />
+              <img className="logo" src={logo} alt="" />
             </Link>
             <div className="input-search">
               <form className="form-search d-flex align-items-center justify-content-between">
@@ -244,7 +243,7 @@ export const Cabecera = (props) => {
             </div>
           </li>
         </ul>
-      </header> */}
+      </header>
     </>
   );
 };
