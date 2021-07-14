@@ -1,0 +1,44 @@
+.product-list {
+  display: grid;
+  gap: 2rem;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+}
+.card {
+  grid-column: span 2;
+  background-color: #fff;
+  border: 1px solid var(--color-fondo-hover);
+  border-radius: 15px;
+  padding-inline: 0.5rem;
+  padding-block: 1rem;
+}
+.card-image {
+  border-radius: 15px;
+  max-block-size: 100%;
+}
+.card-info {
+  padding-block: 16px;
+  align-items: center;
+}
+.card-title {
+  font-weight: 500;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+.card-description {
+  font-family: "Open Sans";
+  font-size: clamp(0.8rem, 1.5vw, 0.8rem);
+  margin-bottom: 0;
+}
+.card-price {
+  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+.card-button {
+  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 1rem);
+  border-radius: 12px;
+  border-width: 2px;
+  max-width: fit-content;
+  padding-inline: 10px;
+  padding-block: 5px;
+}
