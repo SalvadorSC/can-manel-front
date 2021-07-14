@@ -1,5 +1,5 @@
 import "./Cabecera.css";
-import Logo from "../assets/logotip-horitzontal.png";
+import logo from "../assets/logotip-horitzontal.png";
 import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser } from "react-icons/fa";
 
@@ -50,12 +50,12 @@ export const Cabecera = (props) => {
           <hr />
           <div className="d-flex align-items-center justify-content-around">
             <Link to="./principal">
-              <img className="logo" src={Logo} alt="" />
+              <img className="logo" src={logo} alt="Logo de Can Mateu" />
             </Link>
             <form className="form-search d-flex align-items-center justify-content-between">
               <div className="form-label-group ">
                 <select className="form-control">
-                  <option selected>All Categories</option>
+                  <option defaultValue>All Categories</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -85,16 +85,18 @@ export const Cabecera = (props) => {
         </div>
         <ul className="pl-0 row list-unstyled px-5 d-flex justify-content-around categories-nav-list">
           <li className="dropdown">
-            <button
-              className="btn dropdown-toggle"
-              type="button"
-              id="dropdownMenu2"
-              /* data-toggle="dropdown" */
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Fruites i verdures
-            </button>
+            <Link to="./product-list">
+              <button
+                className="btn dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                /* data-toggle="dropdown" */
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Fruites i verdures
+              </button>
+            </Link>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
               <button className="dropdown-item" type="button">
                 Action
