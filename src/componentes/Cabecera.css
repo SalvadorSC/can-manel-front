@@ -130,7 +130,7 @@
     border-bottom: 1px solid rgb(165, 165, 165, 0.3);
   }
   .top-navbar a:hover {
-    color: var(--color-primary-dark);
+    color: var(--color-border);
   }
   .logo {
     width: 300px;
