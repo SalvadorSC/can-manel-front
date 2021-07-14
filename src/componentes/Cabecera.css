@@ -9,9 +9,6 @@
   color: var(--color-text);
 }
 
-.top-navbar {
-  display: none;
-}
 /* SEARCH BAR CSS */
 
 .input-search {
@@ -19,6 +16,10 @@
 }
 
 /* CATEGOIRES NAV LIST */
+
+.top-navbar {
+  display: none;
+}
 
 .categories-nav-list {
   background-color: #c8deb3;
@@ -84,9 +85,6 @@
 }
 
 @media (min-width: 768px) {
-  .top-navbar {
-    display: block;
-  }
   .form-search {
     background-color: var(--color-white);
     border: 1px solid var(--color-background-hover);
@@ -110,7 +108,7 @@
     flex: 1;
   }
   .input-search {
-    display: block;
+    display: flex;
   }
   .logo {
     width: 200px;
@@ -120,5 +118,21 @@
 @media (min-width: 1024px) {
   .mobile-text-bar {
     display: none;
+  }
+  .links-nav {
+    display: flex;
+    flex-basis: 100%;
+    flex-grow: 1;
+    width: 100%;
+  }
+  .top-navbar {
+    display: flex;
+    border-bottom: 1px solid rgb(165, 165, 165, 0.3);
+  }
+  .top-navbar a:hover {
+    color: var(--color-primary-dark);
+  }
+  .logo {
+    width: 300px;
   }
 }

@@ -8,6 +8,7 @@ import { Cabecera } from "./componentes/Cabecera";
 import { useState, useEffect } from "react";
 import { PaginaPrincipal } from "./paginas/PaginaPrincipal";
 import { Login } from "./paginas/login/Login";
+import { ShoppingBasket } from "./paginas/shoppingBasket/ShoppingBasket";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/iniciar-sesion" exact>
             <Login />
+          </Route>
+          <Route path="/Listado" exact>
+            <ShoppingBasket />
           </Route>
         </Switch>
       </Router>
