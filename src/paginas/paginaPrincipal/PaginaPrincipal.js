@@ -1,4 +1,5 @@
 import { FaStar, FaArrowRight, FaChevronRight } from "react-icons/fa";
+import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 import "./PaginaPrincipal.css";
 
 export const PaginaPrincipal = () => {
@@ -27,6 +28,17 @@ export const PaginaPrincipal = () => {
           </div>
         </div>
       </div>
+      <div>
+        <p className="text-gran mt-5">Productes destacats</p>
+        <hr />
+        <div className="product-list">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </div>
+      </div>
+
       {/* <div>
         <nav className="pl-5 mt-5">
           <p className="item-list-title mb-2">Category Menu</p>
