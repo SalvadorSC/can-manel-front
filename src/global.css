@@ -30,6 +30,13 @@ ul {
   list-style: none;
 }
 
+input {
+  border-radius: 10px;
+}
+
+input:focus {
+  border-radius: 10px;
+}
 /* BUTTON MAIN STYLES */
 
 .button {
