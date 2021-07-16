@@ -4,9 +4,10 @@ import {
   Redirect,
   BrowserRouter as Router,
 } from "react-router-dom";
-import { Cabecera } from "./componentes/Cabecera";
-import { PaginaPrincipal } from "./paginas/PaginaPrincipal";
-import { PaginaNotFound } from "./paginas/PaginaNotFound";
+import { Cabecera } from "./componentes/Cabecera/Cabecera";
+import { useState, useEffect } from "react";
+import { PaginaPrincipal } from "./paginas/paginaPrincipal/PaginaPrincipal";
+import { PaginaNotFound } from "./paginas/paginaNotFound/PaginaNotFound";
 import { Login } from "./paginas/login/Login";
 import { Register } from "./paginas/register/Register";
 import { ProductList } from "./paginas/productList/ProductList";
