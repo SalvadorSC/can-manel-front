@@ -8,6 +8,7 @@ import { useState } from "react";
 export const Cabecera = (props) => {
   const [Open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
+  const magnifier = !!magnifierOpen;
   return (
     <>
       <div className="container-fluid">
@@ -80,7 +81,7 @@ export const Cabecera = (props) => {
             <div className="row align-items-center justify-content-center">
               <FaSearch
                 className="magnifier-icon"
-                onClick={() => setMagnifierOpen(true)}
+                onClick={() => setMagnifierOpen(!magnifierOpen)}
               />
               <Link className="col-2 icons-navbar" to="./iniciar-sesion">
                 <FaUser />
