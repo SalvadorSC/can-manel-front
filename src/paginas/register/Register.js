@@ -4,7 +4,7 @@ import "./Register.css";
 export const Register = () => {
   return (
     <>
-      <div className="container pt-5">
+      <div className="section">
         <div className="row justify-content-center">
           <div className="col-md-12 mb-4">
             <h2 className="heading-section">Crea un compte</h2>

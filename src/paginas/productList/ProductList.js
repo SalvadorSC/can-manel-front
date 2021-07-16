@@ -1,8 +1,6 @@
 import "./ProductList.css";
-import product from "../../assets/product.jpeg";
 import { Searcher } from "../../componentes/Searcher/Searcher";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
-
 
 export const ProductList = () => {
   return (

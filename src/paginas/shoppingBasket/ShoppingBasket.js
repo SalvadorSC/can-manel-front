@@ -1,3 +1,7 @@
 export const ShoppingBasket = () => {
-  return <p>Shopping List</p>;
+  return (
+    <div className="section">
+      <p>Shopping List</p>
+    </div>
+  );
 };

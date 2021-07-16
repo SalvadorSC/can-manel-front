@@ -4,8 +4,8 @@ import "./HomePage.css";
 
 export const HomePage = () => {
   return (
-    <>
-      <div className="container">
+    <main>
+      <div className="section">
         <div className="row">
           <div className="col-md-8 col-sm-12">
             <div className="elemento-portada d-flex align-items-end mb-3">
@@ -54,6 +54,6 @@ export const HomePage = () => {
           </button>
         </nav>
       </div> */}
-    </>
+    </main>
   );
 };
