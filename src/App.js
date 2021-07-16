@@ -4,10 +4,10 @@ import {
   Redirect,
   BrowserRouter as Router,
 } from "react-router-dom";
-import { Cabecera } from "./componentes/Cabecera/Cabecera";
+import { Header } from "./componentes/Header/Header";
 import { useState, useEffect } from "react";
-import { PaginaPrincipal } from "./paginas/paginaPrincipal/PaginaPrincipal";
-import { PaginaNotFound } from "./paginas/paginaNotFound/PaginaNotFound";
+import { HomePage } from "./paginas/homePage/HomePage";
+import { PageNotFound } from "./paginas/pageNotFound/PageNotFound";
 import { Login } from "./paginas/login/Login";
 import { Register } from "./paginas/register/Register";
 import { ProductList } from "./paginas/productList/ProductList";
@@ -17,29 +17,29 @@ function App() {
   return (
     <>
       <Router>
-        <Cabecera />
+        <Header />
         <div className="container">
           <Switch>
             <Route path="/" exact>
               <Redirect to="/principal" />
             </Route>
             <Route path="/principal" exact>
-              <PaginaPrincipal />
+              <HomePage />
             </Route>
-            <Route path="/iniciar-sesion" exact>
+            <Route path="/iniciar-sessio" exact>
               <Login />
             </Route>
-            <Route path="/registro" exact>
+            <Route path="/registre" exact>
               <Register />
             </Route>
-            <Route path="/product-list" exact>
+            <Route path="/llista-productes" exact>
               <ProductList />
             </Route>
-            <Route path="/Listado" exact>
+            <Route path="/llistat" exact>
               <ShoppingBasket />
             </Route>
             <Route path="**">
-              <PaginaNotFound />
+              <PageNotFound />
             </Route>
           </Switch>
         </div>

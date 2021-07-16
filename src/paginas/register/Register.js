@@ -93,7 +93,7 @@ export const Register = () => {
                 <div className="col-md-12 col-lg-6">
                   <div className="d-flex justify-content-end mb-3">
                     <span className="mr-2">Ja tens un usuari?</span>
-                    <Link to="./iniciar-sesion">Inicia sessió</Link>
+                    <Link to="./iniciar-sessio">Inicia sessió</Link>
                   </div>
                   <div className="form-group text-center">
                     <button
