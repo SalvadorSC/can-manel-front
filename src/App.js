@@ -7,7 +7,7 @@ import {
 import { Cabecera } from "./componentes/Cabecera/Cabecera";
 import { useState, useEffect } from "react";
 import { PaginaPrincipal } from "./paginas/paginaPrincipal/PaginaPrincipal";
-import { PaginaNotFound } from "./paginas/PaginaNotFound";
+import { PaginaNotFound } from "./paginas/paginaNotFound/PaginaNotFound";
 import { Login } from "./paginas/login/Login";
 import { Register } from "./paginas/register/Register";
 import { ProductList } from "./paginas/productList/ProductList";
