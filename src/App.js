@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { Cabecera } from "./componentes/Cabecera";
 import { useState, useEffect } from "react";
-import { PaginaPrincipal } from "./paginas/PaginaPrincipal";
+import { PaginaPrincipal } from "./paginas/paginaPrincipal/PaginaPrincipal";
 import { Login } from "./paginas/login/Login";
 import { Register } from "./paginas/register/Register";
 import { ProductList } from "./paginas/productList/ProductList";
