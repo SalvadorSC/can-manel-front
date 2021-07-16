@@ -30,7 +30,6 @@ export const PaginaPrincipal = () => {
       </div>
       <div>
         <p className="text-gran mt-5">Productes destacats</p>
-        <hr />
         <div className="product-list">
           <ProductCard />
           <ProductCard />
