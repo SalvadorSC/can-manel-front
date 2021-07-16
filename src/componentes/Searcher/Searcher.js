@@ -7,23 +7,18 @@ export const Searcher = () => {
   return (
     <>
       <aside className="searcher">
-        {!open && (
-          <button
-            onClick={setOpen(!open)}
-            className="btn"
-            type="button"
-            data-toggle="collapse"
-            data-target="#searcher-form"
-            aria-expanded="false"
-            aria-controls="searcher-form"
-          >
-            {open && <FaBars />}
-            {!open && <FaTimes />}
-          </button>
-        )}
+        <button
+          onClick={() => setOpen(!open)}
+          className="hamburguer-button btn"
+          type="button"
+        >
+          {!open && <FaBars size={30} />}
+          {open && <FaTimes size={30} />}
+        </button>
         <form
-          className="row align-items-center justify-content-between collapse"
-          id="searcher-form"
+          className={`${
+            !open ? "searcher-form " : ""
+          }row align-items-center justify-content-between`}
         >
           <div className="form-group col-sm-4">
             <label htmlFor="name">Buscar per nom:</label>
@@ -47,7 +42,7 @@ export const Searcher = () => {
           </div>
           <div className="form-group d-flex flex-column col-sm-4">
             <label htmlFor="order">Ordena per:</label>
-            <div className="d-flex justify-content-between">
+            <div className="d-sm-flex justify-content-between">
               <select className="searcher-input form-control" id="order">
                 <option value="" defaultValue></option>
                 <option value="fruits">Preu</option>
