@@ -4,77 +4,69 @@ import "./Login.css";
 export const Login = () => {
   return (
     <>
-      <div className="section">
-        <div className="row justify-content-center">
-          <div className="col-md-12 mb-4">
-            <h2 className="heading-section">Inicia Sessió</h2>
-            <hr />
-          </div>
+      <div className="row justify-content-center">
+        <div className="col-md-12 mb-4">
+          <h2 className="heading-section">Inicia Sessió</h2>
+          <hr />
         </div>
+      </div>
 
-        <div className="login-wrap p-0">
-          <form className="signin-form row">
-            <div className="col-md-12 col-lg-6">
-              <label htmlFor="email">Email *</label>
-              <div className="form-group">
-                <input
-                  name="email"
-                  type="text"
-                  className="form-control"
-                  required
-                />
-              </div>
-              <label htmlFor="contrasenya">Contrasenya *</label>
-              <div className="opcions-login form-group">
-                <input
-                  name="contrasenya"
-                  type="password"
-                  className="form-control"
-                  required
-                />
-              </div>
-              <div className="d-flex justify-content-between mb-3">
-                <span className="mr-2">Recorda la contrasenya</span>
-                <input
-                  type="checkbox"
-                  name="recordar-contrasenya"
-                  className=""
-                />
-              </div>
-              <div className="form-group text-center">
+      <div className="login-wrap p-0">
+        <form className="signin-form row">
+          <div className="col-md-12 col-lg-6">
+            <label htmlFor="email">Email *</label>
+            <div className="form-group">
+              <input
+                name="email"
+                type="text"
+                className="form-control"
+                required
+              />
+            </div>
+            <label htmlFor="contrasenya">Contrasenya *</label>
+            <div className="opcions-login form-group">
+              <input
+                name="contrasenya"
+                type="password"
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="d-flex justify-content-between mb-3">
+              <span className="mr-2">Recorda la contrasenya</span>
+              <input type="checkbox" name="recordar-contrasenya" className="" />
+            </div>
+            <div className="form-group text-center">
+              <button
+                type="submit"
+                className="button btn-login btn form-control mt-2 px-3"
+              >
+                Log in
+              </button>
+            </div>
+          </div>
+
+          <div className="col-md-12 col-lg-6">
+            <div className="mb-5">
+              <p className="mr-2 text-gran ">Encara no tens un usuari propi?</p>
+              <p className="mr-2 text-center">
+                Crea rápidament un compte a Can Mateu i podrás gaudir d'una
+                experiencia molt més personalitzada, amb descomptes exclusius,
+                historials de compra i molt més!
+              </p>
+            </div>
+            <div className="form-group text-center">
+              <Link to="./registro">
                 <button
-                  type="submit"
+                  type="button"
                   className="button btn-login btn form-control mt-2 px-3"
                 >
-                  Log in
+                  Crear un compte
                 </button>
-              </div>
+              </Link>
             </div>
-
-            <div className="col-md-12 col-lg-6">
-              <div className="mb-5">
-                <p className="mr-2 text-gran ">
-                  Encara no tens un usuari propi?
-                </p>
-                <p className="mr-2 text-center">
-                  Crea rápidament un compte a Can Mateu i podrás gaudir d'una
-                  experiencia molt més personalitzada, amb descomptes exclusius,
-                  historials de compra i molt més!
-                </p>
-              </div>
-              <div className="form-group text-center">
-                <Link to="./registro">
-                  <button
-                    type="button"
-                    className="button btn-login btn form-control mt-2 px-3"
-                  >
-                    Crear un compte
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </>
   );

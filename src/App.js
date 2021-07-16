@@ -17,7 +17,7 @@ function App() {
     <>
       <Router>
         <Header />
-        <div className="container">
+        <div className="container section">
           <Switch>
             <Route path="/" exact>
               <Redirect to="/principal" />

@@ -5,7 +5,7 @@ import "./HomePage.css";
 export const HomePage = () => {
   return (
     <main>
-      <div className="section">
+      <div>
         <div className="row">
           <div className="col-md-8 col-sm-12">
             <div className="elemento-portada d-flex align-items-end mb-3">
