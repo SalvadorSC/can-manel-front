@@ -31,7 +31,7 @@ ul {
 /* BUTTON MAIN STYLES */
 
 .button {
-  color: var(--color-blanco);
+  color: var(--color-white);
   background-color: var(--color-primary-dark);
   border: 1px solid var(--color-border);
   border-radius: 10px;
@@ -39,13 +39,13 @@ ul {
 }
 
 .button:hover {
-  color: var(--color-blanco);
+  color: var(--color-white);
 }
 
 @media (min-width: 1024px) {
   .button:hover {
     color: var(--color-primary-dark);
-    background-color: var(--color-blanco);
+    background-color: var(--color-white);
   }
 }
 
