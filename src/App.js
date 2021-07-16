@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { Header } from "./componentes/Header/Header";
-import { useState, useEffect } from "react";
 import { HomePage } from "./paginas/homePage/HomePage";
 import { PageNotFound } from "./paginas/pageNotFound/PageNotFound";
 import { Login } from "./paginas/login/Login";
@@ -35,7 +34,7 @@ function App() {
             <Route path="/llista-productes" exact>
               <ProductList />
             </Route>
-            <Route path="/llistat" exact>
+            <Route path="/carro-compra" exact>
               <ShoppingBasket />
             </Route>
             <Route path="**">
