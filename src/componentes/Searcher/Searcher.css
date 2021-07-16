@@ -1,0 +1,21 @@
+.searcher {
+  font-size: 0.8rem;
+  padding-block: 1rem;
+}
+.searcher-input {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+.searcher-button {
+  height: fit-content;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  border-width: 2px;
+  max-width: fit-content;
+  padding-inline: 10px;
+  padding-block: 5px;
+  margin-left: 10px;
+}
