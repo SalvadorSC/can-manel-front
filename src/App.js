@@ -5,7 +5,8 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { Cabecera } from "./componentes/Cabecera";
-import { PaginaPrincipal } from "./paginas/PaginaPrincipal";
+import { useState, useEffect } from "react";
+import { PaginaPrincipal } from "./paginas/paginaPrincipal/PaginaPrincipal";
 import { PaginaNotFound } from "./paginas/PaginaNotFound";
 import { Login } from "./paginas/login/Login";
 import { Register } from "./paginas/register/Register";
