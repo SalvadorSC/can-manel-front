@@ -4,7 +4,7 @@ import {
   Redirect,
   BrowserRouter as Router,
 } from "react-router-dom";
-import { Cabecera } from "./componentes/Cabecera";
+import { Cabecera } from "./componentes/Cabecera/Cabecera";
 import { useState, useEffect } from "react";
 import { PaginaPrincipal } from "./paginas/paginaPrincipal/PaginaPrincipal";
 import { PaginaNotFound } from "./paginas/PaginaNotFound";

@@ -1,5 +1,5 @@
 import "./Cabecera.css";
-import logo from "../assets/logotip-horitzontal.png";
+import logo from "../../assets/logotip-horitzontal.png";
 import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser } from "react-icons/fa";
 
