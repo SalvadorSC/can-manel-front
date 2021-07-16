@@ -1,8 +1,8 @@
 import { FaStar, FaArrowRight, FaChevronRight } from "react-icons/fa";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
-import "./PaginaPrincipal.css";
+import "./HomePage.css";
 
-export const PaginaPrincipal = () => {
+export const HomePage = () => {
   return (
     <>
       <div className="container">

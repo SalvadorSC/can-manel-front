@@ -1,11 +1,11 @@
-import "./Cabecera.css";
+import "./Header.css";
 import logo from "../../assets/logotip-horitzontal.png";
 import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser, FaBars } from "react-icons/fa";
 import { Fade as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
-export const Cabecera = (props) => {
+export const Header = (props) => {
   const [Open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
   const magnifier = !!magnifierOpen;
@@ -83,12 +83,12 @@ export const Cabecera = (props) => {
                 className="magnifier-icon"
                 onClick={() => setMagnifierOpen(!magnifierOpen)}
               />
-              <Link className="col-2 icons-navbar" to="./iniciar-sesion">
+              <Link className="col-2 icons-navbar" to="./iniciar-sessio">
                 <FaUser />
               </Link>
               <Link
                 className="col-2 icons-navbar icon-shopping-basket"
-                to="./shoppingBasket"
+                to="./carro-compra"
               >
                 <FaShoppingBasket />
               </Link>
@@ -101,7 +101,7 @@ export const Cabecera = (props) => {
             <ul className="row navbar-nav mr-auto mb-3 mt-lg-0 text-left">
               <li className="col-12 col-lg-2 nav-item">
                 <Link
-                  to="./product-list"
+                  to="./llista-productes"
                   className="drop-down-link nav-link"
                   href="links"
                 >
@@ -147,7 +147,7 @@ export const Cabecera = (props) => {
         <div className="col">
           <ul className="categories-nav-list row justify-content-between align-items-center">
             <li className="dropdown col-4">
-              <Link to="./product-list">
+              <Link to="./llista-productes">
                 <button
                   className="btn dropdown-toggle"
                   type="button"
