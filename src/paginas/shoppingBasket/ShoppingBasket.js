@@ -1,6 +1,6 @@
 export const ShoppingBasket = () => {
   return (
-    <div className="section">
+    <div>
       <p>Shopping List</p>
     </div>
   );
