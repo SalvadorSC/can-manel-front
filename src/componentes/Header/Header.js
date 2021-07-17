@@ -6,12 +6,11 @@ import { Fade as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
 export const Header = (props) => {
-  const [Open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
-  const magnifier = !!magnifierOpen;
   return (
     <>
-      <div className="container-fluid">
+      <div className="container">
         <div className="top-navbar row justify-content-between align-items-center mt-3 mb-4">
           <ul className="col-4 d-flex justify-content-center align-items-center">
             <li className="mr-4">
@@ -48,7 +47,7 @@ export const Header = (props) => {
           >
             <Hamburger
               className="hamburger-icon"
-              toggled={Open}
+              toggled={open}
               toggle={setOpen}
               direction="right"
               color="#151515"
@@ -94,32 +93,37 @@ export const Header = (props) => {
               </Link>
             </div>
           </div>
-          <div
-            className="links-nav col-12 collapse navbar-collapse"
-            id="navbarTogglerDemo"
-          >
-            <ul className="row navbar-nav mr-auto mb-3 mt-lg-0 text-left">
-              <li className="col-12 col-lg-2 nav-item">
-                <Link
-                  to="./llista-productes"
-                  className="drop-down-link nav-link"
-                  href="links"
-                >
-                  Fruites i verdures <span className="sr-only">(current)</span>
-                </Link>
-              </li>
-              <li className="col-12 col-lg-2 nav-item">
-                <a className="drop-down-link nav-link" href="links">
-                  Cistelles
-                </a>
-              </li>
-              <li className="col-12 col-lg-2 nav-item">
-                <a className="drop-down-link nav-link" href="links">
-                  Sobre nosaltres
-                </a>
-              </li>
-            </ul>
-          </div>
+          {open && (
+            <div className="links-nav col-12" id="navbarTogglerDemo">
+              <ul className="row mr-auto navbar-nav mb-3 mt-lg-0 text-left">
+                <li className="col-12 col-lg-2 nav-item">
+                  <Link
+                    to="./llista-productes"
+                    className="drop-down-link nav-link"
+                    href="links"
+                  >
+                    Fruites i verdures
+                    <span className="sr-only">(current)</span>
+                  </Link>
+                </li>
+                <li className="col-12 col-lg-2 nav-item">
+                  <a className="drop-down-link nav-link" href="links">
+                    Cistelles
+                  </a>
+                </li>
+                <li className="col-12 col-lg-2 nav-item">
+                  <a className="drop-down-link nav-link" href="links">
+                    Sobre nosaltres
+                  </a>
+                </li>
+                <li className="col-12 col-lg-2 nav-item">
+                  <a className="drop-down-link nav-link" href="links">
+                    Registar-se
+                  </a>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
       <div className="input-search-mobile d-flex justify-content-center align-items-center mb-2">

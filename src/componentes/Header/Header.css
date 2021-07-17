@@ -73,6 +73,20 @@
   padding-top: 8px;
 }
 
+.links-nav {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.links-nav .nav-item {
+  margin-bottom: 10px;
+}
+
+.links-nav a {
+  width: 92%;
+  border-bottom: 1px solid var(--color-background-hover);
+}
+
 /* CATEGORIES LATERAL NAV LIST */
 
 .bar-container {
@@ -172,7 +186,7 @@
   .logo {
     width: 200px;
   }
-  .links.nav,
+  .links-nav,
   .avbar-toggler,
   .magnifier-icon,
   .mobile-text-bar,
