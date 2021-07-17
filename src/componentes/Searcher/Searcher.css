@@ -24,7 +24,7 @@
 .hamburguer-button {
   background-color: var(--color-primary);
   border-radius: 5px;
-  transition: all;
+  padding: 0;
 }
 .hamburguer-button.btn:focus,
 .hamburguer-button.btn:focus-visible {
