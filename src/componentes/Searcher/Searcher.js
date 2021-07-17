@@ -1,5 +1,5 @@
 import "./Searcher.css";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Fade as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
 export const Searcher = () => {
@@ -7,13 +7,14 @@ export const Searcher = () => {
   return (
     <>
       <aside className="searcher">
-        <button
-          onClick={() => setOpen(!open)}
-          className="hamburguer-button btn"
-          type="button"
-        >
-          {!open && <FaBars size={30} />}
-          {open && <FaTimes size={30} />}
+        <button className="hamburguer-button btn" type="button">
+          <Hamburger
+            toggled={open}
+            toggle={setOpen}
+            direction="right"
+            color="#fff"
+            size={20}
+          />
         </button>
         <form
           className={`${
