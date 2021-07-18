@@ -12,6 +12,7 @@ import { Register } from "./paginas/register/Register";
 import { ProductList } from "./paginas/productList/ProductList";
 import { ShoppingBasket } from "./paginas/shoppingBasket/ShoppingBasket";
 import { UserProfile } from "./paginas/userProfile/UserProfile";
+import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route path="/carro-compra" exact>
               <ShoppingBasket />
+            </Route>
+            <Route path="/administracio" exact>
+              <AdminHomePage />
             </Route>
             <Route path="**">
               <PageNotFound />
