@@ -11,6 +11,7 @@ import { Login } from "./paginas/login/Login";
 import { Register } from "./paginas/register/Register";
 import { ProductList } from "./paginas/productList/ProductList";
 import { ShoppingBasket } from "./paginas/shoppingBasket/ShoppingBasket";
+import { UserProfile } from "./paginas/userProfile/UserProfile";
 import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/iniciar-sessio" exact>
               <Login />
+            </Route>
+            <Route path="/perfil" exact>
+              <UserProfile />
             </Route>
             <Route path="/registre" exact>
               <Register />
