@@ -55,7 +55,7 @@ input:focus {
 /* SECTION GLOBAL CLASS */
 
 .section {
-  padding-block: 2rem;
+  padding-block: 32px;
 }
 
 @media (min-width: 1024px) {
