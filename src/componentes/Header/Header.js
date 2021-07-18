@@ -12,7 +12,7 @@ export const Header = (props) => {
     <>
       <div className="container">
         <div className="top-navbar row justify-content-between align-items-center mt-3 mb-4">
-          <ul className="col-4 d-flex justify-content-center align-items-center">
+          <ul className="col-5 d-flex justify-content-center align-items-center">
             <li className="mr-4">
               <a href="holalog">Chat with us</a>
             </li>
@@ -147,84 +147,86 @@ export const Header = (props) => {
           </div>
         )}
       </div>
-      <div className="bar-container text-center row align-items-center justify-content-center">
-        <div className="col">
-          <ul className="categories-nav-list row justify-content-between align-items-center">
-            <li className="dropdown col-4">
-              <Link to="./llista-productes">
+      <div className="container-fluid">
+        <div className="bar-container text-center row align-items-center justify-content-center">
+          <div className="col">
+            <ul className="categories-nav-list row justify-content-between align-items-center">
+              <li className="dropdown col-4">
+                <Link to="./llista-productes">
+                  <button
+                    className="btn dropdown-toggle"
+                    type="button"
+                    id="dropdownMenu2"
+                    // data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Fruites i verdures
+                  </button>
+                </Link>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <button className="dropdown-item" type="button">
+                    Action
+                  </button>
+                  <button className="dropdown-item" type="button">
+                    Another action
+                  </button>
+                  <button className="dropdown-item" type="button">
+                    Something else here
+                  </button>
+                </div>
+              </li>
+              <li className="dropdown col-4">
                 <button
                   className="btn dropdown-toggle"
                   type="button"
                   id="dropdownMenu2"
-                  // data-toggle="dropdown"
+                  data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Fruites i verdures
+                  Cistelles
                 </button>
-              </Link>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button className="dropdown-item" type="button">
-                  Action
+                <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <button className="dropdown-item" type="button">
+                    Action
+                  </button>
+                  <button className="dropdown-item" type="button">
+                    Another action
+                  </button>
+                  <button className="dropdown-item" type="button">
+                    Something else here
+                  </button>
+                </div>
+              </li>
+              <li className="dropdown col-4">
+                <button
+                  className="btn dropdown-toggle"
+                  type="button"
+                  id="dropdownMenu2"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Nutrition
                 </button>
-                <button className="dropdown-item" type="button">
-                  Another action
-                </button>
-                <button className="dropdown-item" type="button">
-                  Something else here
-                </button>
-              </div>
-            </li>
-            <li className="dropdown col-4">
-              <button
-                className="btn dropdown-toggle"
-                type="button"
-                id="dropdownMenu2"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Cistelles
-              </button>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button className="dropdown-item" type="button">
-                  Action
-                </button>
-                <button className="dropdown-item" type="button">
-                  Another action
-                </button>
-                <button className="dropdown-item" type="button">
-                  Something else here
-                </button>
-              </div>
-            </li>
-            <li className="dropdown col-4">
-              <button
-                className="btn dropdown-toggle"
-                type="button"
-                id="dropdownMenu2"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Nutrition
-              </button>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button className="dropdown-item" type="button">
-                  Action
-                </button>
-                <button className="dropdown-item" type="button">
-                  Another action
-                </button>
-                <button className="dropdown-item" type="button">
-                  Something else here
-                </button>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div className="mobile-text-bar col-12">
-          <p>Productes ecològics i de proximitat</p>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <button className="dropdown-item" type="button">
+                    Action
+                  </button>
+                  <button className="dropdown-item" type="button">
+                    Another action
+                  </button>
+                  <button className="dropdown-item" type="button">
+                    Something else here
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="mobile-text-bar col-12">
+            <p>Productes ecològics i de proximitat</p>
+          </div>
         </div>
       </div>
     </>
