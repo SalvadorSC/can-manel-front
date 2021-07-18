@@ -66,6 +66,7 @@
 
 .mobile-text-bar {
   height: 40px;
+  font-size: 14px;
 }
 
 .mobile-text-bar p {
@@ -156,6 +157,24 @@
 
 .input-search-mobile {
   margin-top: -20px;
+}
+
+@media (min-width: 320px) {
+  .logo {
+    width: 200px;
+  }
+}
+
+@media (min-width: 400px) {
+  .mobile-text-bar {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 576px) {
+  .logo {
+    width: 170px;
+  }
 }
 
 @media (min-width: 768px) {

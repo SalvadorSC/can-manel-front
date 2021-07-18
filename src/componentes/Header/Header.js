@@ -37,7 +37,7 @@ export const Header = (props) => {
         </div>
         <div className="row justify-content-between align-items-center my-4 navbar-light">
           <button
-            className="col navbar-toggler"
+            className="col-3 col-sm-2 navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarTogglerDemo"
@@ -54,12 +54,12 @@ export const Header = (props) => {
               rounded
             />
           </button>
-          <div className="col-6 col-md-4 col-lg-3 text-center">
+          <div className="col-9 col-sm-5 col-md-4 col-lg-4 text-right text-sm-center">
             <Link to="./principal">
               <img className="logo" src={logo} alt="" />
             </Link>
           </div>
-          <div className="input-search col-md-5 col-lg-4">
+          <div className="input-search col-md-5 col-lg-5">
             <form className="form-search d-flex align-items-center justify-content-between">
               <div className="form-label-group input-search-bar">
                 <input
@@ -76,17 +76,19 @@ export const Header = (props) => {
               </button>
             </form>
           </div>
-          <div className="col-3 col-md-2 col-lg-2">
+          <div className="col-12 col-sm-5 col-md-3 col-lg-3 text-center text-sm-right">
             <div className="row align-items-center justify-content-center">
-              <FaSearch
-                className="magnifier-icon"
-                onClick={() => setMagnifierOpen(!magnifierOpen)}
-              />
-              <Link className="col-2 icons-navbar" to="./iniciar-sessio">
+              <Link className="col icons-navbar" to="">
+                <FaSearch
+                  className="magnifier-icon"
+                  onClick={() => setMagnifierOpen(!magnifierOpen)}
+                />
+              </Link>
+              <Link className="col icons-navbar" to="./iniciar-sessio">
                 <FaUser />
               </Link>
               <Link
-                className="col-2 icons-navbar icon-shopping-basket"
+                className="col icons-navbar icon-shopping-basket"
                 to="./carro-compra"
               >
                 <FaShoppingBasket />
