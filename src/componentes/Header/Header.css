@@ -1,3 +1,11 @@
+header {
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+
 .btn-secondary {
   background-color: var(--color-white);
   color: var(--color-text);
@@ -147,6 +155,36 @@
   color: var(--color-text);
 }
 
+/* CSS TRANSITION */
+
+.close-navbar {
+  overflow: hidden;
+  height: 0;
+}
+.open-navbar {
+  overflow: visible;
+  height: auto;
+}
+.navbar-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.navbar-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.navbar-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.navbar-exit-active {
+  opacity: 0;
+  height: auto;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
 /* LOGO */
 
 .logo {
@@ -178,6 +216,17 @@
 }
 
 @media (min-width: 768px) {
+  /* CSS TRANSITION */
+
+  .close-navbar {
+    overflow: hidden;
+    height: 0;
+  }
+  .open-navbar {
+    overflow: visible;
+    height: auto;
+  }
+
   .form-search {
     background-color: var(--color-white);
     border: 1px solid var(--color-background-hover);

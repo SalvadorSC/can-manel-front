@@ -1,15 +1,17 @@
 .searcher {
   font-size: 0.8rem;
 }
-.close-form {
-  display: none;
-}
-.open-form {
-  display: flex;
-}
 
 /* CSS TRANSITION */
 
+.close-form {
+  overflow: hidden;
+  height: 0;
+}
+.open-form {
+  overflow: visible;
+  height: auto;
+}
 .searcher-form-enter {
   opacity: 0;
   transform: scale(0.9);
@@ -20,11 +22,12 @@
   transition: opacity 300ms, transform 300ms;
 }
 .searcher-form-exit {
-  display: inline;
   opacity: 1;
+  transform: translateX(0);
 }
 .searcher-form-exit-active {
   opacity: 0;
+  height: auto;
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
@@ -63,10 +66,9 @@
   .hamburguer-button {
     display: none;
   }
-  .close-form {
-    display: flex;
-  }
+  .close-form,
   .open-form {
-    display: flex;
+    overflow: visible;
+    height: auto;
   }
 }
