@@ -58,7 +58,7 @@ export const Header = (props) => {
                 rounded
               />
             </button>
-            <div className="col-9 col-sm-5 col-md-4 col-lg-4 text-right text-sm-center">
+            <div className="col-9 col-sm-5 col-md-4 col-lg-4 text-right text-sm-left">
               <Link to="./principal">
                 <img className="logo" src={logo} alt="" />
               </Link>
