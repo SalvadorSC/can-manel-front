@@ -56,7 +56,7 @@ export const Login = () => {
               </p>
             </div>
             <div className="form-group text-center">
-              <Link to="./registro">
+              <Link to="./registre">
                 <button
                   type="button"
                   className="button btn-login btn form-control mt-2 px-3"
