@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaEdit, FaImages, FaTimes } from "react-icons/fa";
-import Popup from "reactjs-popup";
 import "./AdminProductList.css";
 
 export const AdminProductList = () => {
@@ -11,6 +10,35 @@ export const AdminProductList = () => {
 
   return (
     <section className="admin">
+      <div className="row justify-content-between mb-3">
+        <div className="form-group col-5 d-flex align-items-center h-40">
+          <label className="col-form-label mr-1" htmlFor="name">
+            Buscar per nom:
+          </label>
+          <input
+            type="text"
+            className="admin-searcher-input form-control"
+            id="name"
+            placeholder="Introdueix un nom..."
+          />
+        </div>
+        <div className="form-group col-5 d-flex">
+          <label className="col-form-label mr-1" htmlFor="category">
+            Buscar per categoria:
+          </label>
+          <select className="admin-searcher-input form-control" id="category">
+            <option value="all" defaultValue>
+              Totes les categories
+            </option>
+            <option value="fruits">Fruites</option>
+            <option value="vegetables">Verdures</option>
+            <option value="hortalisses">Hortalisses</option>
+          </select>
+        </div>
+        <button type="submit" className="button searcher-button col-2">
+          Filtrar
+        </button>
+      </div>
       <table className="table">
         <thead>
           <tr>
