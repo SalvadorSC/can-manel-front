@@ -1,0 +1,30 @@
+.card-historial {
+  background-color: #f9f9f9;
+  border-radius: 15px;
+}
+
+.icona-imatges {
+  cursor: pointer;
+  color: var(--color-primary-dark);
+}
+
+.mostrar-imagen {
+  z-index: 2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.397);
+  font-size: 30px;
+}
+.mostrar-imagen .image {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: flex-start;
+}

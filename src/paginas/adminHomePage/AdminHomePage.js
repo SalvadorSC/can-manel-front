@@ -19,7 +19,7 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <FaWarehouse size={iconsSize} color={iconsColor} />
-            <span>Productes</span>
+            <span>Descomptes</span>
           </li>
           <li className="task">
             <FaShoppingBasket size={iconsSize} color={iconsColor} />
