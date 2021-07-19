@@ -1,5 +1,5 @@
 import "./Header.css";
-import logo from "../../assets/logotip-horitzontal.png";
+import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser, FaBars } from "react-icons/fa";
 import { Fade as Hamburger } from "hamburger-react";
