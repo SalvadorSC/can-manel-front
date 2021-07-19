@@ -197,16 +197,18 @@ export const Header = (props) => {
                   </div>
                 </li>
                 <li className="dropdown col-4">
-                  <button
-                    className="btn dropdown-toggle"
-                    type="button"
-                    id="dropdownMenu2"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Cistelles
-                  </button>
+                  <Link to="./llista-cistelles">
+                    <button
+                      className="btn dropdown-toggle"
+                      type="button"
+                      id="dropdownMenu2"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Cistelles
+                    </button>
+                  </Link>
                   <div
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenu2"

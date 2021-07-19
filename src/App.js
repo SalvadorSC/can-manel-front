@@ -13,6 +13,7 @@ import { ProductList } from "./paginas/productList/ProductList";
 import { ShoppingBasket } from "./paginas/shoppingBasket/ShoppingBasket";
 import { UserProfile } from "./paginas/userProfile/UserProfile";
 import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
+import { BasketList } from "./paginas/basketList/BasketList";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route path="/llista-productes" exact>
               <ProductList />
+            </Route>
+            <Route path="/llista-cistelles" exact>
+              <BasketList />
             </Route>
             <Route path="/carro-compra" exact>
               <ShoppingBasket />
