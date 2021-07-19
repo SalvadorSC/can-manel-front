@@ -15,7 +15,7 @@ export const Header = (props) => {
     <>
       <header>
         <div className="container">
-          <div className="top-navbar row justify-content-between align-items-center mt-3 mb-4">
+          <div className="top-navbar row justify-content-between align-items-center pt-3 mb-4">
             <ul className="col-5 d-flex justify-content-center align-items-center">
               <li className="mr-4">
                 <a href="holalog">Chat with us</a>
