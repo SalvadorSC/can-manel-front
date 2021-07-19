@@ -21,7 +21,7 @@ export const UserProfile = () => {
           />
           <button
             type="button"
-            className="button btn-login btn form-control mt-2 px-3"
+            className="button btn-password btn form-control mt-2 px-3"
             onClick={() => {
               setConfirmarContrasenya(!confirmarContrasenya);
               setMostrarInfoEditar(!mostrarInfoEditar);
