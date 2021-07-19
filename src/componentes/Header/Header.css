@@ -197,6 +197,23 @@ header {
   margin-top: -20px;
 }
 
+/* Numero Productes */
+
+.numero-productes {
+  background-color: var(--color-primary-dark);
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+  position: relative;
+  right: 5px;
+  top: 10px;
+}
+
 @media (min-width: 320px) {
   .logo {
     width: 200px;

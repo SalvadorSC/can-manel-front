@@ -1,10 +1,8 @@
-import logo from "../../assets/logotip-horitzontal.png";
-import { Link } from "react-router-dom";
-import { FaSearch, FaShoppingBasket, FaUser } from "react-icons/fa";
 import product from "../../assets/product.jpeg";
 import "./ProductCard.css";
 
 export const ProductCard = (props) => {
+  const { setNumeroProductes, numeroProductes } = props;
   return (
     <>
       <article className="card">
@@ -19,7 +17,12 @@ export const ProductCard = (props) => {
         </div>
         <div className="card-buy d-flex align-items-center justify-content-between">
           <span className="card-price">30 €</span>
-          <button className="button card-button">comprar</button>
+          <button
+            className="button card-button"
+            onClick={() => setNumeroProductes(numeroProductes + 1)}
+          >
+            comprar
+          </button>
         </div>
       </article>
     </>

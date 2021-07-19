@@ -73,7 +73,7 @@ export const UserProfile = () => {
         </button>
       </div>
       <div className="nav-column-compres col-md-4 col-sm-12 d-flex flex-column">
-        <Link to="./principal" className="mb-4">
+        <Link to="./historial-compra" className="mb-4">
           Historial de compra
         </Link>
         <Link to="./principal" className="mb-4">

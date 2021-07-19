@@ -2,7 +2,9 @@ import { FaStar, FaArrowRight, FaChevronRight } from "react-icons/fa";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 import "./HomePage.css";
 
-export const HomePage = () => {
+export const HomePage = (props) => {
+  const { setNumeroProductes, numeroProductes } = props;
+
   return (
     <main>
       <div>
@@ -31,29 +33,24 @@ export const HomePage = () => {
       <div>
         <p className="text-gran mt-5">Productes destacats</p>
         <div className="product-list">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard
+            setNumeroProductes={setNumeroProductes}
+            numeroProductes={numeroProductes}
+          />
+          <ProductCard
+            setNumeroProductes={setNumeroProductes}
+            numeroProductes={numeroProductes}
+          />
+          <ProductCard
+            setNumeroProductes={setNumeroProductes}
+            numeroProductes={numeroProductes}
+          />
+          <ProductCard
+            setNumeroProductes={setNumeroProductes}
+            numeroProductes={numeroProductes}
+          />
         </div>
       </div>
-
-      {/* <div>
-        <nav className="pl-5 mt-5">
-          <p className="item-list-title mb-2">Category Menu</p>
-          <ul className="list-unstyled item-list">
-            <li className="item-name mb-2">Bakery</li>
-            <li className="item-name mb-2">Fruit and vegetables</li>
-            <li className="item-name mb-2">Meat and fish</li>
-            <li className="item-name mb-2">Drinks</li>
-            <li className="item-name mb-2">Nutrition</li>
-          </ul>
-
-          <button className="btn btn-md btn-secondary mt-5 font-weight-bold">
-            More categories <FaChevronRight />
-          </button>
-        </nav>
-      </div> */}
     </main>
   );
 };
