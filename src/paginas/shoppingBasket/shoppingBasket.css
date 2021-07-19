@@ -14,11 +14,6 @@
   font-size: 14px;
 }
 
-.icon-delete {
-  color: var(--color-red);
-  font-size: 20px;
-}
-
 .number input {
   height: 26px;
   width: 40px;
@@ -82,11 +77,6 @@ th.product-col {
 @media (min-width: 1024px) {
   .icon-counter {
     font-size: 18px;
-  }
-
-  .icon-delete {
-    color: var(--color-red);
-    font-size: 25px;
   }
 
   .number input {
