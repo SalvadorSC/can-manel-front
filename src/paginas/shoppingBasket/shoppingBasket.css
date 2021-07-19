@@ -1,15 +1,12 @@
 .header-section {
-  padding-bottom: 50px;
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 4px solid var(--color-primary);
 }
 
 .product-img {
   width: 100px;
   height: auto;
-}
-
-.row-img,
-.column-img {
-  display: none;
 }
 
 .icon-counter {
@@ -36,6 +33,50 @@
 
 .table td {
   vertical-align: middle !important;
+  border-bottom: 1px solid #dee2e6;
+  border-top: none;
+}
+
+.table thead th {
+  border-top: none;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+td.product-item,
+th.product-col {
+  text-align: left;
+}
+
+.total {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: var(--color-primary);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.order-button {
+  margin-top: 30px;
+}
+
+.btn-order {
+  width: 100%;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .order-button {
+    display: flex;
+    justify-content: end;
+  }
+  .btn-order {
+    width: 30%;
+    display: block;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -58,5 +99,9 @@
     display: inline-block;
     vertical-align: middle;
     margin-inline: 5px;
+  }
+  .btn-order {
+    width: 20%;
+    display: block;
   }
 }
