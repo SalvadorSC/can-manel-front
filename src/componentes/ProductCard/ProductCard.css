@@ -29,9 +29,5 @@
 .card-button {
   font-weight: bold;
   font-size: 0.8rem;
-  border-radius: 12px;
-  border-width: 2px;
   max-width: fit-content;
-  padding-inline: 10px;
-  padding-block: 5px;
 }
