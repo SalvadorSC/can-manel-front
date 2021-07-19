@@ -14,6 +14,7 @@ import { ShoppingBasket } from "./paginas/shoppingBasket/ShoppingBasket";
 import { UserProfile } from "./paginas/userProfile/UserProfile";
 import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
 import { BasketList } from "./paginas/basketList/BasketList";
+import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route path="/administracio" exact>
               <AdminHomePage />
+            </Route>
+            <Route path="/historial-compra" exact>
+              <HistorialCompra />
             </Route>
             <Route path="**">
               <PageNotFound />
