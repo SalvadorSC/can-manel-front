@@ -17,6 +17,10 @@ header {
   color: var(--color-text);
 }
 
+.navbar-light {
+  padding-top: 20px;
+}
+
 /* TOP NAVBAR */
 
 .top-navbar a {
@@ -32,11 +36,9 @@ header {
 .form-search-mobile {
   background-color: var(--color-white);
   border: 1px solid var(--color-background-hover);
-  margin-top: 20px;
-  margin-bottom: 5px;
   border-radius: 12px;
   width: 350px;
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .form-search-mobile .form-control {
@@ -194,7 +196,8 @@ header {
 /* ICONS */
 
 .input-search-mobile {
-  margin-top: -20px;
+  margin-top: -25px;
+  padding-block: 10px;
 }
 
 /* Numero Productes */
@@ -233,6 +236,10 @@ header {
 }
 
 @media (min-width: 768px) {
+  .navbar-light {
+    padding-block: 20px;
+  }
+
   /* CSS TRANSITION */
 
   .close-navbar {

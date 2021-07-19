@@ -16,8 +16,8 @@ export const Header = (props) => {
     <>
       <header>
         <div className="container">
-          <div className="top-navbar row justify-content-between align-items-center pt-3 mb-4">
-            <ul className="col-5 d-flex justify-content-center align-items-center">
+          <div className="top-navbar row justify-content-between align-items-center py-3">
+            <ul className="col-5 d-flex justify-content-center align-items-center my-0">
               <li className="mr-4">
                 <a href="holalog">Chat with us</a>
               </li>
@@ -28,7 +28,7 @@ export const Header = (props) => {
                 <a href="holalog">info@canmanel.com</a>
               </li>
             </ul>
-            <ul className="col-4 d-flex justify-content-center align-items-center">
+            <ul className="col-4 d-flex justify-content-center align-items-center my-0">
               <li>
                 <a href="holalog">Blog</a>
               </li>
@@ -40,7 +40,7 @@ export const Header = (props) => {
               </li>
             </ul>
           </div>
-          <div className="row justify-content-between align-items-center my-4 navbar-light">
+          <div className="row justify-content-between align-items-center navbar-light">
             <button
               className="col-3 col-sm-2 navbar-toggler"
               type="button"
@@ -148,11 +148,9 @@ export const Header = (props) => {
               </div>
             </CSSTransition>
           </div>
-        </div>
-        <div className="input-search-mobile d-flex justify-content-center align-items-center mb-2">
           {magnifierOpen && (
-            <div className="input-search-mobile">
-              <form className="form-search-mobile d-flex align-items-center justify-content-between">
+            <div className="input-search-mobile row d-flex justify-content-center align-items-center">
+              <form className="form-search-mobile col-10 d-flex align-items-center justify-content-between">
                 <div className="form-label-group input-search-bar">
                   <input
                     type="text"
