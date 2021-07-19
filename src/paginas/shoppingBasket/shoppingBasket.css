@@ -71,7 +71,7 @@ th.product-col {
 @media (min-width: 768px) {
   .order-button {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
   .btn-order {
     width: 30%;
