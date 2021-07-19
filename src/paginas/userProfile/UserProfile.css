@@ -16,3 +16,7 @@
   flex-direction: column;
   border-radius: 15px;
 }
+
+.button {
+  width: auto;
+}
