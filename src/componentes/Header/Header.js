@@ -7,10 +7,11 @@ import { useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 export const Header = (props) => {
+  const { setNumeroProductes, numeroProductes } = props;
+
   const [open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
   const nodeRef = useRef(null);
-
   return (
     <>
       <header>
@@ -95,7 +96,12 @@ export const Header = (props) => {
                   className="col icons-navbar icon-shopping-basket"
                   to="./carro-compra"
                 >
-                  <FaShoppingBasket />
+                  <div className="d-flex">
+                    <FaShoppingBasket />
+                    {numeroProductes > 0 && (
+                      <div className="numero-productes">{numeroProductes}</div>
+                    )}
+                  </div>
                 </Link>
               </div>
             </div>

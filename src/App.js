@@ -15,19 +15,28 @@ import { UserProfile } from "./paginas/userProfile/UserProfile";
 import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
 import { BasketList } from "./paginas/basketList/BasketList";
 import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
+import { useState } from "react";
 
 function App() {
+  const [numeroProductes, setNumeroProductes] = useState(0);
+
   return (
     <>
       <Router>
-        <Header />
+        <Header
+          setNumeroProductes={setNumeroProductes}
+          numeroProductes={numeroProductes}
+        />
         <div className="container section">
           <Switch>
             <Route path="/" exact>
               <Redirect to="/principal" />
             </Route>
             <Route path="/principal" exact>
-              <HomePage />
+              <HomePage
+                setNumeroProductes={setNumeroProductes}
+                numeroProductes={numeroProductes}
+              />
             </Route>
             <Route path="/iniciar-sessio" exact>
               <Login />
