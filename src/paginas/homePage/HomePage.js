@@ -17,21 +17,21 @@ export const HomePage = (props) => {
               </div>
             </div>
           </div>
-          <Link
-            to="./sobre-nosaltres"
-            className="col-md-4 col-sm-12 d-flex flex-column justify-content-between"
-          >
-            <div className="elemento-portada elemento-portada-small d-flex align-items-end mb-3">
+          <div className="col-md-4 col-sm-12 d-flex flex-column justify-content-between">
+            <Link
+              to="./sobre-nosaltres"
+              className="elemento-portada elemento-portada-small d-flex align-items-end mb-3"
+            >
               <div className="d-flex align-items-center">
                 <p>Qui som</p>
               </div>
-            </div>
+            </Link>
             <div className="elemento-portada elemento-portada-small d-flex align-items-end mb-3">
               <div className="d-flex align-items-center">
                 <p>Cerca activitats!</p>
               </div>
             </div>
-          </Link>
+          </div>
         </div>
       </div>
       <div>
