@@ -15,6 +15,7 @@ import { UserProfile } from "./paginas/userProfile/UserProfile";
 import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
 import { BasketList } from "./paginas/basketList/BasketList";
 import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
+import { AboutUs } from "./paginas/aboutUs/AboutUs";
 import { useState } from "react";
 
 function App() {
@@ -58,6 +59,9 @@ function App() {
             </Route>
             <Route path="/administracio" exact>
               <AdminHomePage />
+            </Route>
+            <Route path="/sobre-nosaltres" exact>
+              <AboutUs />
             </Route>
             <Route path="/historial-compra" exact>
               <HistorialCompra />
