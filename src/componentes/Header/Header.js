@@ -171,9 +171,13 @@ export const Header = (props) => {
                     </a>
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
-                    <a className="drop-down-link nav-link" href="links">
+                    <Link
+                      to="/registre"
+                      className="drop-down-link nav-link"
+                      href="links"
+                    >
                       Registar-se
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
