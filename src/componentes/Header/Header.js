@@ -204,12 +204,12 @@ export const Header = (props) => {
             <div className="col">
               <ul className="categories-nav-list row justify-content-between align-items-center">
                 <li className="dropdown col-4">
-                  <Link to="./llista-productes">
+                  <Link className="dropdown-toggle" to="./llista-productes">
                     <button
-                      className="btn dropdown-toggle"
+                      className="btn"
                       type="button"
                       id="dropdownMenu2"
-                      // data-toggle="dropdown"
+                      data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
                     >
@@ -232,9 +232,9 @@ export const Header = (props) => {
                   </div>
                 </li>
                 <li className="dropdown col-4">
-                  <Link to="./llista-cistelles">
+                  <Link className="dropdown-toggle" to="./llista-cistelles">
                     <button
-                      className="btn dropdown-toggle"
+                      className="btn"
                       type="button"
                       id="dropdownMenu2"
                       data-toggle="dropdown"
@@ -260,16 +260,18 @@ export const Header = (props) => {
                   </div>
                 </li>
                 <li className="dropdown col-4">
-                  <button
-                    className="btn dropdown-toggle"
-                    type="button"
-                    id="dropdownMenu2"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Nutrition
-                  </button>
+                  <Link className="dropdown-toggle" to="./llista-productes">
+                    <button
+                      className="btn"
+                      type="button"
+                      id="dropdownMenu2"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Nutrition
+                    </button>
+                  </Link>
                   <div
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenu2"
