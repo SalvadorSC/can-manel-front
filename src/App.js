@@ -17,6 +17,7 @@ import { BasketList } from "./paginas/basketList/BasketList";
 import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
 import { AboutUs } from "./paginas/aboutUs/AboutUs";
 import { useState } from "react";
+import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
 
 function App() {
   const [numeroProductes, setNumeroProductes] = useState(0);
@@ -62,6 +63,8 @@ function App() {
             </Route>
             <Route path="/sobre-nosaltres" exact>
               <AboutUs />
+            <Route path="/administracio-productes" exact>
+              <AdminProductList />
             </Route>
             <Route path="/historial-compra" exact>
               <HistorialCompra />
