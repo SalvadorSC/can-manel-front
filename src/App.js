@@ -63,6 +63,7 @@ function App() {
             </Route>
             <Route path="/sobre-nosaltres" exact>
               <AboutUs />
+            </Route>
             <Route path="/administracio-productes" exact>
               <AdminProductList />
             </Route>
