@@ -1,6 +1,12 @@
 .admin {
   position: relative;
 }
+.create-item {
+  margin-bottom: 20px;
+}
+.create-item p {
+  margin: 0;
+}
 
 /* TABLE STYLES */
 .table thead th.admin-product-col {
@@ -65,6 +71,7 @@ textarea {
   position: absolute;
   top: 7px;
   right: 7px;
+  cursor: pointer;
 }
 
 /* EFFECTS IMAGE FORM */

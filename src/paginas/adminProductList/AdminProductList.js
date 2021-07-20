@@ -5,12 +5,30 @@ import "./AdminProductList.css";
 export const AdminProductList = () => {
   const [open, setOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
+  const [action, setAction] = useState(null);
+
   const showImg = () => {
     setOpen(!open);
+  };
+  const toggleForm = () => {
+    setFormOpen(!formOpen);
   };
 
   return (
     <section className="admin">
+      <div className="create-item d-flex justify-content-center align-items-center">
+        <p>Afegir un nou producte</p>
+        <button
+          className="button ml-2"
+          type="button"
+          onClick={() => {
+            setAction("create");
+            toggleForm();
+          }}
+        >
+          Crear
+        </button>
+      </div>
       <div className="row justify-content-between mb-3">
         <div className="form-group col-5 d-flex align-items-center h-40">
           <label className="col-form-label mr-1" htmlFor="name">
@@ -43,7 +61,7 @@ export const AdminProductList = () => {
 
       {!formOpen && (
         <div className="container-edit">
-          <FaTimes className="icon-close-form" />
+          <FaTimes className="icon-close-form" onClick={toggleForm} />
           <form>
             <div className="row">
               <div className="content col-3">
@@ -96,7 +114,7 @@ export const AdminProductList = () => {
           </form>
           <div className="text-right">
             <button type="submit" className="button">
-              Crear / Editar
+              {action === "create" ? "Crear" : "Editar"}
             </button>
           </div>
         </div>
@@ -149,7 +167,13 @@ export const AdminProductList = () => {
             <td className="items-table">Fruita</td>
             <td className="items-table">28/07/2021</td>
             <td>
-              <FaEdit className="icon-edit" />
+              <FaEdit
+                className="icon-edit"
+                onClick={() => {
+                  setAction("edit");
+                  toggleForm();
+                }}
+              />
             </td>
             <td className="items-table">
               <FaTimes className="icon-delete" />
@@ -176,7 +200,13 @@ export const AdminProductList = () => {
             <td className="items-table">Fruita</td>
             <td className="items-table">28/07/2021</td>
             <td>
-              <FaEdit className="icon-edit" />
+              <FaEdit
+                className="icon-edit"
+                onClick={() => {
+                  setAction("edit");
+                  toggleForm();
+                }}
+              />
             </td>
             <td className="items-table">
               <FaTimes className="icon-delete" />
@@ -203,7 +233,13 @@ export const AdminProductList = () => {
             <td className="items-table">Fruita</td>
             <td className="items-table">28/07/2021</td>
             <td>
-              <FaEdit className="icon-edit" />
+              <FaEdit
+                className="icon-edit"
+                onClick={() => {
+                  setAction("edit");
+                  toggleForm();
+                }}
+              />
             </td>
             <td className="items-table">
               <FaTimes className="icon-delete" />
@@ -230,7 +266,13 @@ export const AdminProductList = () => {
             <td className="items-table">Fruita</td>
             <td className="items-table">28/07/2021</td>
             <td>
-              <FaEdit className="icon-edit" />
+              <FaEdit
+                className="icon-edit"
+                onClick={() => {
+                  setAction("edit");
+                  toggleForm();
+                }}
+              />
             </td>
             <td className="items-table">
               <FaTimes className="icon-delete" />
