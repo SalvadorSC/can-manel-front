@@ -15,6 +15,7 @@ import { UserProfile } from "./paginas/userProfile/UserProfile";
 import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
 import { BasketList } from "./paginas/basketList/BasketList";
 import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
+import { AboutUs } from "./paginas/aboutUs/AboutUs";
 import { useState } from "react";
 import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
 
@@ -60,6 +61,8 @@ function App() {
             <Route path="/administracio" exact>
               <AdminHomePage />
             </Route>
+            <Route path="/sobre-nosaltres" exact>
+              <AboutUs />
             <Route path="/administracio-productes" exact>
               <AdminProductList />
             </Route>

@@ -19,24 +19,24 @@ export const Header = (props) => {
           <div className="top-navbar row justify-content-between align-items-center py-3">
             <ul className="col-5 d-flex justify-content-center align-items-center my-0">
               <li className="mr-4">
-                <a href="holalog">Chat with us</a>
+                <a href="./holalog">Chat with us</a>
               </li>
               <li className="mr-4">
                 <a href="holalog">+34 662 21 62 97</a>
               </li>
               <li>
-                <a href="holalog">info@canmanel.com</a>
+                <a href="./holalog">info@canmanel.com</a>
               </li>
             </ul>
             <ul className="col-4 d-flex justify-content-center align-items-center my-0">
               <li>
-                <a href="holalog">Blog</a>
+                <Link to="./blog">Blog</Link>
               </li>
               <li className="ml-5">
-                <a href="holalog">Sobre nosaltres</a>
+                <Link to="./sobre-nosaltres">Sobre nosaltres</Link>
               </li>
               <li className="ml-5">
-                <a href="holalog">Activitats</a>
+                <Link to="./activitats">Activitats</Link>
               </li>
             </ul>
           </div>
