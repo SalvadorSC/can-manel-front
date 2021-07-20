@@ -61,7 +61,7 @@ export const Register = () => {
               </div>
               <div className="col-md-12 col-lg-6">
                 <label htmlFor="contrasenya">Contrasenya *</label>
-                <div className="opcions-login form-group">
+                <div className="login-options form-group">
                   <input
                     name="contrasenya"
                     type="password"
@@ -74,7 +74,7 @@ export const Register = () => {
                 <label htmlFor="contrasenya-confirmar">
                   Confirmació de contrasenya *
                 </label>
-                <div className="opcions-login form-group">
+                <div className="login-options form-group">
                   <input
                     name="contrasenya-confirmar"
                     type="password"

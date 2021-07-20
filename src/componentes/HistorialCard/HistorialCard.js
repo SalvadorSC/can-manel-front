@@ -12,7 +12,7 @@ export const HistorialCard = (props) => {
           <span>Tomaquet fresc de Can Mateu</span>
           <FaImages
             onClick={() => setShowImage(!showImage)}
-            className="icona-imatges"
+            className="images-icon"
           />
           <span>Fruita</span>
           <span>15.45€</span>
@@ -23,7 +23,7 @@ export const HistorialCard = (props) => {
           <span>Tomaquet fresc de Can Mateu</span>
           <FaImages
             onClick={() => setShowImage(!showImage)}
-            className="icona-imatges"
+            className="images-icon"
           />
           <span>Fruita</span>
           <span>15.45€</span>
@@ -34,7 +34,7 @@ export const HistorialCard = (props) => {
           <span>Tomaquet fresc de Can Mateu</span>
           <FaImages
             onClick={() => setShowImage(!showImage)}
-            className="icona-imatges"
+            className="images-icon"
           />
           <span>Fruita</span>
           <span>15.45€</span>
@@ -44,7 +44,7 @@ export const HistorialCard = (props) => {
 
         <div className="d-flex justify-content-between mt-5">
           <h3 className="heading-section">Total</h3>
-          <div>
+          <div className="d-flex">
             <button className="button btn-login btn form-control mr-5">
               Repetir compra
             </button>

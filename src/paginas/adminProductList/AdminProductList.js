@@ -156,10 +156,7 @@ export const AdminProductList = () => {
                     <div className="image">
                       <img src="https://picsum.photos/250/250" alt="" />
                     </div>
-                    <FaTimes
-                      className="cerrar-imagen-icono"
-                      onClick={showImg}
-                    />
+                    <FaTimes className="close-image-icon" onClick={showImg} />
                   </div>
                 </div>
               )}
@@ -189,10 +186,7 @@ export const AdminProductList = () => {
                     <div className="image">
                       <img src="https://picsum.photos/250/250" alt="" />
                     </div>
-                    <FaTimes
-                      className="cerrar-imagen-icono"
-                      onClick={showImg}
-                    />
+                    <FaTimes className="close-image-icon" onClick={showImg} />
                   </div>
                 </div>
               )}
@@ -222,10 +216,7 @@ export const AdminProductList = () => {
                     <div className="image">
                       <img src="https://picsum.photos/250/250" alt="" />
                     </div>
-                    <FaTimes
-                      className="cerrar-imagen-icono"
-                      onClick={showImg}
-                    />
+                    <FaTimes className="close-image-icon" onClick={showImg} />
                   </div>
                 </div>
               )}
@@ -255,10 +246,7 @@ export const AdminProductList = () => {
                     <div className="image">
                       <img src="https://picsum.photos/250/250" alt="" />
                     </div>
-                    <FaTimes
-                      className="cerrar-imagen-icono"
-                      onClick={showImg}
-                    />
+                    <FaTimes className="close-image-icon" onClick={showImg} />
                   </div>
                 </div>
               )}

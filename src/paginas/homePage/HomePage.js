@@ -32,7 +32,7 @@ export const HomePage = (props) => {
       <div>
         <div className="row">
           <div className="col-md-8 col-sm-12">
-            <div className="elemento-portada d-flex align-items-end mb-3">
+            <div className="homepage-element d-flex align-items-end mb-3">
               <div className="d-flex align-items-center">
                 <p>Tria la teva cistella</p>
               </div>
@@ -41,13 +41,13 @@ export const HomePage = (props) => {
           <div className="col-md-4 col-sm-12 d-flex flex-column justify-content-between">
             <Link
               to="./sobre-nosaltres"
-              className="elemento-portada elemento-portada-small d-flex align-items-end mb-3"
+              className="homepage-element homepage-element-small d-flex align-items-end mb-3"
             >
               <div className="d-flex align-items-center">
                 <p>Qui som</p>
               </div>
             </Link>
-            <div className="elemento-portada elemento-portada-small d-flex align-items-end mb-3">
+            <div className="homepage-element homepage-element-small d-flex align-items-end mb-3">
               <div className="d-flex align-items-center">
                 <p>Cerca activitats!</p>
               </div>
@@ -56,7 +56,7 @@ export const HomePage = (props) => {
         </div>
       </div>
       <div>
-        <p className="text-gran mt-5">Productes destacats</p>
+        <p className="text-big mt-5">Productes destacats</p>
         <div className="product-list">
           {productsList.map((product) => (
             <ProductCard

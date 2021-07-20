@@ -1,11 +1,11 @@
-.elemento-portada img {
+.homepage-element img {
   width: 100%;
   border-radius: 15px;
   position: relative;
   top: 0;
 }
 
-.elemento-portada {
+.homepage-element {
   width: 100%;
   height: 460px;
   border-radius: 15px;
@@ -13,12 +13,12 @@
   background-size: cover;
 }
 
-.elemento-portada-small {
+.homepage-element-small {
   height: 220px;
   background-image: url("https://picsum.photos/400/220");
 }
 
-.elemento-portada div {
+.homepage-element div {
   color: var(--color-white);
   width: 100%;
   height: 25%;

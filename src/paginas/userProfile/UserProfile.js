@@ -8,7 +8,7 @@ export const UserProfile = () => {
   const [mostrarInfoEditar, setMostrarInfoEditar] = useState(true);
   const confirmacionContrasenya = (
     <>
-      <div className="confirmar-contrasenya">
+      <div className="password-confirmation">
         <form className="p-5">
           <label htmlFor="confirmarContrasenya">
             Si us plau introduiu la contrasenya per poder fer canvis:
@@ -16,7 +16,7 @@ export const UserProfile = () => {
           <input
             type="password"
             name="confirmarContrasenya"
-            id="confirmar-contrasenya"
+            id="password-confirmation"
             className="form-control"
           />
           <button
@@ -85,13 +85,12 @@ export const UserProfile = () => {
         <Link to="./registro">
           <button
             type="button"
-            className="button btn-login btn form-control mt-2 px-3"
+            className="button btn-data-purchase btn form-control mt-2 px-3"
           >
             Editar les dades de compra
           </button>
         </Link>
       </div>
-      <div className="col-12"></div>
     </div>
   );
   const editarInformacionUsuario = (
@@ -154,7 +153,7 @@ export const UserProfile = () => {
         </div>
         <div className="col-md-12 col-lg-6">
           <label htmlFor="contrasenya">Contrasenya</label>
-          <div className="opcions-login form-group">
+          <div className="login-options form-group">
             <input
               name="contrasenya"
               type="password"
@@ -167,7 +166,7 @@ export const UserProfile = () => {
           <label htmlFor="contrasenya-confirmar">
             Confirmació de contrasenya *
           </label>
-          <div className="opcions-login form-group">
+          <div className="login-options form-group">
             <input
               name="contrasenya-confirmar"
               type="password"
