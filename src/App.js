@@ -18,6 +18,7 @@ import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
 import { AboutUs } from "./paginas/aboutUs/AboutUs";
 import { useState } from "react";
 import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
+import { ItemProductCard } from "./componentes/ItemProductCard/ItemProductCard";
 
 function App() {
   const [numeroProductes, setNumeroProductes] = useState(0);
@@ -54,6 +55,9 @@ function App() {
                 setNumeroProductes={setNumeroProductes}
                 numeroProductes={numeroProductes}
               />
+            </Route>
+            <Route path="/llista-productes/producte" exact>
+              <ItemProductCard />
             </Route>
             <Route path="/llista-cistelles" exact>
               <BasketList
