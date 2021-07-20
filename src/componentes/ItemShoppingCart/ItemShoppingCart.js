@@ -6,7 +6,6 @@ export const ItemShoppingCart = (props) => {
   const { productImage, product, totalPrice, setTotalPrice } = props;
   const [quantity, setQuantity] = useState(1);
 
-  const maxQuantity = 9;
   const minusQuantity = () => {
     if (quantity === 1) {
       return;
@@ -15,7 +14,7 @@ export const ItemShoppingCart = (props) => {
     }
   };
   const plusQuantity = () => {
-    if (quantity === maxQuantity) {
+    if (quantity === product.quantity) {
       return;
     } else {
       setQuantity(quantity + 1);
