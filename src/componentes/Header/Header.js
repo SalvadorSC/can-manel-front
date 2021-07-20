@@ -12,6 +12,35 @@ export const Header = (props) => {
   const [open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
   const nodeRef = useRef(null);
+  const [showBusquedas, setShowBusquedas] = useState(false);
+  const busquedas = (
+    <>
+      <div className="resultados-busqueda">
+        <p>Resultado 1</p>
+        <hr />
+        <p>Resultado 2</p>
+        <hr />
+        <p>Resultado 3</p>
+        <hr />
+        <p>Resultado 4</p>
+        <hr />
+        <p>Resultado 5</p>
+        <hr />
+        <p>Resultado 6</p>
+        <hr />
+        <p>Resultado 7</p>
+      </div>
+    </>
+  );
+
+  const mostrarBusquedas = (e) => {
+    if (e.target.value !== "") {
+      setShowBusquedas(true);
+    } else {
+      setShowBusquedas(false);
+    }
+  };
+
   return (
     <>
       <header>
@@ -74,12 +103,14 @@ export const Header = (props) => {
                     placeholder="Buscar Productes, categories..."
                     required=""
                     autoFocus=""
+                    onChange={(e) => mostrarBusquedas(e)}
                   />
                 </div>
                 <button className="btn" type="submit">
                   <FaSearch />
                 </button>
               </form>
+              {showBusquedas && busquedas}
             </div>
             <div className="col-12 col-sm-5 col-md-3 col-lg-3 text-center text-sm-right">
               <div className="row align-items-center justify-content-center">
