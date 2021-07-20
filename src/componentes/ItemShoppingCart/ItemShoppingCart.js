@@ -40,7 +40,7 @@ export const ItemShoppingCart = (props) => {
             <FaPlus className="icon-counter" onClick={() => plusQuantity()} />
           </div>
         </td>
-        <td>{product.price * quantity}€</td>
+        <td>{Math.floor(quantity * product.price * 100) / 100}€</td>
         <td className="items-table">
           <FaTimes className="icon-delete" />
         </td>
