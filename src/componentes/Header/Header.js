@@ -13,6 +13,11 @@ export const Header = (props) => {
   const [magnifierOpen, setMagnifierOpen] = useState(false);
   const nodeRef = useRef(null);
   const [showBusquedas, setShowBusquedas] = useState(false);
+
+  const toggleHamburger = () => {
+    setOpen(!open);
+  };
+
   const busquedas = (
     <>
       <div className="search-results">
@@ -120,11 +125,11 @@ export const Header = (props) => {
                     onClick={() => setMagnifierOpen(!magnifierOpen)}
                   />
                 </Link>
-                <Link className="icons-navbar ml-2" to="./iniciar-sessio">
+                <Link className="icons-navbar ml-3" to="./iniciar-sessio">
                   <FaUser />
                 </Link>
                 <Link
-                  className="icons-navbar icon-shopping-basket ml-2"
+                  className="icons-navbar icon-shopping-basket ml-3"
                   to="./carro-compra"
                 >
                   {/* <div className="d-flex"> */}
@@ -154,6 +159,7 @@ export const Header = (props) => {
                     <Link
                       to="./llista-productes"
                       className="drop-down-link nav-link"
+                      onClick={() => toggleHamburger()}
                       href="links"
                     >
                       Fruites i verdures
@@ -161,12 +167,21 @@ export const Header = (props) => {
                     </Link>
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
-                    <a className="drop-down-link nav-link" href="links">
+                    <Link
+                      to="./llista-cistelles"
+                      className="drop-down-link nav-link"
+                      onClick={() => toggleHamburger()}
+                      href="links"
+                    >
                       Cistelles
-                    </a>
+                    </Link>
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
-                    <a className="drop-down-link nav-link" href="links">
+                    <a
+                      className="drop-down-link nav-link"
+                      onClick={() => toggleHamburger()}
+                      href="links"
+                    >
                       Sobre nosaltres
                     </a>
                   </li>
@@ -174,6 +189,7 @@ export const Header = (props) => {
                     <Link
                       to="/registre"
                       className="drop-down-link nav-link"
+                      onClick={() => toggleHamburger()}
                       href="links"
                     >
                       Registar-se
