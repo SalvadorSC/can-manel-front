@@ -71,7 +71,7 @@ export const Header = (props) => {
           </div>
           <div className="row justify-content-between align-items-center navbar-light">
             <button
-              className="col-3 col-sm-2 navbar-toggler"
+              className="col-2 col-sm-2 navbar-toggler"
               type="button"
               data-toggle="collapse"
               data-target="#navbarTogglerDemo"
@@ -88,7 +88,7 @@ export const Header = (props) => {
                 rounded
               />
             </button>
-            <div className="col-9 col-sm-5 col-md-4 col-lg-4 text-right text-sm-left">
+            <div className="col-7 col-sm-5 col-md-4 col-lg-4 text-right text-sm-left">
               <Link to="./principal">
                 <img className="logo" src={logo} alt="" />
               </Link>
@@ -112,27 +112,27 @@ export const Header = (props) => {
               </form>
               {showBusquedas && busquedas}
             </div>
-            <div className="col-12 col-sm-5 col-md-3 col-lg-3 text-center text-sm-right">
-              <div className="row align-items-center justify-content-center">
-                <Link className="col icons-navbar" to="">
+            <div className="col-3 col-sm-5 col-md-3 col-lg-3 text-center text-sm-right">
+              <div className="d-flex align-items-center justify-content-end">
+                <Link className="icons-navbar" to="">
                   <FaSearch
                     className="magnifier-icon"
                     onClick={() => setMagnifierOpen(!magnifierOpen)}
                   />
                 </Link>
-                <Link className="col icons-navbar" to="./iniciar-sessio">
+                <Link className="icons-navbar ml-2" to="./iniciar-sessio">
                   <FaUser />
                 </Link>
                 <Link
-                  className="col icons-navbar icon-shopping-basket"
+                  className="icons-navbar icon-shopping-basket ml-2"
                   to="./carro-compra"
                 >
-                  <div className="d-flex">
-                    <FaShoppingBasket />
-                    {numeroProductes > 0 && (
-                      <div className="numero-productes">{numeroProductes}</div>
-                    )}
-                  </div>
+                  {/* <div className="d-flex"> */}
+                  <FaShoppingBasket />
+                  {numeroProductes > 0 && (
+                    <div className="numero-productes">{numeroProductes}</div>
+                  )}
+                  {/* </div> */}
                 </Link>
               </div>
             </div>
