@@ -24,7 +24,7 @@ export const Login = () => {
               />
             </div>
             <label htmlFor="contrasenya">Contrasenya *</label>
-            <div className="opcions-login form-group">
+            <div className="login-options form-group">
               <input
                 name="contrasenya"
                 type="password"
@@ -48,7 +48,7 @@ export const Login = () => {
 
           <div className="col-md-12 col-lg-6">
             <div className="mb-5">
-              <p className="mr-2 text-gran ">Encara no tens un usuari propi?</p>
+              <p className="mr-2 text-big ">Encara no tens un usuari propi?</p>
               <p className="mr-2 text-center">
                 Crea rápidament un compte a Can Mateu i podrás gaudir d'una
                 experiencia molt més personalitzada, amb descomptes exclusius,

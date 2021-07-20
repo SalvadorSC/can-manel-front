@@ -15,7 +15,7 @@ export const Header = (props) => {
   const [showBusquedas, setShowBusquedas] = useState(false);
   const busquedas = (
     <>
-      <div className="resultados-busqueda">
+      <div className="search-results">
         <p>Resultado 1</p>
         <hr />
         <p>Resultado 2</p>

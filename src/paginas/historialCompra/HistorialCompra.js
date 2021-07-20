@@ -12,7 +12,7 @@ export const HistorialCompra = () => {
           <img src="https://picsum.photos/400/400" alt="" />
         </div>
         <FaTimes
-          className="cerrar-imagen-icono"
+          className="close-image-icon"
           onClick={() => setShowImage(!showImage)}
         />
       </div>

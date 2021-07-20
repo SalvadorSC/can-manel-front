@@ -1,4 +1,4 @@
-.confirmar-contrasenya {
+.password-confirmation {
   z-index: 2;
   position: fixed;
   width: 100vw;
@@ -10,7 +10,7 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.397);
 }
-.confirmar-contrasenya form {
+.password-confirmation form {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -18,5 +18,9 @@
 }
 
 .btn-password {
+  width: auto;
+}
+
+.btn-data-purchase {
   width: auto;
 }
