@@ -1,8 +1,28 @@
 import "./shoppingBasket.css";
-import { FaPlus, FaMinus, FaTimes } from "react-icons/fa";
-import product from "../../assets/lettuce-product.jpg";
+import productImage from "../../assets/lettuce-product.jpg";
+import { ItemShoppingCart } from "../../componentes/ItemShoppingCart/ItemShoppingCart";
+import { useState } from "react";
 
 export const ShoppingBasket = () => {
+  const [totalPrice, setTotalPrice] = useState(0);
+  const products = [
+    {
+      name: "Enciam",
+      price: 1.5,
+    },
+    {
+      name: "Tomaquet",
+      price: 1.23,
+    },
+    {
+      name: "Pastanaga",
+      price: 1.04,
+    },
+    {
+      name: "Enciam",
+      price: 1.1,
+    },
+  ];
   return (
     <section>
       <div className="header-section mb-6">
@@ -28,100 +48,20 @@ export const ShoppingBasket = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="">
-              <img
-                className="product-img"
-                src={product}
-                alt="fruites i verdures de l'hort"
-              />
-            </td>
-            <td className="items-table product-item">Enciam</td>
-            <td className="items-table">1.3€</td>
-            <td className="items-table">
-              <div className="number">
-                <FaMinus className="icon-counter" />
-                <input type="text" value="1" readOnly />
-                <FaPlus className="icon-counter" />
-              </div>
-            </td>
-            <td>4€</td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
-          <tr>
-            <td className="">
-              <img
-                className="product-img"
-                src={product}
-                alt="fruites i verdures de l'hort"
-              />
-            </td>
-            <td className="items-table product-item">Enciam</td>
-            <td className="items-table">1.3€</td>
-            <td className="items-table">
-              <div className="number">
-                <FaMinus className="icon-counter" />
-                <input type="text" value="1" readOnly />
-                <FaPlus className="icon-counter" />
-              </div>
-            </td>
-            <td>4€</td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
-          <tr>
-            <td className="">
-              <img
-                className="product-img"
-                src={product}
-                alt="fruites i verdures de l'hort"
-              />
-            </td>
-            <td className="items-table product-item">Enciam</td>
-            <td className="items-table">1.3€</td>
-            <td className="items-table">
-              <div className="number">
-                <FaMinus className="icon-counter" />
-                <input type="text" value="1" readOnly />
-                <FaPlus className="icon-counter" />
-              </div>
-            </td>
-            <td>4€</td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
-          <tr>
-            <td className="">
-              <img
-                className="product-img"
-                src={product}
-                alt="fruites i verdures de l'hort"
-              />
-            </td>
-            <td className="items-table product-item">Enciam</td>
-            <td className="items-table">1.3€</td>
-            <td className="items-table">
-              <div className="number">
-                <FaMinus className="icon-counter" />
-                <input type="text" value="1" readOnly />
-                <FaPlus className="icon-counter" />
-              </div>
-            </td>
-            <td>4€</td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
+          {products.map((product) => (
+            <ItemShoppingCart
+              product={product}
+              productImage={productImage}
+              totalPrice={totalPrice}
+              setTotalPrice={setTotalPrice}
+            />
+          ))}
         </tbody>
       </table>
       <div className="total">
         <div className="row">
           <div className="col-8">TOTAL</div>
-          <div className="col-4 text-right">22,40€</div>
+          <div className="col-4 text-right">{totalPrice}€</div>
         </div>
       </div>
       <div className="order-button">

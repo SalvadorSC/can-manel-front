@@ -11,6 +11,7 @@
 
 .icon-counter {
   color: var(--color-primary-dark);
+  cursor: pointer;
   font-size: 14px;
 }
 
