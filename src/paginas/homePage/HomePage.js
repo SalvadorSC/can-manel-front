@@ -5,7 +5,28 @@ import "./HomePage.css";
 
 export const HomePage = (props) => {
   const { setNumeroProductes, numeroProductes } = props;
-
+  const productsList = [
+    {
+      name: "Cistella de verdura de 8kg",
+      description: "Cisetella de verdura",
+      price: 30,
+    },
+    {
+      name: "Cistella de verdura de 8kg",
+      description: "Cisetella de verdura",
+      price: 30,
+    },
+    {
+      name: "Cistella de verdura de 8kg",
+      description: "Cisetella de verdura",
+      price: 30,
+    },
+    {
+      name: "Cistella de verdura de 8kg",
+      description: "Cisetella de verdura",
+      price: 20,
+    },
+  ];
   return (
     <main>
       <div>
@@ -37,22 +58,13 @@ export const HomePage = (props) => {
       <div>
         <p className="text-gran mt-5">Productes destacats</p>
         <div className="product-list">
-          <ProductCard
-            setNumeroProductes={setNumeroProductes}
-            numeroProductes={numeroProductes}
-          />
-          <ProductCard
-            setNumeroProductes={setNumeroProductes}
-            numeroProductes={numeroProductes}
-          />
-          <ProductCard
-            setNumeroProductes={setNumeroProductes}
-            numeroProductes={numeroProductes}
-          />
-          <ProductCard
-            setNumeroProductes={setNumeroProductes}
-            numeroProductes={numeroProductes}
-          />
+          {productsList.map((product) => (
+            <ProductCard
+              product={product}
+              setNumeroProductes={setNumeroProductes}
+              numeroProductes={numeroProductes}
+            />
+          ))}
         </div>
       </div>
     </main>
