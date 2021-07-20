@@ -56,7 +56,7 @@ function App() {
                 numeroProductes={numeroProductes}
               />
             </Route>
-            <Route path="/llista-productes/producte" exact>
+            <Route path="/producte" exact>
               <ItemProductCard />
             </Route>
             <Route path="/llista-cistelles" exact>
