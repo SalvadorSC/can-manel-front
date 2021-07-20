@@ -19,6 +19,7 @@ import { AboutUs } from "./paginas/aboutUs/AboutUs";
 import { useState } from "react";
 import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
 import { ItemProductCard } from "./componentes/ItemProductCard/ItemProductCard";
+import { Footer } from "./componentes/Footer/Footer";
 
 function App() {
   const [numeroProductes, setNumeroProductes] = useState(0);
@@ -85,6 +86,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+        <Footer />
       </Router>
     </>
   );
