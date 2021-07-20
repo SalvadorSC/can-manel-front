@@ -9,18 +9,22 @@ export const ShoppingBasket = () => {
     {
       name: "Enciam",
       price: 1.5,
+      quantity: 9,
     },
     {
       name: "Tomaquet",
       price: 1.23,
+      quantity: 20,
     },
     {
       name: "Pastanaga",
       price: 1.04,
+      quantity: 50,
     },
     {
       name: "Enciam",
       price: 1.1,
+      quantity: 3,
     },
   ];
   return (
