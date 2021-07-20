@@ -1,4 +1,5 @@
 import { FaStar, FaArrowRight, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 import "./HomePage.css";
 
@@ -16,7 +17,10 @@ export const HomePage = (props) => {
               </div>
             </div>
           </div>
-          <div className="col-md-4 col-sm-12 d-flex flex-column justify-content-between">
+          <Link
+            to="./sobre-nosaltres"
+            className="col-md-4 col-sm-12 d-flex flex-column justify-content-between"
+          >
             <div className="elemento-portada elemento-portada-small d-flex align-items-end mb-3">
               <div className="d-flex align-items-center">
                 <p>Qui som</p>
@@ -27,7 +31,7 @@ export const HomePage = (props) => {
                 <p>Cerca activitats!</p>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
       <div>
