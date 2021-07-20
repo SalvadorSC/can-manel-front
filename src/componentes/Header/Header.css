@@ -62,7 +62,7 @@ header {
   background-color: #c8deb3;
 }
 
-.dropdown:hover > .dropdown-menu {
+.dropdown-toggle:hover + .dropdown-menu {
   display: block;
 }
 
