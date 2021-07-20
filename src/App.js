@@ -50,10 +50,16 @@ function App() {
               <Register />
             </Route>
             <Route path="/llista-productes" exact>
-              <ProductList />
+              <ProductList
+                setNumeroProductes={setNumeroProductes}
+                numeroProductes={numeroProductes}
+              />
             </Route>
             <Route path="/llista-cistelles" exact>
-              <BasketList />
+              <BasketList
+                setNumeroProductes={setNumeroProductes}
+                numeroProductes={numeroProductes}
+              />
             </Route>
             <Route path="/carro-compra" exact>
               <ShoppingBasket />
