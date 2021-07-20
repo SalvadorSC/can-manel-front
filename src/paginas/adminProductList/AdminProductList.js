@@ -59,7 +59,7 @@ export const AdminProductList = () => {
         </button>
       </div>
 
-      {!formOpen && (
+      {formOpen && (
         <div className="container-edit">
           <FaTimes className="icon-close-form" onClick={toggleForm} />
           <form>

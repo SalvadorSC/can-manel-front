@@ -132,12 +132,12 @@ export const Header = (props) => {
                   className="icons-navbar icon-shopping-basket ml-3"
                   to="./carro-compra"
                 >
-                  {/* <div className="d-flex"> */}
-                  <FaShoppingBasket />
-                  {numeroProductes > 0 && (
-                    <div className="numero-productes">{numeroProductes}</div>
-                  )}
-                  {/* </div> */}
+                  <div className="d-flex">
+                    <FaShoppingBasket />
+                    {numeroProductes > 0 && (
+                      <div className="numero-productes">{numeroProductes}</div>
+                    )}
+                  </div>
                 </Link>
               </div>
             </div>
