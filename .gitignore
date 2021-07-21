@@ -10,6 +10,9 @@
 
 # production
 /build
+cistelles.json
+productes.json
+.gitignore
 
 # misc
 .DS_Store
