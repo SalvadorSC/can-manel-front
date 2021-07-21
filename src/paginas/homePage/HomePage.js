@@ -32,11 +32,14 @@ export const HomePage = (props) => {
       <div>
         <div className="row">
           <div className="col-md-8 col-sm-12">
-            <div className="homepage-element d-flex align-items-end mb-3">
+            <Link
+              to="./llista-cistelles"
+              className="homepage-element d-flex align-items-end mb-3"
+            >
               <div className="d-flex align-items-center">
                 <p>Tria la teva cistella</p>
               </div>
-            </div>
+            </Link>
           </div>
           <div className="col-md-4 col-sm-12 d-flex flex-column justify-content-between">
             <Link
