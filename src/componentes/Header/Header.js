@@ -59,7 +59,7 @@ export const Header = (props) => {
                 <a href="holalog">+34 662 21 62 97</a>
               </li>
               <li>
-                <a href="./holalog">info@canmanel.com</a>
+                <a href="./holalog">info@canmateu.com</a>
               </li>
             </ul>
             <ul className="col-4 d-flex justify-content-center align-items-center my-0">
