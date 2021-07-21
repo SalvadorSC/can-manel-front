@@ -1,32 +1,12 @@
 import { FaStar, FaArrowRight, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 import "./HomePage.css";
 
 export const HomePage = (props) => {
   const { setNumeroProductes, numeroProductes } = props;
-  const productsList = [
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 20,
-    },
-  ];
+
   return (
     <main>
       <div>
@@ -58,18 +38,10 @@ export const HomePage = (props) => {
           </div>
         </div>
       </div>
-      <div>
-        <p className="text-big mt-5">Productes destacats</p>
-        <div className="product-list">
-          {productsList.map((product) => (
-            <ProductCard
-              product={product}
-              setNumeroProductes={setNumeroProductes}
-              numeroProductes={numeroProductes}
-            />
-          ))}
-        </div>
-      </div>
+      <FeaturedProducts
+        setNumeroProductes={setNumeroProductes}
+        numeroProductes={numeroProductes}
+      />
     </main>
   );
 };
