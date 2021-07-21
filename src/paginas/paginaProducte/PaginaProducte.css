@@ -1,20 +1,21 @@
 .product-name {
   margin-bottom: 30px;
-  border-bottom: 3px solid var(--color-primary);
+  /* border-bottom: 3px solid var(--color-primary); */
 }
 .item-image {
   margin-bottom: 20px;
 }
 .item-image img {
+  border-radius: 15px;
   width: 100%;
   height: auto;
 }
-.price-kg-item span {
-  font-size: 13px;
+.price-kg-item {
+  font-size: 18px;
 }
-.price-kg {
+/*.price-kg {
   color: var(--color-background-hover);
-}
+} */
 .price-item-unit {
   font-size: 25px;
 }
