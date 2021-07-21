@@ -3,14 +3,30 @@ import PropTypes from "prop-types";
 import { AdminProduct } from "../../componentes/AdminProduct/AdminProduct";
 import "./AdminProductList.css";
 import { AdminForm } from "../../componentes/AdminForm/AdminForm";
+import { useFetch } from "../../hooks/useFetch";
 
 export const AdminProductList = (props) => {
-  const { products } = props;
+  const { products, setProducts } = props;
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
 
   const toggleForm = () => {
     setFormOpen(!formOpen);
+  };
+  const { fetchGlobal } = useFetch(
+    "https://can-mateu.herokuapp.com/products/product/"
+  );
+
+  const deleteProduct = async (id) => {
+    const resp = await fetchGlobal(
+      "https://can-mateu.herokuapp.com/products/product/" + id,
+      {
+        method: "DELETE",
+      }
+    );
+    if (resp.ok) {
+      setProducts(products.filter((product) => product.id !== id));
+    }
   };
 
   return (
@@ -86,6 +102,7 @@ export const AdminProductList = (props) => {
               product={product}
               key={product._id}
               setAction={setAction}
+              deleteProduct={deleteProduct}
             />
           ))}
         </div>
