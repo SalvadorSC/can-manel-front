@@ -80,7 +80,10 @@ function App() {
               />
             </Route>
             <Route path="/producte" exact>
-              <PaginaProducte />
+              <PaginaProducte
+                setNumeroProductes={setNumeroProductes}
+                numeroProductes={numeroProductes}
+              />
             </Route>
             <Route path="/llista-cistelles" exact>
               <BasketList

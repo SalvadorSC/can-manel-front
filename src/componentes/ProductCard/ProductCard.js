@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import productImage from "../../assets/product.jpeg";
 import "./ProductCard.css";
 
@@ -12,7 +13,9 @@ export const ProductCard = (props) => {
           alt="Cistella de fruites i verdures de l'hort"
         ></img>
         <div className="card-info">
-          <h4 className="card-title">{product.name}</h4>
+          <Link to="./producte">
+            <h4 className="card-title">{product.name}</h4>
+          </Link>
           <p className="card-description">{product.description}</p>
         </div>
         <div className="card-buy d-flex align-items-center justify-content-between">

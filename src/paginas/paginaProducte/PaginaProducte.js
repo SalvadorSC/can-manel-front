@@ -2,19 +2,12 @@ import "./PaginaProducte.css";
 import productImage from "../../assets/product.jpeg";
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
+import { Link } from "react-router-dom";
 
 export const PaginaProducte = (props) => {
+  const { setNumeroProductes, numeroProductes } = props;
   const [quantity, setQuantity] = useState(1);
-  const minusQuantity = () => {
-    if (quantity === 1) {
-      return;
-    } else {
-      setQuantity(quantity - 1);
-    }
-  };
-  const plusQuantity = () => {
-    setQuantity(quantity + 1);
-  };
   return (
     <>
       <section className="product-section">
@@ -45,21 +38,38 @@ export const PaginaProducte = (props) => {
                 <span className="price-item-unit"> 1€</span> / Unitat
               </span>
             </div>
-            <div className="d-flex justify-content-center flex-column">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="d-flex justify-content-center flex-column"
+            >
               <div className="d-flex justify-content-between">
                 <span>Nº Unitats:</span>
                 <input
                   type="number"
+                  defaultValue={1}
                   class="form-control w-auto mb-5 text-right"
                 />
               </div>
               <div className="button-add m-auto">
-                <button className="button btn-product-item">Comprar</button>
+                <Link to="./carro-compra">
+                  <button
+                    className="button btn-product-item"
+                    onClick={() =>
+                      setNumeroProductes(numeroProductes + quantity)
+                    }
+                  >
+                    Comprar
+                  </button>
+                </Link>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </section>
+      <FeaturedProducts
+        setNumeroProductes={setNumeroProductes}
+        numeroProductes={numeroProductes}
+      />
     </>
   );
 };
