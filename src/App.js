@@ -26,20 +26,15 @@ function App() {
   const [numeroProductes, setNumeroProductes] = useState(0);
   const [products, setProducts] = useState([]);
 
-  // const urlAPI = process.env.REACT_APP_URL_API + "products/list";
-
-  const { fetchGlobal } = useFetch(
-    "https://can-mateu.herokuapp.com/products/list"
-  );
+  const urlAPI = process.env.REACT_APP_URL_API;
+  const { fetchGlobal } = useFetch(urlAPI);
 
   const loadProducts = useCallback(async () => {
-    const productsAPI = await fetchGlobal(
-      "https://can-mateu.herokuapp.com/products/list"
-    );
+    const productsAPI = await fetchGlobal(`${urlAPI}products/list`);
     if (productsAPI) {
       setProducts(productsAPI);
     }
-  }, [fetchGlobal]);
+  }, [fetchGlobal, urlAPI]);
 
   useEffect(() => {
     loadProducts();
@@ -100,7 +95,12 @@ function App() {
               <AboutUs />
             </Route>
             <Route path="/administracio-productes" exact>
-              <AdminProductList products={products} setProducts={setProducts} />
+              <AdminProductList
+                products={products}
+                setProducts={setProducts}
+                fetchGlobal={fetchGlobal}
+                urlAPI={urlAPI}
+              />
             </Route>
             <Route path="/historial-compra" exact>
               <HistorialCompra />

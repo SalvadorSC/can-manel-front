@@ -47,7 +47,7 @@ export const PaginaProducte = (props) => {
                 <input
                   type="number"
                   defaultValue={1}
-                  class="form-control w-auto mb-5 text-right"
+                  className="form-control w-auto mb-5 text-right"
                 />
               </div>
               <div className="button-add m-auto">

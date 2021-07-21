@@ -71,4 +71,5 @@ AdminProduct.propTypes = {
     date: PropTypes.string.isRequired,
   }).isRequired,
   setAction: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
 };

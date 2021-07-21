@@ -6,24 +6,18 @@ import { AdminForm } from "../../componentes/AdminForm/AdminForm";
 import { useFetch } from "../../hooks/useFetch";
 
 export const AdminProductList = (props) => {
-  const { products, setProducts } = props;
+  const { products, setProducts, urlAPI, fetchGlobal } = props;
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
 
   const toggleForm = () => {
     setFormOpen(!formOpen);
   };
-  const { fetchGlobal } = useFetch(
-    "https://can-mateu.herokuapp.com/products/product/"
-  );
 
   const deleteProduct = async (id) => {
-    const resp = await fetchGlobal(
-      "https://can-mateu.herokuapp.com/products/product/" + id,
-      {
-        method: "DELETE",
-      }
-    );
+    const resp = await fetchGlobal(urlAPI + "products/product/" + id, {
+      method: "DELETE",
+    });
     if (resp.ok) {
       setProducts(products.filter((product) => product.id !== id));
     }
@@ -113,4 +107,7 @@ export const AdminProductList = (props) => {
 
 AdminProductList.propTypes = {
   products: PropTypes.array.isRequired,
+  setProducts: PropTypes.func.isRequired,
+  urlAPI: PropTypes.string.isRequired,
+  fetchGlobal: PropTypes.func.isRequired,
 };
