@@ -1,66 +1,29 @@
 import "./ProductList.css";
+import PropTypes from "prop-types";
 import { Searcher } from "../../componentes/Searcher/Searcher";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 
 export const ProductList = (props) => {
-  const { setNumeroProductes, numeroProductes } = props;
-  const productsList = [
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 20,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 30,
-    },
-    {
-      name: "Cistella de verdura de 8kg",
-      description: "Cisetella de verdura",
-      price: 20,
-    },
-  ];
-
+  const { setNumeroProductes, numeroProductes, products } = props;
   return (
     <>
       <Searcher />
       <section className="section">
         <div className="product-list">
-          {productsList.map((product) => (
+          {products.map((product) => (
             <ProductCard
               product={product}
               setNumeroProductes={setNumeroProductes}
               numeroProductes={numeroProductes}
+              key={product._id}
             />
           ))}
         </div>
       </section>
     </>
   );
+};
+
+ProductList.propTypes = {
+  products: PropTypes.array.isRequired,
 };

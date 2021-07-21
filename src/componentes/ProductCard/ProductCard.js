@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import productImage from "../../assets/product.jpeg";
 import "./ProductCard.css";
 
@@ -19,7 +20,7 @@ export const ProductCard = (props) => {
           <p className="card-description">{product.description}</p>
         </div>
         <div className="card-buy d-flex align-items-center justify-content-between">
-          <span className="card-price">{product.price}€</span>
+          <span className="card-price">{product.priceUnit}€</span>
           <button
             className="button card-button"
             onClick={() => setNumeroProductes(numeroProductes + 1)}
@@ -30,4 +31,8 @@ export const ProductCard = (props) => {
       </article>
     </>
   );
+};
+
+ProductCard.propTypes = {
+  products: PropTypes.array.isRequired,
 };

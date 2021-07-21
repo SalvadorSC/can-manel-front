@@ -1,11 +1,10 @@
-import { FaStar, FaArrowRight, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
-import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 import "./HomePage.css";
 
 export const HomePage = (props) => {
-  const { setNumeroProductes, numeroProductes } = props;
+  const { setNumeroProductes, numeroProductes, products } = props;
 
   return (
     <main>
@@ -41,7 +40,12 @@ export const HomePage = (props) => {
       <FeaturedProducts
         setNumeroProductes={setNumeroProductes}
         numeroProductes={numeroProductes}
+        products={products}
       />
     </main>
   );
+};
+
+HomePage.propTypes = {
+  products: PropTypes.array.isRequired,
 };

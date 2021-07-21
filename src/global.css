@@ -15,7 +15,7 @@ body {
   color: var(--color-text);
 }
 a {
-  color: var(--color-primary-dark);
+  color: var(--color-text);
   text-decoration: inherit;
 }
 a:hover,

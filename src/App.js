@@ -56,6 +56,7 @@ function App() {
               <HomePage
                 setNumeroProductes={setNumeroProductes}
                 numeroProductes={numeroProductes}
+                products={products}
               />
             </Route>
             <Route path="/iniciar-sessio" exact>
@@ -71,6 +72,7 @@ function App() {
               <ProductList
                 setNumeroProductes={setNumeroProductes}
                 numeroProductes={numeroProductes}
+                products={products}
               />
             </Route>
             <Route path="/producte" exact>
