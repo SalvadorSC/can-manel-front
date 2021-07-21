@@ -1,15 +1,13 @@
 import { useState } from "react";
-import { FaEdit, FaImages, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import { AdminProduct } from "../../componentes/adminProduct/AdminProduct";
 import "./AdminProductList.css";
 
-export const AdminProductList = () => {
-  const [open, setOpen] = useState(false);
+export const AdminProductList = (props) => {
+  const { products } = props;
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
 
-  const showImg = () => {
-    setOpen(!open);
-  };
   const toggleForm = () => {
     setFormOpen(!formOpen);
   };
@@ -100,15 +98,15 @@ export const AdminProductList = () => {
             <div className="item-price row text-center mt-3">
               <div className="col-3 form-group">
                 <label htmlFor="itemPrice">Preu per unitat:</label>
-                <input type="text" className="" id="itemPrice" />
+                <input type="text" className="" id="itemPrice" />€
               </div>
               <div className="col-3 form-group">
                 <label htmlFor="itemQuantity">Unitat:</label>
-                <input type="text" className="" id="itemQuantity" />
+                <input type="text" className="" id="itemQuantity" />€
               </div>
               <div className="col-3 form-group">
                 <label htmlFor="discount">Descompte:</label>
-                <input type="text" className="" id="discount" />
+                <input type="text" className="" id="discount" />%
               </div>
             </div>
           </form>
@@ -146,126 +144,14 @@ export const AdminProductList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="items-table product-item">Llimona Verna ECO</td>
-            <td className="">
-              <FaImages className="icon-img" onClick={showImg} />
-              {open && (
-                <div className="mostrar-imagen" open={open}>
-                  <div className="d-flex align-items-start">
-                    <div className="image">
-                      <img src="https://picsum.photos/250/250" alt="" />
-                    </div>
-                    <FaTimes className="close-image-icon" onClick={showImg} />
-                  </div>
-                </div>
-              )}
-            </td>
-            <td className="items-table">Fruita</td>
-            <td className="items-table">28/07/2021</td>
-            <td>
-              <FaEdit
-                className="icon-edit"
-                onClick={() => {
-                  setAction("edit");
-                  toggleForm();
-                }}
-              />
-            </td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
-          <tr>
-            <td className="items-table product-item">Llimona Verna ECO</td>
-            <td className="">
-              <FaImages className="icon-img" onClick={showImg} />
-              {open && (
-                <div className="mostrar-imagen" open={open}>
-                  <div className="d-flex align-items-start">
-                    <div className="image">
-                      <img src="https://picsum.photos/250/250" alt="" />
-                    </div>
-                    <FaTimes className="close-image-icon" onClick={showImg} />
-                  </div>
-                </div>
-              )}
-            </td>
-            <td className="items-table">Fruita</td>
-            <td className="items-table">28/07/2021</td>
-            <td>
-              <FaEdit
-                className="icon-edit"
-                onClick={() => {
-                  setAction("edit");
-                  toggleForm();
-                }}
-              />
-            </td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
-          <tr>
-            <td className="items-table product-item">Llimona Verna ECO</td>
-            <td className="">
-              <FaImages className="icon-img" onClick={showImg} />
-              {open && (
-                <div className="mostrar-imagen" open={open}>
-                  <div className="d-flex align-items-start">
-                    <div className="image">
-                      <img src="https://picsum.photos/250/250" alt="" />
-                    </div>
-                    <FaTimes className="close-image-icon" onClick={showImg} />
-                  </div>
-                </div>
-              )}
-            </td>
-            <td className="items-table">Fruita</td>
-            <td className="items-table">28/07/2021</td>
-            <td>
-              <FaEdit
-                className="icon-edit"
-                onClick={() => {
-                  setAction("edit");
-                  toggleForm();
-                }}
-              />
-            </td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
-          <tr>
-            <td className="items-table product-item">Llimona Verna ECO</td>
-            <td className="">
-              <FaImages className="icon-img" onClick={showImg} />
-              {open && (
-                <div className="mostrar-imagen" open={open}>
-                  <div className="d-flex align-items-start">
-                    <div className="image">
-                      <img src="https://picsum.photos/250/250" alt="" />
-                    </div>
-                    <FaTimes className="close-image-icon" onClick={showImg} />
-                  </div>
-                </div>
-              )}
-            </td>
-            <td className="items-table">Fruita</td>
-            <td className="items-table">28/07/2021</td>
-            <td>
-              <FaEdit
-                className="icon-edit"
-                onClick={() => {
-                  setAction("edit");
-                  toggleForm();
-                }}
-              />
-            </td>
-            <td className="items-table">
-              <FaTimes className="icon-delete" />
-            </td>
-          </tr>
+          {products.map((product) => (
+            <AdminProduct
+              toggleForm={toggleForm}
+              setAction={setAction}
+              product={product}
+              key={product._id}
+            />
+          ))}
         </tbody>
       </table>
     </section>

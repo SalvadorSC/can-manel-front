@@ -16,13 +16,35 @@ import { AdminHomePage } from "./paginas/adminHomePage/AdminHomePage";
 import { BasketList } from "./paginas/basketList/BasketList";
 import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
 import { AboutUs } from "./paginas/aboutUs/AboutUs";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
 import { ItemProductCard } from "./componentes/ItemProductCard/ItemProductCard";
 import { Footer } from "./componentes/Footer/Footer";
+import { useFetch } from "./hooks/useFetch";
 
 function App() {
   const [numeroProductes, setNumeroProductes] = useState(0);
+
+  const [products, setProducts] = useState([]);
+
+  // const urlAPI = process.env.REACT_APP_URL_API + "products/list";
+
+  const { fetchGlobal } = useFetch(
+    "https://can-mateu.herokuapp.com/products/list"
+  );
+
+  const loadProducts = useCallback(async () => {
+    const productsAPI = await fetchGlobal(
+      "https://can-mateu.herokuapp.com/products/list"
+    );
+    if (productsAPI) {
+      setProducts(productsAPI);
+    }
+  }, [fetchGlobal]);
+
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
 
   return (
     <>
@@ -76,7 +98,7 @@ function App() {
               <AboutUs />
             </Route>
             <Route path="/administracio-productes" exact>
-              <AdminProductList />
+              <AdminProductList products={products} />
             </Route>
             <Route path="/historial-compra" exact>
               <HistorialCompra />
