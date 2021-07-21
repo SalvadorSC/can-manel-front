@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { FaEdit, FaImages, FaTimes } from "react-icons/fa";
 
 export const AdminProduct = (props) => {
@@ -44,4 +45,14 @@ export const AdminProduct = (props) => {
       </td>
     </tr>
   );
+};
+
+AdminProduct.propTypes = {
+  product: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+  }).isRequired,
+  toggleForm: PropTypes.func.isRequired,
+  setAction: PropTypes.func.isRequired,
 };

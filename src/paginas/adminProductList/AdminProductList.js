@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import PropTypes from "prop-types";
 import { AdminProduct } from "../../componentes/adminProduct/AdminProduct";
 import "./AdminProductList.css";
 
@@ -156,4 +157,8 @@ export const AdminProductList = (props) => {
       </table>
     </section>
   );
+};
+
+AdminProductList.propTypes = {
+  products: PropTypes.array.isRequired,
 };

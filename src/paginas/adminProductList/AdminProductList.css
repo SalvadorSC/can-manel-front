@@ -12,38 +12,6 @@
 .table thead th.admin-product-col {
   text-align: left;
 }
-.icon-img,
-.icon-edit {
-  color: var(--color-primary-dark);
-  cursor: pointer;
-}
-.item-price input {
-  width: 80px;
-  margin-left: 5px;
-}
-
-/* POPUP IMAGE ONCLICK */
-
-.mostrar-imagen {
-  z-index: 2;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.397);
-  font-size: 30px;
-}
-.mostrar-imagen .image {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 15px;
-  display: flex;
-  align-items: flex-start;
-}
 
 /* SEARCHER */
 
