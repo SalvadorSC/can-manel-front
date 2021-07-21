@@ -18,9 +18,9 @@ import { HistorialCompra } from "./paginas/historialCompra/HistorialCompra";
 import { AboutUs } from "./paginas/aboutUs/AboutUs";
 import { useCallback, useEffect, useState } from "react";
 import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
-import { ItemProductCard } from "./componentes/ItemProductCard/ItemProductCard";
 import { Footer } from "./componentes/Footer/Footer";
 import { useFetch } from "./hooks/useFetch";
+import { PaginaProducte } from "./paginas/paginaProducte/PaginaProducte";
 
 function App() {
   const [numeroProductes, setNumeroProductes] = useState(0);
@@ -80,7 +80,7 @@ function App() {
               />
             </Route>
             <Route path="/producte" exact>
-              <ItemProductCard />
+              <PaginaProducte />
             </Route>
             <Route path="/llista-cistelles" exact>
               <BasketList
