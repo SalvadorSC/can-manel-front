@@ -24,7 +24,6 @@ import { PaginaProducte } from "./paginas/paginaProducte/PaginaProducte";
 
 function App() {
   const [numeroProductes, setNumeroProductes] = useState(0);
-
   const [products, setProducts] = useState([]);
 
   // const urlAPI = process.env.REACT_APP_URL_API + "products/list";
@@ -101,7 +100,7 @@ function App() {
               <AboutUs />
             </Route>
             <Route path="/administracio-productes" exact>
-              <AdminProductList products={products} />
+              <AdminProductList products={products} setProducts={setProducts} />
             </Route>
             <Route path="/historial-compra" exact>
               <HistorialCompra />

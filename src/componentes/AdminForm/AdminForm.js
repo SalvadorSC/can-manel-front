@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 
 export const AdminForm = (props) => {
-  const { action, toggleForm, toggleFormEdit, setFormOpen } = props;
+  const { action, toggleForm, toggleFormEdit } = props;
   return (
     <div className="container-create">
       <FaTimes
@@ -18,19 +18,28 @@ export const AdminForm = (props) => {
       />
       <form>
         <div className="row">
-          <div className="content col-3">
-            <label htmlFor="file-input">
-              <img
-                className="content-image"
-                src="https://images.unsplash.com/photo-1433360405326-e50f909805b3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=359e8e12304ffa04a38627a157fc3362"
-                alt=""
-              />
-              <div className="content-details fadeIn-top">
-                <p>Seleccionar imatge</p>
-              </div>
-              <input id="file-input" type="file" />
-            </label>
-          </div>
+          {action === "create" ? (
+            <div className="select-image-create col-3">
+              <label class="file-label" for="file-input">
+                Imatge:
+              </label>
+              <input type="file" name="attachment[]" multiple="multiple" />
+            </div>
+          ) : (
+            <div className="content col-3">
+              <label htmlFor="file-input">
+                <img
+                  className="content-image"
+                  src="https://images.unsplash.com/photo-1433360405326-e50f909805b3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=359e8e12304ffa04a38627a157fc3362"
+                  alt=""
+                />
+                <div className="content-details fadeIn-top">
+                  <p>Seleccionar imatge</p>
+                </div>
+                <input id="file-input" type="file" />
+              </label>
+            </div>
+          )}
           <div className="col form-group pt-4">
             <label htmlFor="productName">Nom producte:</label>
             <input type="text" className="mb-4 d-block" id="productName" />
@@ -78,4 +87,5 @@ export const AdminForm = (props) => {
 AdminForm.propTypes = {
   action: PropTypes.string.isRequired,
   toggleForm: PropTypes.func.isRequired,
+  toggleFormEdit: PropTypes.func.isRequired,
 };

@@ -6,8 +6,9 @@ import { AdminForm } from "../AdminForm/AdminForm";
 
 export const AdminProduct = (props) => {
   const {
-    product: { name, date, category },
+    product: { name, date, category, _id: id },
     setAction,
+    deleteProduct,
   } = props;
   const [open, setOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
@@ -54,7 +55,7 @@ export const AdminProduct = (props) => {
           />
         </div>
         <div className="col-1">
-          <FaTimes className="icon-delete" />
+          <FaTimes className="icon-delete" onClick={() => deleteProduct(id)} />
         </div>
       </div>
 
