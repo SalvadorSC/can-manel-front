@@ -25,6 +25,7 @@ header {
 
 .top-navbar a {
   font-size: 12px;
+  color: var(--color-primary-dark);
 }
 
 /* SEARCH BAR CSS */
