@@ -4,7 +4,7 @@ import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedPro
 import "./HomePage.css";
 
 export const HomePage = (props) => {
-  const { setNumeroProductes, numeroProductes, products } = props;
+  const { setNProducts, nProducts, products } = props;
 
   return (
     <main>
@@ -38,8 +38,8 @@ export const HomePage = (props) => {
         </div>
       </div>
       <FeaturedProducts
-        setNumeroProductes={setNumeroProductes}
-        numeroProductes={numeroProductes}
+        setNProducts={setNProducts}
+        nProducts={nProducts}
         products={products}
       />
     </main>
