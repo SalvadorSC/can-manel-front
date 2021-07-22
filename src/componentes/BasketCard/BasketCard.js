@@ -4,7 +4,7 @@ import productImage from "../../assets/product.jpeg";
 
 export const BasketCard = (props) => {
   const {
-    baskets: { name, basketProducts, priceUnit },
+    baskets: { name, basketProducts, priceUnit, setNProducts, nProducts },
   } = props;
   return (
     <article className="card">
@@ -30,7 +30,7 @@ export const BasketCard = (props) => {
         <span className="card-price">{priceUnit}€</span>
         <button
           className="button card-button"
-          // onClick={() => setNumeroProductes(numeroProductes + 1)}
+          onClick={() => setNProducts(nProducts + 1)}
         >
           Comprar
         </button>
