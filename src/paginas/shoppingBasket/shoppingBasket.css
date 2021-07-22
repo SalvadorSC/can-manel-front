@@ -1,7 +1,6 @@
 .header-section {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 4px solid var(--color-primary);
 }
 
 .product-img {

@@ -24,7 +24,8 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
-ul {
+ul,
+li {
   list-style: none;
 }
 input {

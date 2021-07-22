@@ -31,6 +31,7 @@ export const ShoppingBasket = () => {
     <section>
       <div className="header-section mb-6">
         <h2>Carro de la compra</h2>
+        <hr />
       </div>
       <table className="table">
         <thead>
