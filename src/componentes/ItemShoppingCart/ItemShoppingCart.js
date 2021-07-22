@@ -24,7 +24,7 @@ export const ItemShoppingCart = (props) => {
   return (
     <>
       <tr>
-        <td className="">
+        <td className="d-none d-lg-block">
           <img
             className="product-img"
             src={productImage}
@@ -40,7 +40,9 @@ export const ItemShoppingCart = (props) => {
             <FaPlus className="icon-counter" onClick={() => plusQuantity()} />
           </div>
         </td>
-        <td>{Math.floor(quantity * product.price * 100) / 100}€</td>
+        <td className="table-total-price d-none d-md-block">
+          {Math.floor(quantity * product.price * 100) / 100}€
+        </td>
         <td className="items-table">
           <FaTimes className="icon-delete" />
         </td>

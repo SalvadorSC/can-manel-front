@@ -4,7 +4,12 @@ import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
 export const AdminForm = (props) => {
-  const { action, toggleForm, toggleFormEdit } = props;
+  const { action, toggleForm, toggleFormEdit, productEdited, urlAPI } = props;
+
+  const timestamp = Date.now();
+  const date = new Date(timestamp);
+  console.log(date);
+
   const [productForm, setProductForm] = useState({
     name: "",
     description: "",
@@ -14,11 +19,34 @@ export const AdminForm = (props) => {
     photoUrl: "",
     discount: "",
     stock: "",
-    date: Date.now(),
+    date: date,
   });
+  const inicialData = productEdited
+    ? {
+        name: productEdited.name,
+        description: productEdited.description,
+        category: productEdited.category,
+        priceUnit: productEdited.priceUnit,
+        unit: productEdited.unit,
+        photoUrl: productEdited.photoUrl,
+        discount: productEdited.discount,
+        stock: productEdited.stock,
+        date: productEdited.date,
+      }
+    : {
+        name: "",
+        description: "",
+        category: "",
+        priceUnit: "",
+        unit: "",
+        photoUrl: "",
+        discount: "",
+        stock: "",
+        date: Date.now(),
+      };
+  const [product, setProduct] = useState(inicialData);
 
-  const sendForm = async (e) => {
-    e.preventDefault();
+  /*  const createProduct = async () => {
     const product = new FormData();
     product.append("photoUrl", productForm.photoUrl);
     product.append("name", productForm.name);
@@ -29,13 +57,38 @@ export const AdminForm = (props) => {
     product.append("discount", productForm.discount);
     product.append("date", productForm.date);
     product.append("stock", productForm.stock);
-    const resp = await fetch(
-      "https://can-mateu.herokuapp.com/products/new-product/",
-      {
-        method: "POST",
-        body: product,
-      }
-    );
+    const resp = await fetch(urlAPI + "products/new-product/", {
+      method: "POST",
+      body: product,
+    });
+    if (resp.ok) {
+      return toggleForm();
+    }
+    console.log("Something went wrong");
+  }; */
+
+  /*   const editProduct = async (editedProduct) => {
+    var formData = new FormData();
+    formData.set("username", "Chris");
+  }; */
+
+  const sendForm = async (e) => {
+    e.preventDefault();
+    toggleForm();
+    const product = new FormData();
+    product.append("photoUrl", productForm.photoUrl);
+    product.append("name", productForm.name);
+    product.append("category", productForm.category);
+    product.append("description", productForm.description);
+    product.append("priceUnit", productForm.priceUnit);
+    product.append("unit", productForm.unit);
+    product.append("discount", productForm.discount);
+    product.append("date", productForm.date);
+    product.append("stock", productForm.stock);
+    const resp = await fetch(urlAPI + "products/new-product/", {
+      method: "POST",
+      body: product,
+    });
     if (resp.ok) {
       return toggleForm();
     }
@@ -153,6 +206,7 @@ export const AdminForm = (props) => {
 
 AdminForm.propTypes = {
   action: PropTypes.string.isRequired,
-  toggleForm: PropTypes.func.isRequired,
+  productEdited: PropTypes.string.isRequired,
+  toggleForm: PropTypes.func,
   toggleFormEdit: PropTypes.func.isRequired,
 };
