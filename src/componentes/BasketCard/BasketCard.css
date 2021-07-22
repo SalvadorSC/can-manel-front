@@ -1,0 +1,21 @@
+.basket-products p {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.basket-composition {
+  padding: 15px;
+  font-size: 14px;
+  border: 1px solid var(--color-text);
+  background-color: var(--color-white);
+  position: absolute;
+  top: 400px;
+  right: 114px;
+  display: none;
+}
+.basket-products:hover .basket-composition {
+  display: block;
+}
+.card {
+  position: relative;
+}

@@ -85,6 +85,8 @@ function App() {
               <BasketList
                 setNumeroProductes={setNumeroProductes}
                 numeroProductes={numeroProductes}
+                urlAPI={urlAPI}
+                fetchGlobal={fetchGlobal}
               />
             </Route>
             <Route path="/carro-compra" exact>
