@@ -1,17 +1,27 @@
 import "./PaginaProducte.css";
 import productImage from "../../assets/product.jpeg";
 import { useState } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 export const PaginaProducte = (props) => {
-  const { setNumeroProductes, numeroProductes } = props;
+  const { setNProducts, nProducts, products } = props;
   const [quantity, setQuantity] = useState(1);
+  const history = useHistory();
   return (
     <>
       <section className="product-section">
         <div className="product-name">
+          <Link
+            to=""
+            onClick={() => history.goBack()}
+            className="return-link d-flex align-items-center"
+          >
+            <FaArrowLeft className="mr-2" />
+            Tornar
+          </Link>
+
           <h3>Nom del Producte</h3>
           <hr></hr>
         </div>
@@ -51,24 +61,21 @@ export const PaginaProducte = (props) => {
                 />
               </div>
               <div className="button-add m-auto">
-                <Link to="./carro-compra">
-                  <button
-                    className="button btn-product-item"
-                    onClick={() =>
-                      setNumeroProductes(numeroProductes + quantity)
-                    }
-                  >
-                    Comprar
-                  </button>
-                </Link>
+                <button
+                  className="button btn-product-item"
+                  onClick={() => setNProducts(nProducts + quantity)}
+                >
+                  Afegir al carro
+                </button>
               </div>
             </form>
           </div>
         </div>
       </section>
       <FeaturedProducts
-        setNumeroProductes={setNumeroProductes}
-        numeroProductes={numeroProductes}
+        setNProducts={setNProducts}
+        products={products}
+        nProducts={nProducts}
       />
     </>
   );

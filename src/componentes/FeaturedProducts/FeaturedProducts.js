@@ -3,7 +3,7 @@ import { ProductCard } from "../ProductCard/ProductCard";
 import "./FeaturedProducts.css";
 
 export const FeaturedProducts = (props) => {
-  const { setNumeroProductes, numeroProductes, products } = props;
+  const { setNProducts, nProducts, products } = props;
 
   return (
     <>
@@ -13,8 +13,8 @@ export const FeaturedProducts = (props) => {
           {products.slice(0, 4).map((product) => (
             <ProductCard
               product={product}
-              setNumeroProductes={setNumeroProductes}
-              numeroProductes={numeroProductes}
+              setNProducts={setNProducts}
+              nProducts={nProducts}
               key={product._id}
             />
           ))}

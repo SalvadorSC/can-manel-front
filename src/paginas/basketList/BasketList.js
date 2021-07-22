@@ -3,7 +3,7 @@ import { Searcher } from "../../componentes/Searcher/Searcher";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 
 export const BasketList = (props) => {
-  const { setNumeroProductes, numeroProductes } = props;
+  const { setNProducts, nProducts } = props;
   const productsList = [
     {
       name: "Cistella de verdura de 8kg",
@@ -54,8 +54,8 @@ export const BasketList = (props) => {
           {productsList.map((product) => (
             <ProductCard
               product={product}
-              setNumeroProductes={setNumeroProductes}
-              numeroProductes={numeroProductes}
+              setNProducts={setNProducts}
+              nProducts={nProducts}
             />
           ))}
         </div>
