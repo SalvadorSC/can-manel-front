@@ -1,7 +1,42 @@
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 
-export const Login = () => {
+export const Login = (props) => {
+  const { fetchGlobal, urlAPI } = props;
+  const history = useHistory();
+  const { LogIn } = useContext(AuthContext);
+  const [loginData, setLoginData] = useState({
+    user: "",
+    password: "",
+  });
+  const [error, setError] = useState(false);
+  const setData = (e) => {
+    setLoginData({
+      ...loginData,
+      [e.target.id]: e.target.value,
+    });
+  };
+  const sendFormLogIn = async (e) => {
+    e.preventDefault();
+    const resp = await fetchGlobal(urlAPI + "users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    });
+    if (!resp.ok) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    const { token } = await resp.json();
+    localStorage.setItem("token", token);
+    LogIn();
+    history.push("/principal");
+  };
   return (
     <>
       <div className="row justify-content-center">
@@ -10,28 +45,31 @@ export const Login = () => {
           <hr />
         </div>
       </div>
-
       <div className="login-wrap p-0">
-        <form className="signin-form row">
+        <form className="signin-form row" onSubmit={sendFormLogIn}>
           <div className="col-md-12 col-lg-6">
-            <label htmlFor="email">Email *</label>
+            <label htmlFor="user">Email *</label>
             <div className="form-group">
               <input
-                name="email"
+                name="user"
                 type="text"
                 className="form-control"
                 required
+                onChange={setData}
               />
             </div>
-            <label htmlFor="contrasenya">Contrasenya *</label>
+            <label htmlFor="password">Contrasenya *</label>
             <div className="login-options form-group">
               <input
-                name="contrasenya"
+                name="password"
                 type="password"
                 className="form-control"
                 required
+                onChange={setData}
               />
             </div>
+            {error && <p className="error-login-data">Dades incorrectes</p>}
+
             <div className="d-flex justify-content-between mb-3">
               <span className="mr-2">Recorda la contrasenya</span>
               <input type="checkbox" name="recordar-contrasenya" className="" />

@@ -22,6 +22,8 @@ import { Footer } from "./componentes/Footer/Footer";
 import { useFetch } from "./hooks/useFetch";
 import { PaginaProducte } from "./paginas/paginaProducte/PaginaProducte";
 import { PaginaBasket } from "./paginas/paginaBasket/PaginaBasket";
+import { AuthContextProvider } from "./context/AuthContextProvider";
+import { ProtectedRoute } from "./componentes/ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [nProducts, setNProducts] = useState(0);
@@ -43,85 +45,94 @@ function App() {
   return (
     <>
       <Router>
-        <Header setNProducts={setNProducts} nProducts={nProducts} />
-        {/* {showAddedToCartMessage &&
+        <AuthContextProvider>
+          <Header setNProducts={setNProducts} nProducts={nProducts} />
+          {/* {showAddedToCartMessage &&
           messages.map((message) => <AddedToCartMessage message={message} />)} */}
-        <div className="container section">
-          <Switch>
-            <Route path="/" exact>
-              <Redirect to="/principal" />
-            </Route>
-            <Route path="/principal" exact>
-              <HomePage
-                setNProducts={setNProducts}
-                nProducts={nProducts}
-                products={products}
-              />
-            </Route>
-            <Route path="/iniciar-sessio" exact>
-              <Login />
-            </Route>
-            <Route path="/perfil" exact>
-              <UserProfile />
-            </Route>
-            <Route path="/registre" exact>
-              <Register />
-            </Route>
-            <Route path="/llista-productes" exact>
-              <ProductList
-                setNProducts={setNProducts}
-                nProducts={nProducts}
-                products={products}
-              />
-            </Route>
-            <Route path="/producte" exact>
-              <PaginaProducte
-                setNProducts={setNProducts}
-                nProducts={nProducts}
-                products={products}
-              />
-            </Route>
-            <Route path="/cistella" exact>
-              <PaginaBasket
-                setNProducts={setNProducts}
-                nProducts={nProducts}
-                products={products}
-              />
-            </Route>
-            <Route path="/llista-cistelles" exact>
-              <BasketList
-                urlAPI={urlAPI}
-                fetchGlobal={fetchGlobal}
-                setNProducts={setNProducts}
-                nProducts={nProducts}
-              />
-            </Route>
-            <Route path="/carro-compra" exact>
-              <ShoppingBasket products={products} />
-            </Route>
-            <Route path="/administracio" exact>
-              <AdminHomePage />
-            </Route>
-            <Route path="/sobre-nosaltres" exact>
-              <AboutUs />
-            </Route>
-            <Route path="/administracio-productes" exact>
-              <AdminProductList
-                products={products}
-                setProducts={setProducts}
-                fetchGlobal={fetchGlobal}
-                urlAPI={urlAPI}
-              />
-            </Route>
-            <Route path="/historial-compra" exact>
-              <HistorialCompra />
-            </Route>
-            <Route path="**">
-              <PageNotFound />
-            </Route>
-          </Switch>
-        </div>
-        <Footer />
+          <div className="container section">
+            <Switch>
+              <Route path="/" exact>
+                <Redirect to="/principal" />
+              </Route>
+              <Route path="/principal" exact>
+                <HomePage
+                  setNProducts={setNProducts}
+                  nProducts={nProducts}
+                  products={products}
+                />
+              </Route>
+              <Route path="/sobre-nosaltres" exact>
+                <AboutUs />
+              </Route>
+              <Route path="/iniciar-sessio" exact>
+                <Login urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
+              </Route>
+              <Route path="/tancar-sessio" exact>
+                <Login />
+              </Route>
+              <Route path="/perfil" exact>
+                <UserProfile />
+              </Route>
+              <Route path="/registre" exact>
+                <Register />
+              </Route>
+              <Route path="/llista-productes" exact>
+                <ProductList
+                  setNProducts={setNProducts}
+                  nProducts={nProducts}
+                  products={products}
+                />
+              </Route>
+              <Route path="/producte" exact>
+                <PaginaProducte
+                  setNProducts={setNProducts}
+                  nProducts={nProducts}
+                  products={products}
+                />
+              </Route>
+              <Route path="/cistella" exact>
+                <PaginaBasket
+                  setNProducts={setNProducts}
+                  nProducts={nProducts}
+                  products={products}
+                />
+              </Route>
+              <Route path="/llista-cistelles" exact>
+                <BasketList
+                  urlAPI={urlAPI}
+                  fetchGlobal={fetchGlobal}
+                  setNProducts={setNProducts}
+                  nProducts={nProducts}
+                />
+              </Route>
+              <Route path="/carro-compra" exact>
+                <ShoppingBasket products={products} />
+              </Route>
+              <Route path="/administracio" exact>
+                <ProtectedRoute>
+                  <AdminHomePage />
+                </ProtectedRoute>
+              </Route>
+              <Route path="/administracio-productes" exact>
+                <ProtectedRoute>
+                  <AdminProductList
+                    products={products}
+                    setProducts={setProducts}
+                    fetchGlobal={fetchGlobal}
+                    urlAPI={urlAPI}
+                  />
+                </ProtectedRoute>
+              </Route>
+              <Route path="/historial-compra" exact>
+                <HistorialCompra />
+              </Route>
+              <Route path="**">
+                <PageNotFound />
+              </Route>
+            </Switch>
+          </div>
+          <Footer />
+        </AuthContextProvider>
       </Router>
     </>
   );
