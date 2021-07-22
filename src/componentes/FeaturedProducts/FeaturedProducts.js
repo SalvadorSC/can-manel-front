@@ -10,7 +10,7 @@ export const FeaturedProducts = (props) => {
       <div>
         <p className="text-big mt-5">Productes destacats</p>
         <div className="product-list">
-          {products.map((product) => (
+          {products.slice(0, 4).map((product) => (
             <ProductCard
               product={product}
               setNumeroProductes={setNumeroProductes}
