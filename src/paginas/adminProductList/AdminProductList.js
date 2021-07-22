@@ -9,6 +9,7 @@ export const AdminProductList = (props) => {
   const { products, setProducts, urlAPI, fetchGlobal } = props;
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
+  const [productEdited, setProductEdited] = useState(null);
 
   const toggleForm = () => {
     setFormOpen(!formOpen);
@@ -69,7 +70,14 @@ export const AdminProductList = (props) => {
           </button>
         </div>
 
-        {formOpen && <AdminForm action={action} toggleForm={toggleForm} />}
+        {formOpen && (
+          <AdminForm
+            action={action}
+            toggleForm={toggleForm}
+            productEdited={productEdited}
+            urlAPI={urlAPI}
+          />
+        )}
         <div className="table-product row">
           <div className="col-12">
             <div className="table-titles row">
@@ -97,6 +105,7 @@ export const AdminProductList = (props) => {
               key={product._id}
               setAction={setAction}
               deleteProduct={deleteProduct}
+              setProductEdited={setProductEdited}
             />
           ))}
         </div>

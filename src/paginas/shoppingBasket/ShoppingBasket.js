@@ -35,7 +35,11 @@ export const ShoppingBasket = () => {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col" style={{ width: "10%" }}></th>
+            <th
+              className="d-none d-lg-table-cell"
+              scope="col"
+              style={{ width: "10%" }}
+            ></th>
             <th className="product-col" scope="col" style={{ width: "25%" }}>
               Producte
             </th>
@@ -45,7 +49,11 @@ export const ShoppingBasket = () => {
             <th scope="col" style={{ width: "18,33%" }}>
               Quantitat
             </th>
-            <th scope="col" style={{ width: "18,33%" }}>
+            <th
+              className="d-none d-md-table-cell"
+              scope="col"
+              style={{ width: "18,33%" }}
+            >
               Total
             </th>
             <th scope="col" style={{ width: "10%" }}></th>

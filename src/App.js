@@ -88,7 +88,7 @@ function App() {
               />
             </Route>
             <Route path="/carro-compra" exact>
-              <ShoppingBasket />
+              <ShoppingBasket products={products} />
             </Route>
             <Route path="/administracio" exact>
               <AdminHomePage />
