@@ -4,7 +4,7 @@ import { Searcher } from "../../componentes/Searcher/Searcher";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 
 export const ProductList = (props) => {
-  const { setNumeroProductes, numeroProductes, products } = props;
+  const { setNProducts, nProducts, products } = props;
   return (
     <>
       <Searcher />
@@ -13,8 +13,8 @@ export const ProductList = (props) => {
           {products.map((product) => (
             <ProductCard
               product={product}
-              setNumeroProductes={setNumeroProductes}
-              numeroProductes={numeroProductes}
+              setNProducts={setNProducts}
+              nProducts={nProducts}
               key={product._id}
             />
           ))}

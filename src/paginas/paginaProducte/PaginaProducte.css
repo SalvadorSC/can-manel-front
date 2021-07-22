@@ -39,6 +39,10 @@
   width: 100%;
 }
 
+.return-link {
+  color: var(--color-primary-dark);
+}
+
 @media (min-width: 768px) {
   .price-kg-item span {
     font-size: 14px;

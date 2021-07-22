@@ -21,11 +21,11 @@ import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
 import { Footer } from "./componentes/Footer/Footer";
 import { useFetch } from "./hooks/useFetch";
 import { PaginaProducte } from "./paginas/paginaProducte/PaginaProducte";
+import { AddedToCartMessage } from "./componentes/AddedToCartMessage/AddedToCartMessage";
 
 function App() {
-  const [numeroProductes, setNumeroProductes] = useState(0);
+  const [nProducts, setNProducts] = useState(0);
   const [products, setProducts] = useState([]);
-
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
 
@@ -43,10 +43,9 @@ function App() {
   return (
     <>
       <Router>
-        <Header
-          setNumeroProductes={setNumeroProductes}
-          numeroProductes={numeroProductes}
-        />
+        <Header setNProducts={setNProducts} nProducts={nProducts} />
+        {/* {showAddedToCartMessage &&
+          messages.map((message) => <AddedToCartMessage message={message} />)} */}
         <div className="container section">
           <Switch>
             <Route path="/" exact>
@@ -54,8 +53,8 @@ function App() {
             </Route>
             <Route path="/principal" exact>
               <HomePage
-                setNumeroProductes={setNumeroProductes}
-                numeroProductes={numeroProductes}
+                setNProducts={setNProducts}
+                nProducts={nProducts}
                 products={products}
               />
             </Route>
@@ -70,24 +69,29 @@ function App() {
             </Route>
             <Route path="/llista-productes" exact>
               <ProductList
-                setNumeroProductes={setNumeroProductes}
-                numeroProductes={numeroProductes}
+                setNProducts={setNProducts}
+                nProducts={nProducts}
                 products={products}
               />
             </Route>
             <Route path="/producte" exact>
               <PaginaProducte
-                setNumeroProductes={setNumeroProductes}
-                numeroProductes={numeroProductes}
+                setNProducts={setNProducts}
+                nProducts={nProducts}
+                products={products}
               />
             </Route>
             <Route path="/llista-cistelles" exact>
+
               <BasketList
                 setNumeroProductes={setNumeroProductes}
                 numeroProductes={numeroProductes}
                 urlAPI={urlAPI}
                 fetchGlobal={fetchGlobal}
+setNProducts={setNProducts} nProducts={nProducts}
               />
+
+
             </Route>
             <Route path="/carro-compra" exact>
               <ShoppingBasket products={products} />

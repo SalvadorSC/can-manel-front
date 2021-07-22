@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import productImage from "../../assets/product.jpeg";
 import "./ProductCard.css";
+import { useState } from "react";
 
 export const ProductCard = (props) => {
-  const { setNumeroProductes, numeroProductes, product } = props;
+  const { setNProducts, nProducts, product } = props;
+  const [addedToCartMessage, setAddedToCartMessage] = useState(false);
   return (
     <>
       <article className="card">
@@ -21,11 +23,26 @@ export const ProductCard = (props) => {
         </div>
         <div className="card-buy d-flex align-items-center justify-content-between">
           <span className="card-price">{product.priceUnit}€</span>
+          <div
+            className={`added-to-cart-message ${
+              addedToCartMessage ? "show" : ""
+            }`}
+          >
+            Afegit!
+          </div>
           <button
             className="button card-button"
-            onClick={() => setNumeroProductes(numeroProductes + 1)}
+            onClick={() => {
+              setNProducts(nProducts + 1);
+              setAddedToCartMessage(true);
+              console.log(addedToCartMessage);
+              setTimeout(() => {
+                setAddedToCartMessage(false);
+                console.log(addedToCartMessage);
+              }, 1000);
+            }}
           >
-            Comprar
+            Afegir
           </button>
         </div>
       </article>

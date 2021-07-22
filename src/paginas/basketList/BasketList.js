@@ -5,7 +5,7 @@ import { BasketCard } from "../../componentes/BasketCard/BasketCard";
 import { useCallback, useEffect, useState } from "react";
 
 export const BasketList = (props) => {
-  const { setNumeroProductes, numeroProductes, urlAPI, fetchGlobal } = props;
+  const { setNumeroProductes, numeroProductes, urlAPI, fetchGlobal,setNProducts, nProducts  } = props;
   const [baskets, setBaskets] = useState([]);
 
   const loadBaskets = useCallback(async () => {
@@ -30,6 +30,8 @@ export const BasketList = (props) => {
               setNumeroProductes={setNumeroProductes}
               numeroProductes={numeroProductes}
               key={baskets._id}
+ setNProducts={setNProducts}
+              nProducts={nProducts}
             />
           ))}
         </div>

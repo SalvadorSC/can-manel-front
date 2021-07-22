@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 export const Header = (props) => {
-  const { setNumeroProductes, numeroProductes } = props;
+  const { setNProducts, nProducts } = props;
 
   const [open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
@@ -104,7 +104,7 @@ export const Header = (props) => {
                   <input
                     type="text"
                     id=""
-                    className="form-control"
+                    className="form-control input-search-input"
                     placeholder="Buscar Productes, categories..."
                     required=""
                     autoFocus=""
@@ -134,8 +134,8 @@ export const Header = (props) => {
                 >
                   <div className="d-flex">
                     <FaShoppingBasket />
-                    {numeroProductes > 0 && (
-                      <div className="numero-productes">{numeroProductes}</div>
+                    {nProducts >= 0 && (
+                      <div className="numero-productes">{nProducts}</div>
                     )}
                   </div>
                 </Link>

@@ -53,6 +53,11 @@ header {
   border-right: 1px solid var(--color-background-hover);
 }
 
+.input-search .input-search-input,
+.input-search input:focus {
+  border-radius: 10px 0 0 10px;
+}
+
 /* CATEGOIRES NAV LIST */
 
 .top-navbar {
@@ -222,8 +227,8 @@ header {
 
 .search-results {
   position: absolute;
-  top: 60px;
-  width: 100%;
+  top: 40px;
+  width: 95%;
   height: 300px;
   border-radius: 20px;
   padding: 20px;
