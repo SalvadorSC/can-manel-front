@@ -21,7 +21,7 @@ import { AdminProductList } from "./paginas/adminProductList/AdminProductList";
 import { Footer } from "./componentes/Footer/Footer";
 import { useFetch } from "./hooks/useFetch";
 import { PaginaProducte } from "./paginas/paginaProducte/PaginaProducte";
-import { AddedToCartMessage } from "./componentes/AddedToCartMessage/AddedToCartMessage";
+import { PaginaBasket } from "./paginas/paginaBasket/PaginaBasket";
 
 function App() {
   const [nProducts, setNProducts] = useState(0);
@@ -76,6 +76,13 @@ function App() {
             </Route>
             <Route path="/producte" exact>
               <PaginaProducte
+                setNProducts={setNProducts}
+                nProducts={nProducts}
+                products={products}
+              />
+            </Route>
+            <Route path="/cistella" exact>
+              <PaginaBasket
                 setNProducts={setNProducts}
                 nProducts={nProducts}
                 products={products}

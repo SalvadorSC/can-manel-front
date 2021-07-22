@@ -39,14 +39,12 @@ export const PaginaProducte = (props) => {
               dolorum, quod, aperiam, nulla sapiente explicabo consectetur
               excepturi nesciunt quidem. Sint quos impedit laudantium?
             </p>
-            <div className="price-kg-item mb-1 d-flex justify-content-between">
-              <span>Pes per unitat</span>
-              <span> 1 kg</span>
-            </div>
-            <div className="mb-4">
-              <span>
-                <span className="price-item-unit"> 1€</span> / Unitat
-              </span>
+            <div className="price-kg-item mb-4">
+              <div className="d-flex justify-content-between">
+                <span>Pes per unitat</span>
+                <span> 1 kg</span>
+              </div>
+              <hr />
             </div>
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -57,8 +55,13 @@ export const PaginaProducte = (props) => {
                 <input
                   type="number"
                   defaultValue={1}
-                  className="form-control w-auto mb-5 text-right"
+                  className="form-control w-auto mb-3 text-right"
                 />
+              </div>
+              <div className="mb-3">
+                <span>
+                  <span className="price-item-unit"> 1€</span> / Unitat
+                </span>
               </div>
               <div className="button-add m-auto">
                 <button
