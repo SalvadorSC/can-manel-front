@@ -15,3 +15,7 @@ input[type="checkbox"] {
   font-size: 24px;
   font-weight: medium;
 }
+.error-login-data {
+  color: #b31111;
+  font-size: 14px;
+}
