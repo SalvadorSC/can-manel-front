@@ -1,10 +1,10 @@
 import "./AddedToCartMessage.css";
 
 export const AddedToCartMessage = (props) => {
-  const { message } = props;
+  const { product } = props;
   return (
     <>
-      <p>Has afegit "{message.name}" al carro de la compra!</p>
+      <span /* className="text-center" */>Has afegit "{product.name}"!</span>
     </>
   );
 };
