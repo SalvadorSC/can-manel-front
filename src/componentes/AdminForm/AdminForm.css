@@ -1,3 +1,26 @@
+/* EDIT/CREATE FORM */
+
+.container-create {
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px solid var(--color-background-hover);
+  border-radius: 10px;
+  background-color: var(--color-primary);
+  position: relative;
+}
+.container-create input,
+textarea {
+  background-color: #f0f0f0;
+}
+.icon-close-form {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  cursor: pointer;
+}
+
+/* INPUT TYPE FILE */
+
 label[for="file-input"] {
   display: block;
   margin-bottom: 0.1em;

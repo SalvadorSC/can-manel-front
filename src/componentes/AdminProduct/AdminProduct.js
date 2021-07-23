@@ -8,14 +8,23 @@ const { DateTime } = require("luxon");
 export const AdminProduct = (props) => {
   const {
     product: { name, date, category, _id: id },
+    product,
     setAction,
     deleteProduct,
+    setProductEdited,
   } = props;
   const [open, setOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
 
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    deleteProduct(product);
+  };
+
   const toggleFormEdit = () => {
     setFormOpen(!formOpen);
+    setProductEdited(product);
+    console.log(product);
   };
   const showImg = () => {
     setOpen(!open);
@@ -59,7 +68,7 @@ export const AdminProduct = (props) => {
           />
         </div>
         <div className="col-1">
-          <FaTimes className="icon-delete" onClick={() => deleteProduct(id)} />
+          <FaTimes className="icon-delete" onClick={onClickDelete} />
         </div>
       </div>
 
