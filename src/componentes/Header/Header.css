@@ -324,6 +324,9 @@ header {
   .categories-nav-list {
     display: flex;
   }
+  .bar-container .actual {
+    font-weight: bold;
+  }
 }
 
 @media (min-width: 1024px) {
