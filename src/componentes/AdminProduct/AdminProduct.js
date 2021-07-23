@@ -3,6 +3,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { FaEdit, FaImages, FaTimes } from "react-icons/fa";
 import { AdminForm } from "../AdminForm/AdminForm";
+const { DateTime } = require("luxon");
 
 export const AdminProduct = (props) => {
   const {
@@ -19,7 +20,12 @@ export const AdminProduct = (props) => {
   const showImg = () => {
     setOpen(!open);
   };
+  /* console.log(date); */
+  const formattedDate = `${DateTime.fromISO(date).c.day}/${
+    DateTime.fromISO(date).c.month
+  }/${DateTime.fromISO(date).c.year}`;
 
+  console.log(formattedDate);
   return (
     <div className="col-12">
       <div className="table-products row">
@@ -42,8 +48,8 @@ export const AdminProduct = (props) => {
         <div className="col-2">
           <p>{category}</p>
         </div>
-        <div className="col-1">
-          <p>{date}</p>
+        <div className="col-1 d-flex justify-content-center">
+          <p>{formattedDate}</p>
         </div>
         <div className="col-2 text-center">
           <FaEdit
