@@ -20,12 +20,10 @@ export const AdminProduct = (props) => {
   const showImg = () => {
     setOpen(!open);
   };
-  /* console.log(date); */
   const formattedDate = `${DateTime.fromISO(date).c.day}/${
     DateTime.fromISO(date).c.month
   }/${DateTime.fromISO(date).c.year}`;
 
-  console.log(formattedDate);
   return (
     <div className="col-12">
       <div className="table-products row">
