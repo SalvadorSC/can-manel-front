@@ -73,16 +73,16 @@ export const UserProfile = () => {
         </button>
       </div>
       <div className="nav-column-compres col-md-4 col-sm-12 d-flex flex-column">
-        <Link to="./historial-compra" className="mb-4">
+        <Link to="/historial-compra" className="mb-4">
           Historial de compra
         </Link>
-        <Link to="./principal" className="mb-4">
+        <Link to="/principal" className="mb-4">
           Dades de compra
         </Link>
-        <Link to="./principal" className="mb-4">
+        <Link to="/principal" className="mb-4">
           Dades de compra
         </Link>
-        <Link to="./registro">
+        <Link to="/registro">
           <button
             type="button"
             className="button btn-data-purchase btn form-control mt-2 px-3"

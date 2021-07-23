@@ -1,54 +1,36 @@
 import "./PaginaBasket.css";
 import productImage from "../../assets/product.jpeg";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { AddedToCartMessage } from "../../componentes/AddedToCartMessage/AddedToCartMessage";
+import { useFetch } from "../../hooks/useFetch";
 
 export const PaginaBasket = (props) => {
   const { setNProducts, nProducts, products } = props;
   const [quantity, setQuantity] = useState(1);
+  const [basket, setBasket] = useState({});
+  const [basketIncludedProducts, setBasketIncludedProducts] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const history = useHistory();
-  const basket = {
-    _id: "60f835ed548afb16387e83ff",
-    photoUrl: "https://picsum.photos/400",
-    name: "Cistella de temporada de 10kg de Can Mateu",
-    description:
-      "Gran cistella de 10 kg amb una alta varietat de verdures de temporada fresques i de qualitat.",
-    basketProducts: [
-      {
-        _id: "60f83803ab26942eb816eb94",
-        name: "Rave de Sant Jordi",
-        description:
-          "Raphanus sativus de molt bona qualitat i amb un gran sabor",
-        amount: 4,
-        unit: "kilo",
-      },
-      {
-        _id: "60f8380fab26942eb816eb9a",
-        name: "Pastanaga del hort d'en Mateu",
-        description: "Daucus carota de molt bona qualitat i de gran tamany",
-        amount: 4,
-        unit: "kilo",
-      },
-      {
-        _id: "60f838b43b802027a0585e02",
-        name: "Nap de Sant Jordi",
-        description: "Brassica rapa de molt bona qualitat i de gran tamany",
-        amount: 2,
-        unit: "kilo",
-      },
-    ],
-    stock: 25,
-    priceUnit: 20,
-    unit: "kilo",
-    category: "verdures",
-    size: "mitjana",
-    discount: 0,
-    date: "2020-07-21T00:00:00.000Z",
-  };
+  const urlAPI = process.env.REACT_APP_URL_API;
+  const { id } = useParams();
+  const { fetchGlobal } = useFetch(urlAPI);
+  const loadProduct = useCallback(async () => {
+    const productsAPI = await fetchGlobal(`${urlAPI}baskets/basket/${id}`);
+    if (productsAPI) {
+      setBasket(productsAPI);
+    }
+    setBasketIncludedProducts(
+      productsAPI.basketProducts.map((product) => <li>- {product.name}</li>)
+    );
+  }, [fetchGlobal, id, urlAPI]);
+
+  useEffect(() => {
+    loadProduct();
+  }, [loadProduct]);
+
   return (
     <>
       <section className="product-section">
@@ -78,9 +60,7 @@ export const PaginaBasket = (props) => {
               Productes inclosos:
             </p>
             <ul className="included-products-list text-left pl-0">
-              {basket.basketProducts.map((product) => (
-                <li>- {product.name}</li>
-              ))}
+              {basketIncludedProducts}
             </ul>
 
             <form

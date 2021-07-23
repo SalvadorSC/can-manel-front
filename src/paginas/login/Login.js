@@ -122,7 +122,7 @@ export const Login = (props) => {
               </p>
             </div>
             <div className="form-group text-center">
-              <Link to="./registre">
+              <Link to="/registre">
                 <button
                   type="button"
                   className="button btn-login btn form-control mt-2 px-3"

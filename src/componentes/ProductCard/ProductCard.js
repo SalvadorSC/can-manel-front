@@ -16,7 +16,7 @@ export const ProductCard = (props) => {
           alt="Cistella de fruites i verdures de l'hort"
         ></img>
         <div className="card-info">
-          <Link to="./producte">
+          <Link to={`/producte/${product._id}`}>
             <h4 className="card-title">{product.name}</h4>
           </Link>
           <p className="card-description">{product.description}</p>
