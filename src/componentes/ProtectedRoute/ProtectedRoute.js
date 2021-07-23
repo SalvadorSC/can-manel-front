@@ -20,11 +20,11 @@ export const ProtectedRoute = (props) => {
   }, [loadAdmins]);
 
   const history = useHistory();
-  useEffect(() => {
+  /* useEffect(() => {
     if (!logIn || adminRole === false) {
       history.push("/principal");
       return;
     }
-  }, [adminRole, history, logIn]);
+  }, [adminRole, history, logIn]); */
   return children;
 };
