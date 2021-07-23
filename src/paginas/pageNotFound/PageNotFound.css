@@ -1,0 +1,9 @@
+.page-not-found p {
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .page-not-found p {
+    font-size: 30px;
+  }
+}

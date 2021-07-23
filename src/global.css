@@ -55,6 +55,7 @@ input:focus {
 
 .section {
   padding-block: 32px;
+  min-height: 80vh;
 }
 
 /* ICONS */
