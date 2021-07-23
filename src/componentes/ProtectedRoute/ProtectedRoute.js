@@ -8,7 +8,6 @@ export const ProtectedRoute = (props) => {
 
   const history = useHistory();
   useEffect(() => {
-    console.log(adminRole);
     if (!token && !adminRole) {
       history.push("/principal");
       return;

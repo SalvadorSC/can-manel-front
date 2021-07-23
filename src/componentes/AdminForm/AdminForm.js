@@ -39,7 +39,6 @@ export const AdminForm = (props) => {
         photoUrl: "",
         discount: "",
         stock: "",
-        date: Date.now(),
       };
   const [product, setProduct] = useState(inicialData);
 
@@ -95,8 +94,6 @@ export const AdminForm = (props) => {
   };
 
   const setData = (e) => {
-    console.log(e.target.files);
-    console.log(e.target.value);
     setProductForm({
       ...productForm,
       [e.target.id]:
@@ -182,7 +179,14 @@ export const AdminForm = (props) => {
           </div>
           <div className="col-3 form-group">
             <label htmlFor="unit">Unitat:</label>
-            <input type="text" id="unit" onChange={setData} />
+            <select id="unit" onChange={setData}>
+              <option value="all" defaultValue>
+                Totes les Unitats
+              </option>
+              <option value="kilo">Quilo</option>
+              <option value="grams">Grams</option>
+              <option value="units">Unitat</option>
+            </select>
           </div>
           <div className="col-3 form-group">
             <label htmlFor="stock">Stock:</label>
