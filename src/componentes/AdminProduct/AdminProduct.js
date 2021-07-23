@@ -7,7 +7,7 @@ const { DateTime } = require("luxon");
 
 export const AdminProduct = (props) => {
   const {
-    product: { name, date, category, _id: id },
+    product: { name, date, category, _id: id, photoUrl },
     product,
     setAction,
     deleteProduct,
@@ -45,7 +45,7 @@ export const AdminProduct = (props) => {
             <div className="mostrar-imagen" open={open}>
               <div className="d-flex align-items-start">
                 <div className="image">
-                  <img src="https://picsum.photos/250/250" alt="" />
+                  <img src={photoUrl} alt="" width="250" />
                 </div>
                 <FaTimes className="close-image-icon" onClick={showImg} />
               </div>
