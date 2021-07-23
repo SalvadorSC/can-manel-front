@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { AdminProduct } from "../../componentes/AdminProduct/AdminProduct";
 import "./AdminProductList.css";
 import { AdminForm } from "../../componentes/AdminForm/AdminForm";
 import { useFetch } from "../../hooks/useFetch";
+import { AuthContext } from "../../context/AuthContext";
 
 export const AdminProductList = (props) => {
   const { products, setProducts, urlAPI, fetchGlobal } = props;
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
   const [productEdited, setProductEdited] = useState(null);
-
+  const { token } = useContext(AuthContext);
   const toggleForm = () => {
     setFormOpen(!formOpen);
   };
@@ -18,6 +19,9 @@ export const AdminProductList = (props) => {
   const deleteProduct = async (id) => {
     const resp = await fetchGlobal(urlAPI + "products/product/" + id, {
       method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     });
     if (resp.ok) {
       setProducts(products.filter((product) => product.id !== id));

@@ -24,6 +24,7 @@ import { PaginaProducte } from "./paginas/paginaProducte/PaginaProducte";
 import { PaginaBasket } from "./paginas/paginaBasket/PaginaBasket";
 import { AuthContextProvider } from "./context/AuthContextProvider";
 import { ProtectedRoute } from "./componentes/ProtectedRoute/ProtectedRoute";
+import { LogOut } from "./componentes/LogOut/LogOut";
 
 function App() {
   const [nProducts, setNProducts] = useState(0);
@@ -68,7 +69,7 @@ function App() {
                 <Login urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
               </Route>
               <Route path="/tancar-sessio" exact>
-                <Login />
+                <LogOut />
               </Route>
               <Route path="/perfil" exact>
                 <UserProfile />
