@@ -253,13 +253,24 @@ header {
 
 @media (min-width: 320px) {
   .logo {
-    width: 200px;
+    width: 160px;
+  }
+  .icon-shopping-basket,
+  .icon-user {
+    margin-left: 6px;
   }
 }
 
-@media (min-width: 400px) {
+@media (min-width: 414px) {
   .mobile-text-bar {
     font-size: 16px;
+  }
+  .container-logo {
+    text-align: left;
+  }
+  .icon-shopping-basket,
+  .icon-user {
+    margin-left: 10px;
   }
 }
 
@@ -267,11 +278,19 @@ header {
   .logo {
     width: 170px;
   }
+  .icon-shopping-basket,
+  .icon-user {
+    margin-left: 13px;
+  }
 }
 
 @media (min-width: 768px) {
   .navbar-light {
     padding-block: 20px;
+  }
+  .icon-shopping-basket,
+  .icon-user {
+    margin-left: 15px;
   }
 
   /* CSS TRANSITION */
