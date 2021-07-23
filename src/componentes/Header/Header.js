@@ -1,6 +1,6 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser, FaBars } from "react-icons/fa";
 import { Fade as Hamburger } from "hamburger-react";
 import { useRef, useState } from "react";
@@ -222,90 +222,21 @@ export const Header = (props) => {
         <div className="container-fluid">
           <div className="bar-container text-center row align-items-center justify-content-center">
             <div className="col">
-              <ul className="categories-nav-list row justify-content-between align-items-center">
+              <ul className="categories-nav-list row justify-content-between align-items-center mb-0">
                 <li className="dropdown col-4">
-                  <Link className="dropdown-toggle" to="/llista-productes">
-                    <button
-                      className="btn"
-                      type="button"
-                      id="dropdownMenu2"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Fruites i verdures
-                    </button>
-                  </Link>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenu2"
-                  >
-                    <button className="dropdown-item" type="button">
-                      Action
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Another action
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Something else here
-                    </button>
-                  </div>
+                  <NavLink to="/llista-productes" activeClassName="actual">
+                    Fruites i verdures
+                  </NavLink>
                 </li>
                 <li className="dropdown col-4">
-                  <Link className="dropdown-toggle" to="/llista-cistelles">
-                    <button
-                      className="btn"
-                      type="button"
-                      id="dropdownMenu2"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Cistelles
-                    </button>
-                  </Link>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenu2"
-                  >
-                    <button className="dropdown-item" type="button">
-                      Action
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Another action
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Something else here
-                    </button>
-                  </div>
+                  <NavLink to="/llista-cistelles" activeClassName="actual">
+                    Cistelles
+                  </NavLink>
                 </li>
                 <li className="dropdown col-4">
-                  <Link className="dropdown-toggle" to="/llista-productes">
-                    <button
-                      className="btn"
-                      type="button"
-                      id="dropdownMenu2"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Nutrition
-                    </button>
-                  </Link>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenu2"
-                  >
-                    <button className="dropdown-item" type="button">
-                      Action
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Another action
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Something else here
-                    </button>
-                  </div>
+                  <NavLink to="/sobre-nosaltres" activeClassName="actual">
+                    Qui som
+                  </NavLink>
                 </li>
               </ul>
             </div>
