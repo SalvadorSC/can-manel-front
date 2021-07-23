@@ -12,7 +12,7 @@ export const AdminHomePage = () => {
         <ul className="admin-tasks list-unstyled">
           <li className="task">
             <Link
-              to="./administracio-productes"
+              to="/administracio-productes"
               className="d-flex flex-column align-items-center"
             >
               <FaShoppingBasket size={iconsSize} color={iconsColor} />
@@ -21,7 +21,7 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="./administracio-productes"
+              to="/administracio-productes"
               className="d-flex flex-column align-items-center"
             >
               <FaCrow size={iconsSize} color={iconsColor} />
@@ -30,7 +30,7 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="./administracio-productes"
+              to="/administracio-productes"
               className="d-flex flex-column align-items-center"
             >
               <FaWarehouse size={iconsSize} color={iconsColor} />
@@ -39,7 +39,7 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="./administracio-productes"
+              to="/administracio-productes"
               className="d-flex flex-column align-items-center"
             >
               <FaShoppingBasket size={iconsSize} color={iconsColor} />
@@ -48,7 +48,7 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="./administracio-productes"
+              to="/administracio-productes"
               className="d-flex flex-column align-items-center"
             >
               <FaCrow size={iconsSize} color={iconsColor} />
@@ -57,7 +57,7 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="./administracio-productes"
+              to="/administracio-productes"
               className="d-flex flex-column align-items-center"
             >
               <FaWarehouse size={iconsSize} color={iconsColor} />

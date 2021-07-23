@@ -1,14 +1,29 @@
 import "./PaginaProducte.css";
 import productImage from "../../assets/product.jpeg";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { useFetch } from "../../hooks/useFetch";
 
 export const PaginaProducte = (props) => {
   const { setNProducts, nProducts, products } = props;
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState({});
   const history = useHistory();
+  const urlAPI = process.env.REACT_APP_URL_API;
+  const { id } = useParams();
+  const { fetchGlobal } = useFetch(urlAPI);
+  const loadProduct = useCallback(async () => {
+    const productsAPI = await fetchGlobal(`${urlAPI}products/product/${id}`);
+    if (productsAPI) {
+      setProduct(productsAPI);
+    }
+  }, [fetchGlobal, id, urlAPI]);
+
+  useEffect(() => {
+    loadProduct();
+  }, [loadProduct]);
   return (
     <>
       <section className="product-section">
@@ -22,7 +37,7 @@ export const PaginaProducte = (props) => {
             Tornar
           </Link>
 
-          <h3>Nom del Producte</h3>
+          <h3>{product.name}</h3>
           <hr></hr>
         </div>
         <div className="row justify-content-center text-right">
@@ -32,12 +47,9 @@ export const PaginaProducte = (props) => {
               alt="Cistella de fruites i verdures de l'hort"
             />
           </div>
-          <div className="info-item-product col-12 col-md-6">
-            <p className="text-left mb-5">
-              Descripció: Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Impedit quae reiciendis rerum beatae numquam ipsam nam
-              dolorum, quod, aperiam, nulla sapiente explicabo consectetur
-              excepturi nesciunt quidem. Sint quos impedit laudantium?
+          <div className="d-flex flex-column info-item-product col-12 col-md-6">
+            <p className="product-description text-left ">
+              {product.description}
             </p>
             <div className="price-kg-item mb-4">
               <div className="d-flex justify-content-between">
@@ -60,7 +72,8 @@ export const PaginaProducte = (props) => {
               </div>
               <div className="mb-3">
                 <span>
-                  <span className="price-item-unit"> 1€</span> / Unitat
+                  <span className="price-item-unit"> {product.priceUnit}€</span>{" "}
+                  / Unitat
                 </span>
               </div>
               <div className="button-add m-auto">

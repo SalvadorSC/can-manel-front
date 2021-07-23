@@ -43,6 +43,10 @@
   color: var(--color-primary-dark);
 }
 
+.product-description {
+  flex: 1;
+}
+
 @media (min-width: 768px) {
   .price-kg-item span {
     font-size: 14px;

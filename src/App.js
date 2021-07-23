@@ -24,6 +24,7 @@ import { PaginaProducte } from "./paginas/paginaProducte/PaginaProducte";
 import { PaginaBasket } from "./paginas/paginaBasket/PaginaBasket";
 import { AuthContextProvider } from "./context/AuthContextProvider";
 import { ProtectedRoute } from "./componentes/ProtectedRoute/ProtectedRoute";
+import { ScrollToTop } from "./componentes/ScrollToTop/ScrollToTop";
 
 function App() {
   const [nProducts, setNProducts] = useState(0);
@@ -45,6 +46,7 @@ function App() {
   return (
     <>
       <Router>
+        <ScrollToTop />
         <AuthContextProvider>
           <Header setNProducts={setNProducts} nProducts={nProducts} />
           {/* {showAddedToCartMessage &&
@@ -83,14 +85,14 @@ function App() {
                   products={products}
                 />
               </Route>
-              <Route path="/producte" exact>
+              <Route path="/producte/:id" exact>
                 <PaginaProducte
                   setNProducts={setNProducts}
                   nProducts={nProducts}
                   products={products}
                 />
               </Route>
-              <Route path="/cistella" exact>
+              <Route path="/cistella/:id" exact>
                 <PaginaBasket
                   setNProducts={setNProducts}
                   nProducts={nProducts}
