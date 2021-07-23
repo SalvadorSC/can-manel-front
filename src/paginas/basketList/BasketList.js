@@ -17,7 +17,6 @@ export const BasketList = (props) => {
 
   const loadBaskets = useCallback(async () => {
     const productsAPI = await fetchGlobal(`${urlAPI}baskets/list`);
-    console.log(productsAPI);
     if (productsAPI) {
       setBaskets(productsAPI);
     }

@@ -50,7 +50,7 @@ export const Header = (props) => {
     <>
       <header>
         <div className="container">
-          <div className="top-navbar row justify-content-between align-items-center py-3">
+          <div className="top-navbar row justify-content-between align-items-center">
             <ul className="col-5 d-flex justify-content-center align-items-center my-0">
               <li className="mr-4">
                 <a href="./holalog">Chat with us</a>
@@ -64,13 +64,13 @@ export const Header = (props) => {
             </ul>
             <ul className="col-4 d-flex justify-content-center align-items-center my-0">
               <li>
-                <Link to="./blog">Blog</Link>
+                <Link to="/blog">Blog</Link>
               </li>
               <li className="ml-5">
-                <Link to="./sobre-nosaltres">Sobre nosaltres</Link>
+                <Link to="/sobre-nosaltres">Sobre nosaltres</Link>
               </li>
               <li className="ml-5">
-                <Link to="./activitats">Activitats</Link>
+                <Link to="/activitats">Activitats</Link>
               </li>
             </ul>
           </div>
@@ -94,7 +94,7 @@ export const Header = (props) => {
               />
             </button>
             <div className="col-7 col-sm-5 col-md-4 col-lg-4 text-right text-sm-left">
-              <Link to="./principal">
+              <Link to="/principal">
                 <img className="logo" src={logo} alt="" />
               </Link>
             </div>
@@ -125,12 +125,12 @@ export const Header = (props) => {
                     onClick={() => setMagnifierOpen(!magnifierOpen)}
                   />
                 </Link>
-                <Link className="icons-navbar ml-3" to="./iniciar-sessio">
+                <Link className="icons-navbar ml-3" to="/iniciar-sessio">
                   <FaUser />
                 </Link>
                 <Link
                   className="icons-navbar icon-shopping-basket ml-3"
-                  to="./carro-compra"
+                  to="/carro-compra"
                 >
                   <div className="d-flex">
                     <FaShoppingBasket />
@@ -157,7 +157,7 @@ export const Header = (props) => {
                 <ul className="row mr-auto navbar-nav mb-3 mt-lg-0 text-left">
                   <li className="col-12 col-lg-2 nav-item">
                     <Link
-                      to="./llista-productes"
+                      to="/llista-productes"
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
                       href="links"
@@ -168,7 +168,7 @@ export const Header = (props) => {
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
                     <Link
-                      to="./llista-cistelles"
+                      to="/llista-cistelles"
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
                       href="links"
@@ -224,7 +224,7 @@ export const Header = (props) => {
             <div className="col">
               <ul className="categories-nav-list row justify-content-between align-items-center">
                 <li className="dropdown col-4">
-                  <Link className="dropdown-toggle" to="./llista-productes">
+                  <Link className="dropdown-toggle" to="/llista-productes">
                     <button
                       className="btn"
                       type="button"
@@ -252,7 +252,7 @@ export const Header = (props) => {
                   </div>
                 </li>
                 <li className="dropdown col-4">
-                  <Link className="dropdown-toggle" to="./llista-cistelles">
+                  <Link className="dropdown-toggle" to="/llista-cistelles">
                     <button
                       className="btn"
                       type="button"
@@ -280,7 +280,7 @@ export const Header = (props) => {
                   </div>
                 </li>
                 <li className="dropdown col-4">
-                  <Link className="dropdown-toggle" to="./llista-productes">
+                  <Link className="dropdown-toggle" to="/llista-productes">
                     <button
                       className="btn"
                       type="button"

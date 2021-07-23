@@ -4,7 +4,7 @@ import productImage from "../../assets/product.jpeg";
 
 export const BasketCard = (props) => {
   const {
-    baskets: { name, basketProducts, priceUnit, setNProducts, nProducts },
+    baskets: { name, basketProducts, priceUnit, setNProducts, nProducts, _id },
   } = props;
   return (
     <article className="card">
@@ -14,7 +14,7 @@ export const BasketCard = (props) => {
         alt="Cistella de fruites i verdures de l'hort"
       ></img>
       <div className="card-info">
-        <Link to="./producte">
+        <Link to={`/cistella/${_id}`}>
           <h4 className="card-title">{name}</h4>
         </Link>
       </div>
