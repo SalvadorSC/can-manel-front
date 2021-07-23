@@ -93,7 +93,7 @@ export const Header = (props) => {
                 rounded
               />
             </button>
-            <div className="col-7 col-sm-5 col-md-4 col-lg-4 text-right text-sm-left">
+            <div className="container-logo col-7 col-sm-5 col-md-4 col-lg-4 text-sm-left">
               <Link to="/principal">
                 <img className="logo" src={logo} alt="" />
               </Link>
@@ -125,11 +125,11 @@ export const Header = (props) => {
                     onClick={() => setMagnifierOpen(!magnifierOpen)}
                   />
                 </Link>
-                <Link className="icons-navbar ml-3" to="/iniciar-sessio">
+                <Link className="icons-navbar icon-user " to="/iniciar-sessio">
                   <FaUser />
                 </Link>
                 <Link
-                  className="icons-navbar icon-shopping-basket ml-3"
+                  className="icons-navbar icon-shopping-basket"
                   to="/carro-compra"
                 >
                   <div className="d-flex">
@@ -212,7 +212,7 @@ export const Header = (props) => {
                     autoFocus=""
                   />
                 </div>
-                <button className="btn" type="submit">
+                <button className="btn" type="button">
                   <FaSearch />
                 </button>
               </form>
