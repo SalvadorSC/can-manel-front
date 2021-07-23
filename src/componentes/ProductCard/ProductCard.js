@@ -2,11 +2,34 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import productImage from "../../assets/product.jpeg";
 import "./ProductCard.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 
 export const ProductCard = (props) => {
   const { setNProducts, nProducts, product } = props;
+  const { setLocalCart, localCart } = useContext(CartContext);
   const [addedToCartMessage, setAddedToCartMessage] = useState(false);
+
+  const addProductToCart = () => {
+    /* Check if there's a cart already. */
+    //if(/* yesCart */){
+    /* add item to --> shopping-cart/add/:id */
+    //} else {
+    /* creat new cart --> /new-shopping-cart */
+    /* add item to --> shopping-cart/add/:id */
+    //}
+
+    /* Add Number of products */
+    setNProducts(nProducts + 1);
+    /* Show message */
+    setAddedToCartMessage(true);
+    console.log(addedToCartMessage);
+    setTimeout(() => {
+      setAddedToCartMessage(false);
+      console.log(addedToCartMessage);
+    }, 1000);
+  };
+
   return (
     <>
       <article className="card">
@@ -33,13 +56,7 @@ export const ProductCard = (props) => {
           <button
             className="button card-button"
             onClick={() => {
-              setNProducts(nProducts + 1);
-              setAddedToCartMessage(true);
-              console.log(addedToCartMessage);
-              setTimeout(() => {
-                setAddedToCartMessage(false);
-                console.log(addedToCartMessage);
-              }, 1000);
+              addProductToCart();
             }}
           >
             Afegir

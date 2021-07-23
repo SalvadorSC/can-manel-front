@@ -10,7 +10,7 @@
 
 # production
 /build
-cistelles.json
+cart-noUser.json
 productes.json
 .gitignore
 

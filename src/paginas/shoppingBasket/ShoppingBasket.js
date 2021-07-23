@@ -1,32 +1,53 @@
 import "./shoppingBasket.css";
 import productImage from "../../assets/lettuce-product.jpg";
 import { ItemShoppingCart } from "../../componentes/ItemShoppingCart/ItemShoppingCart";
-import { useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
+import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
 
-export const ShoppingBasket = () => {
+export const ShoppingBasket = (props) => {
+  const { urlAPI } = props;
+  const { token } = useContext(AuthContext);
   const [totalPrice, setTotalPrice] = useState(0);
-  const products = [
-    {
-      name: "Enciam",
-      price: 1.5,
-      quantity: 9,
-    },
-    {
-      name: "Tomaquet",
-      price: 1.23,
-      quantity: 20,
-    },
-    {
-      name: "Pastanaga",
-      price: 1.04,
-      quantity: 50,
-    },
-    {
-      name: "Enciam",
-      price: 1.1,
-      quantity: 3,
-    },
-  ];
+  const { fetchGlobal } = useFetch(urlAPI);
+  const [shoppingCart, setShoppingCart] = useState({});
+  const [shoppingCartItems, setShoppingCartItems] = useState([]);
+
+  const loadShoppingCart = useCallback(async () => {
+    const shoppingCartApi = await fetchGlobal(
+      `${urlAPI}shopping-carts/shopping-cart/`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    if (shoppingCartApi) {
+      setShoppingCart(shoppingCartApi);
+    }
+    return shoppingCartApi;
+  }, [fetchGlobal, token, urlAPI]);
+  console.log(shoppingCart);
+  useEffect(() => {
+    loadShoppingCart();
+  }, [loadShoppingCart]);
+  useEffect(() => {
+    if (shoppingCart.products && shoppingCart.products !== null) {
+      setShoppingCartItems(
+        shoppingCart.products.map((product) => (
+          <ItemShoppingCart
+            key={product._id}
+            urlAPI={urlAPI}
+            product={product.productId}
+            productImage={productImage}
+            amount={product.amount}
+          />
+        ))
+      );
+    }
+  }, [shoppingCart, urlAPI]);
+
   return (
     <section>
       <div className="header-section mb-6">
@@ -60,16 +81,7 @@ export const ShoppingBasket = () => {
             <th scope="col" style={{ width: "10%" }}></th>
           </tr>
         </thead>
-        <tbody>
-          {products.map((product) => (
-            <ItemShoppingCart
-              product={product}
-              productImage={productImage}
-              totalPrice={totalPrice}
-              setTotalPrice={setTotalPrice}
-            />
-          ))}
-        </tbody>
+        <tbody>{shoppingCartItems}</tbody>
       </table>
       <div className="total">
         <div className="row">
