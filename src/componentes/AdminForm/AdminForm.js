@@ -1,14 +1,12 @@
 import "./AdminForm.css";
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export const AdminForm = (props) => {
   const { action, toggleForm, toggleFormEdit, productEdited, urlAPI } = props;
-
-  const timestamp = Date.now();
-  const date = new Date(timestamp);
-  console.log(date);
+  const { token } = useContext(AuthContext);
 
   const [productForm, setProductForm] = useState({
     name: "",
@@ -19,7 +17,6 @@ export const AdminForm = (props) => {
     photoUrl: "",
     discount: "",
     stock: "",
-    date: date,
   });
   const inicialData = productEdited
     ? {
@@ -83,11 +80,13 @@ export const AdminForm = (props) => {
     product.append("priceUnit", productForm.priceUnit);
     product.append("unit", productForm.unit);
     product.append("discount", productForm.discount);
-    product.append("date", productForm.date);
     product.append("stock", productForm.stock);
     const resp = await fetch(urlAPI + "products/new-product/", {
       method: "POST",
       body: product,
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     });
     if (resp.ok) {
       return toggleForm();

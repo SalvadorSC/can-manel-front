@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
@@ -6,9 +6,10 @@ import "./Login.css";
 export const Login = (props) => {
   const { fetchGlobal, urlAPI } = props;
   const history = useHistory();
-  const { LogIn } = useContext(AuthContext);
+  const { logIn, setAdminRole } = useContext(AuthContext);
+
   const [loginData, setLoginData] = useState({
-    user: "",
+    username: "",
     password: "",
   });
   const [error, setError] = useState(false);
@@ -18,8 +19,11 @@ export const Login = (props) => {
       [e.target.id]: e.target.value,
     });
   };
+
   const sendFormLogIn = async (e) => {
     e.preventDefault();
+    localStorage.removeItem("token");
+    localStorage.removeItem("admin");
     const resp = await fetchGlobal(urlAPI + "users/login", {
       method: "POST",
       headers: {
@@ -27,16 +31,38 @@ export const Login = (props) => {
       },
       body: JSON.stringify(loginData),
     });
-    if (!resp.ok) {
+    if (resp.error) {
       setError(true);
       return;
     }
     setError(false);
-    const { token } = await resp.json();
-    localStorage.setItem("token", token);
-    LogIn();
-    history.push("/principal");
+    const userInfo = resp;
+    localStorage.setItem("token", userInfo.token);
+    logIn();
+    const isAdmin = await roleAssigment(userInfo);
+    localStorage.setItem("admin", isAdmin);
+    setAdminRole(isAdmin);
+    if (isAdmin) {
+      history.push("/administracio");
+      return;
+    } else {
+      history.push("/principal");
+      return;
+    }
   };
+
+  const roleAssigment = useCallback(
+    async (userInfo) => {
+      const user = await fetchGlobal(`${urlAPI}users/user/${userInfo.userId}`, {
+        headers: {
+          Authorization: "Bearer " + userInfo.token,
+        },
+      });
+      return user.isAdmin;
+    },
+    [fetchGlobal, urlAPI]
+  );
+
   return (
     <>
       <div className="row justify-content-center">
@@ -48,9 +74,10 @@ export const Login = (props) => {
       <div className="login-wrap p-0">
         <form className="signin-form row" onSubmit={sendFormLogIn}>
           <div className="col-md-12 col-lg-6">
-            <label htmlFor="user">Email *</label>
+            <label htmlFor="username">Email *</label>
             <div className="form-group">
               <input
+                id="username"
                 name="user"
                 type="text"
                 className="form-control"
@@ -61,6 +88,7 @@ export const Login = (props) => {
             <label htmlFor="password">Contrasenya *</label>
             <div className="login-options form-group">
               <input
+                id="password"
                 name="password"
                 type="password"
                 className="form-control"
