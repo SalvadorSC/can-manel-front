@@ -9,6 +9,7 @@ export const AdminForm = (props) => {
   const { token } = useContext(AuthContext);
 
   const [productForm, setProductForm] = useState({
+    id: null,
     name: "",
     description: "",
     category: "",
@@ -18,8 +19,9 @@ export const AdminForm = (props) => {
     discount: "",
     stock: "",
   });
-  const inicialData = productEdited
+  /* const inicialData = productEdited
     ? {
+        id: productEdited._id,
         name: productEdited.name,
         description: productEdited.description,
         category: productEdited.category,
@@ -31,6 +33,7 @@ export const AdminForm = (props) => {
         date: productEdited.date,
       }
     : {
+        id: null,
         name: "",
         description: "",
         category: "",
@@ -40,49 +43,60 @@ export const AdminForm = (props) => {
         discount: "",
         stock: "",
       };
-  const [product, setProduct] = useState(inicialData);
+  const [adminProduct, setAdminProduct] = useState(inicialData); */
 
-  /*  const createProduct = async () => {
-    const product = new FormData();
-    product.append("photoUrl", productForm.photoUrl);
-    product.append("name", productForm.name);
-    product.append("category", productForm.category);
-    product.append("description", productForm.description);
-    product.append("priceUnit", productForm.priceUnit);
-    product.append("unit", productForm.unit);
-    product.append("discount", productForm.discount);
-    product.append("date", productForm.date);
-    product.append("stock", productForm.stock);
+  const createProduct = async (product) => {
+    const newProduct = new FormData(product);
+    newProduct.append("photoUrl", productForm.photoUrl);
+    newProduct.append("name", productForm.name);
+    newProduct.append("category", productForm.category);
+    newProduct.append("description", productForm.description);
+    newProduct.append("priceUnit", productForm.priceUnit);
+    newProduct.append("unit", productForm.unit);
+    newProduct.append("discount", productForm.discount);
+    newProduct.append("date", productForm.date);
+    newProduct.append("stock", productForm.stock);
     const resp = await fetch(urlAPI + "products/new-product/", {
       method: "POST",
-      body: product,
+      body: productForm,
+    });
+    if (resp.ok) {
+      toggleForm();
+      return product;
+    }
+    console.log("Something went wrong");
+  };
+
+  /* const editProduct = async (editedProduct) => {
+    editedProduct.set(adminProduct);
+    const resp = await fetch(urlAPI + "products/product/" + editedProduct._id, {
+      method: "PUT",
+      body: adminProduct,
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     });
     if (resp.ok) {
       return toggleForm();
     }
-    console.log("Something went wrong");
-  }; */
-
-  /*   const editProduct = async (editedProduct) => {
-    var formData = new FormData();
-    formData.set("username", "Chris");
   }; */
 
   const sendForm = async (e) => {
     e.preventDefault();
     toggleForm();
-    const product = new FormData();
-    product.append("photoUrl", productForm.photoUrl);
-    product.append("name", productForm.name);
-    product.append("category", productForm.category);
-    product.append("description", productForm.description);
-    product.append("priceUnit", productForm.priceUnit);
-    product.append("unit", productForm.unit);
-    product.append("discount", productForm.discount);
-    product.append("stock", productForm.stock);
+    const newProduct = new FormData();
+    newProduct.append("photoUrl", productForm.photoUrl);
+    newProduct.append("name", productForm.name);
+    newProduct.append("category", productForm.category);
+    newProduct.append("description", productForm.description);
+    newProduct.append("priceUnit", productForm.priceUnit);
+    newProduct.append("unit", productForm.unit);
+    newProduct.append("discount", productForm.discount);
+    newProduct.append("date", productForm.date);
+    newProduct.append("stock", productForm.stock);
     const resp = await fetch(urlAPI + "products/new-product/", {
       method: "POST",
-      body: product,
+      body: newProduct,
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -125,6 +139,7 @@ export const AdminForm = (props) => {
                 name="attachment[]"
                 multiple="multiple"
                 onChange={setData}
+                // value={adminProduct.photoUrl}
               />
             </div>
           ) : (
@@ -138,7 +153,12 @@ export const AdminForm = (props) => {
                 <div className="content-details fadeIn-top">
                   <p>Seleccionar imatge</p>
                 </div>
-                <input id="photoUrl" type="file" onChange={setData} />
+                <input
+                  id="photoUrl"
+                  type="file"
+                  onChange={setData}
+                  // value={adminProduct.photoUrl}
+                />
               </label>
             </div>
           )}
@@ -149,11 +169,17 @@ export const AdminForm = (props) => {
               className="mb-4 d-block"
               id="name"
               onChange={setData}
+              // value={adminProduct.name}
             />
             <label className="col-form-label mr-1" htmlFor="category">
               Categoria:
             </label>
-            <select className="" id="category" onChange={setData}>
+            <select
+              className=""
+              id="category"
+              onChange={setData}
+              // value={adminProduct.category}
+            >
               <option value="all" defaultValue>
                 Totes les categories
               </option>
@@ -169,17 +195,27 @@ export const AdminForm = (props) => {
               rows="3"
               cols="25"
               onChange={setData}
+              // value={adminProduct.description}
             ></textarea>
           </div>
         </div>
         <div className="item-price row text-center mt-3">
           <div className="col-3 form-group">
             <label htmlFor="priceUnit">Preu per unitat:</label>
-            <input type="text" id="priceUnit" onChange={setData} />€
+            <input
+              type="text"
+              id="priceUnit"
+              onChange={setData}
+              // value={adminProduct.priceUnit}
+            />
+            €
           </div>
           <div className="col-3 form-group">
             <label htmlFor="unit">Unitat:</label>
-            <select id="unit" onChange={setData}>
+            <select
+              id="unit"
+              onChange={setData} /* value={adminProduct.unit} */
+            >
               <option value="all" defaultValue>
                 Totes les Unitats
               </option>
@@ -190,11 +226,22 @@ export const AdminForm = (props) => {
           </div>
           <div className="col-3 form-group">
             <label htmlFor="stock">Stock:</label>
-            <input type="text" id="stock" onChange={setData} />
+            <input
+              type="text"
+              id="stock"
+              onChange={setData}
+              // value={adminProduct.stock}
+            />
           </div>
           <div className="col-3 form-group">
             <label htmlFor="discount">Descompte:</label>
-            <input type="text" id="discount" onChange={setData} />%
+            <input
+              type="text"
+              id="discount"
+              onChange={setData}
+              // value={adminProduct.discount}
+            />
+            %
           </div>
         </div>
         <div className="text-right">

@@ -16,15 +16,15 @@ export const AdminProductList = (props) => {
     setFormOpen(!formOpen);
   };
 
-  const deleteProduct = async (id) => {
-    const resp = await fetchGlobal(urlAPI + "products/product/" + id, {
+  const deleteProduct = async (item) => {
+    const resp = await fetchGlobal(urlAPI + "products/product/" + item._id, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,
       },
     });
     if (resp.ok) {
-      setProducts(products.filter((product) => product.id !== id));
+      setProducts(products.filter((product) => product._id !== item._id));
     }
   };
 

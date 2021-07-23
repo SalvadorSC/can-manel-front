@@ -23,26 +23,6 @@
   border-radius: 5px;
 }
 
-/* EDIT/CREATE FORM */
-
-.container-create {
-  padding: 20px;
-  margin-bottom: 30px;
-  border: 1px solid black;
-  background-color: var(--color-primary);
-  position: relative;
-}
-.container-create input,
-textarea {
-  background-color: #f0f0f0;
-}
-.icon-close-form {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  cursor: pointer;
-}
-
 /* EFFECTS IMAGE FORM */
 
 .content input {
