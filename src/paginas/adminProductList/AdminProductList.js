@@ -7,7 +7,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 
 export const AdminProductList = (props) => {
-  const { products, setProducts, urlAPI, fetchGlobal } = props;
+  const { products, setProducts, fetchGlobal } = props;
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
   const [productEdited, setProductEdited] = useState(null);
@@ -15,6 +15,8 @@ export const AdminProductList = (props) => {
   const toggleForm = () => {
     setFormOpen(!formOpen);
   };
+
+  const urlAPI = process.env.REACT_APP_URL_API;
 
   const deleteProduct = async (item) => {
     const resp = await fetchGlobal(urlAPI + "products/product/" + item._id, {

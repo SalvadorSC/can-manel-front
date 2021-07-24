@@ -7,9 +7,9 @@ import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
 
 export const ShoppingBasket = (props) => {
-  const { urlAPI } = props;
   const { token } = useContext(AuthContext);
   const [totalPrice, setTotalPrice] = useState(0);
+  const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
   const [shoppingCart, setShoppingCart] = useState({});
   const [shoppingCartItems, setShoppingCartItems] = useState([]);

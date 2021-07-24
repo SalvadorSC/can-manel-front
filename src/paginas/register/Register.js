@@ -4,14 +4,14 @@ import { useForm } from "react-hook-form";
 import "./Register.css";
 import { useFetch } from "../../hooks/useFetch";
 
-export const Register = () => {
-  const urlAPI = process.env.REACT_APP_URL_API;
-  const { fetchGlobal } = useFetch(urlAPI);
+export const Register = (props) => {
+  const { fetchGlobal } = props;
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+
   const history = useHistory();
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -22,6 +22,15 @@ export const Register = () => {
     email: "",
     phone: "",
   });
+
+  const urlAPI = process.env.REACT_APP_URL_API;
+
+  const setData = (e) => {
+    setRegistrationData({
+      ...registrationData,
+      [e.target.id]: e.target.value,
+    });
+  };
 
   const sendUserRegister = async (data) => {
     const {
