@@ -77,7 +77,7 @@ function App() {
                   <UserProfile />
                 </Route>
                 <Route path="/registre" exact>
-                  <Register />
+                  <Register urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
                 </Route>
                 <Route path="/llista-productes" exact>
                   <ProductList
@@ -134,7 +134,7 @@ function App() {
                   <UserProfile />
                 </Route>
                 <Route path="/registre" exact>
-                  <Register />
+                  <Register urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
                 </Route>
                 <Route path="/llista-productes" exact>
                   <ProductList

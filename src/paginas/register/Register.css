@@ -6,8 +6,29 @@
   font-size: 12px;
 }
 
+.log-in-register-text {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.log-in-register-text:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.general-error-register {
+  color: var(--color-red);
+}
+
 /* .signin-form, */
 /* .login-wrap {
   width: 40vw;
 }
  */
+
+@media (min-width: 1024px) {
+  .log-in-register-text:hover {
+    color: var(--color-border);
+    text-decoration: underline;
+  }
+}

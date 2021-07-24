@@ -1,7 +1,42 @@
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import "./Register.css";
 
-export const Register = () => {
+export const Register = (props) => {
+  const { fetchGlobal, urlAPI } = props;
+  const history = useHistory();
+  const [error, setError] = useState(false);
+  const [registrationData, setRegistrationData] = useState({
+    username: "",
+    password: "",
+    surnames: "",
+    email: "",
+    phone: "",
+  });
+
+  const setData = (e) => {
+    setRegistrationData({
+      ...registrationData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const sendUserRegister = async (e) => {
+    e.preventDefault();
+    const resp = await fetchGlobal(urlAPI + "users/new-user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(registrationData),
+    });
+    if (!resp.error) {
+      setError(true);
+      return;
+    }
+    history.push("/iniciar-sessio");
+  };
+
   return (
     <>
       <div className="row justify-content-center">
@@ -13,26 +48,30 @@ export const Register = () => {
       <div className="d-flex justify-content-center">
         <div>
           <div className="login-wrap p-0">
-            <form className="signin-form row">
+            <form className="signin-form row" onSubmit={sendUserRegister}>
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="nom">Nom *</label>
+                <label htmlFor="username">Nom *</label>
                 <div className="form-group">
                   <input
-                    name="nom"
+                    id="username"
+                    name="username"
                     type="text"
                     className="form-control"
                     required
+                    onChange={setData}
                   />
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="cognom">Cognoms *</label>
+                <label htmlFor="surnames">Cognoms *</label>
                 <div className="form-group">
                   <input
-                    name="cognom"
+                    id="surnames"
+                    name="surnames"
                     type="text"
                     className="form-control"
                     required
+                    onChange={setData}
                   />
                 </div>
               </div>
@@ -41,18 +80,21 @@ export const Register = () => {
                 <label htmlFor="email">Email *</label>
                 <div className="form-group">
                   <input
+                    id="email"
                     name="email"
                     type="text"
                     className="form-control"
                     required
+                    onChange={setData}
                   />
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="email-confirmar">Confirmació d'email *</label>
+                <label htmlFor="confirmEmail">Confirmació d'email *</label>
                 <div className="form-group">
                   <input
-                    name="email-confirmar"
+                    id="confirmEmail"
+                    name="confirmEmail"
                     type="text"
                     className="form-control"
                     required
@@ -60,22 +102,25 @@ export const Register = () => {
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="contrasenya">Contrasenya *</label>
+                <label htmlFor="password">Contrasenya *</label>
                 <div className="login-options form-group">
                   <input
+                    id="password"
                     name="contrasenya"
                     type="password"
                     className="form-control"
                     required
+                    onChange={setData}
                   />
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="contrasenya-confirmar">
+                <label htmlFor="confirmPassword">
                   Confirmació de contrasenya *
                 </label>
                 <div className="login-options form-group">
                   <input
+                    id="confirmPassword"
                     name="contrasenya-confirmar"
                     type="password"
                     className="form-control"
@@ -84,15 +129,28 @@ export const Register = () => {
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="telefon">Teléfon</label>
+                <label htmlFor="phone">Teléfon</label>
                 <div className="form-group">
-                  <input name="telefon" type="tel" className="form-control" />
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    className="form-control"
+                    onChange={setData}
+                  />
                 </div>
               </div>
+              {error && (
+                <p className="general-error-register">
+                  Alguna cosa no ha anat bé!
+                </p>
+              )}
               <div className="col-md-12 col-lg-6">
                 <div className="d-flex justify-content-end mb-3">
                   <span className="mr-2">Ja tens un usuari?</span>
-                  <Link to="/iniciar-sessio">Inicia sessió</Link>
+                  <Link className="log-in-register-text" to="/iniciar-sessio">
+                    Inicia sessió
+                  </Link>
                 </div>
                 <div className="form-group text-center">
                   <button
