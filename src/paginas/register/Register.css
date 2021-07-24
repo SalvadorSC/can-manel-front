@@ -18,6 +18,14 @@
 
 .general-error-register {
   color: var(--color-red);
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.form-errors-register {
+  color: var(--color-red);
+  font-size: 13px;
+  margin-top: 5px;
 }
 
 /* .signin-form, */
