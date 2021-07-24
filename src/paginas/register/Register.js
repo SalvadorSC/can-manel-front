@@ -1,11 +1,21 @@
-import { useState } from "react";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "./Register.css";
 
 export const Register = (props) => {
   const { fetchGlobal, urlAPI } = props;
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+  } = useForm();
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
   const history = useHistory();
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [registrationData, setRegistrationData] = useState({
     username: "",
     password: "",
@@ -21,20 +31,57 @@ export const Register = (props) => {
     });
   };
 
-  const sendUserRegister = async (e) => {
-    e.preventDefault();
-    const resp = await fetchGlobal(urlAPI + "users/new-user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registrationData),
-    });
-    if (!resp.error) {
+  const checkPassword = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+  const checkEmail = (e) => {
+    setConfirmEmail(e.target.value);
+  };
+
+  const sendUserRegister = async (data) => {
+    const {
+      username,
+      surnames,
+      password,
+      confirmPassword,
+      email,
+      confirmEmail,
+      phone,
+      name,
+    } = data;
+    if (password === confirmPassword && email === confirmEmail) {
+      try {
+        const resp = await fetchGlobal(urlAPI + "users/new-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            username,
+            surnames,
+            password,
+            phone,
+            email,
+          }),
+        });
+        setError(false);
+        history.push("/iniciar-sessio");
+        if (!resp.ok) {
+          setError(true);
+          setErrorMessage("Alguna cosa no ha anat bé, torna-ho a provar!");
+          return;
+        }
+      } catch (err) {
+        setError(true);
+      }
+    } else if (password !== confirmPassword) {
       setError(true);
-      return;
+      setErrorMessage("La contrasenya no coincideix!");
+    } else if (email !== confirmEmail) {
+      setError(true);
+      setErrorMessage("L'email no coincideix!");
     }
-    history.push("/iniciar-sessio");
   };
 
   return (
@@ -48,18 +95,32 @@ export const Register = (props) => {
       <div className="d-flex justify-content-center">
         <div>
           <div className="login-wrap p-0">
-            <form className="signin-form row" onSubmit={sendUserRegister}>
+            <form
+              className="signin-form row"
+              noValidate
+              onSubmit={handleSubmit(sendUserRegister)}
+            >
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="username">Nom *</label>
+                <label htmlFor="name">Nom *</label>
                 <div className="form-group">
                   <input
-                    id="username"
-                    name="username"
+                    id="name"
+                    name="name"
                     type="text"
                     className="form-control"
-                    required
                     onChange={setData}
+                    {...register("name", {
+                      required: {
+                        value: true,
+                        message: "Aquest camp és obligatori",
+                      },
+                    })}
                   />
+                  {errors.username && (
+                    <p className="form-errors-register">
+                      {errors.username.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
@@ -70,9 +131,42 @@ export const Register = (props) => {
                     name="surnames"
                     type="text"
                     className="form-control"
-                    required
                     onChange={setData}
+                    {...register("surnames", {
+                      required: {
+                        value: true,
+                        message: "Aquest camp és obligatori",
+                      },
+                    })}
                   />
+                  {errors.surnames && (
+                    <p className="form-errors-register">
+                      {errors.surnames.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="col-md-12 col-lg-6">
+                <label htmlFor="username">Nom d'usuari *</label>
+                <div className="form-group">
+                  <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    className="form-control"
+                    onChange={setData}
+                    {...register("username", {
+                      required: {
+                        value: true,
+                        message: "Aquest camp és obligatori",
+                      },
+                    })}
+                  />
+                  {errors.username && (
+                    <p className="form-errors-register">
+                      {errors.username.message}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -84,9 +178,19 @@ export const Register = (props) => {
                     name="email"
                     type="text"
                     className="form-control"
-                    required
                     onChange={setData}
+                    {...register("email", {
+                      required: {
+                        value: true,
+                        message: "Aquest camp és obligatori",
+                      },
+                    })}
                   />
+                  {errors.email && (
+                    <p className="form-errors-register">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
@@ -97,8 +201,19 @@ export const Register = (props) => {
                     name="confirmEmail"
                     type="text"
                     className="form-control"
-                    required
+                    onChange={checkEmail}
+                    {...register("confirmEmail", {
+                      required: {
+                        value: true,
+                        message: "Aquest camp és obligatori",
+                      },
+                    })}
                   />
+                  {errors.confirmEmail && (
+                    <p className="form-errors-register">
+                      {errors.confirmEmail.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
@@ -109,9 +224,24 @@ export const Register = (props) => {
                     name="contrasenya"
                     type="password"
                     className="form-control"
-                    required
                     onChange={setData}
+                    {...register("password", {
+                      required: {
+                        value: true,
+                        message: "Aquest camp és obligatori",
+                      },
+                      minLength: {
+                        value: 8,
+                        message:
+                          "La contrasenya ha de tenir almenys 8 caràcters",
+                      },
+                    })}
                   />
+                  {errors.password && (
+                    <p className="form-errors-register">
+                      {errors.password.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
@@ -124,12 +254,23 @@ export const Register = (props) => {
                     name="contrasenya-confirmar"
                     type="password"
                     className="form-control"
-                    required
+                    onChange={checkPassword}
+                    {...register("confirmPassword", {
+                      required: {
+                        value: true,
+                        message: "Aquest camp és obligatori",
+                      },
+                    })}
                   />
+                  {errors.confirmPassword && (
+                    <p className="form-errors-register">
+                      {errors.confirmPassword.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
-                <label htmlFor="phone">Teléfon</label>
+                <label htmlFor="phone">Teléfon *</label>
                 <div className="form-group">
                   <input
                     id="phone"
@@ -137,14 +278,30 @@ export const Register = (props) => {
                     type="tel"
                     className="form-control"
                     onChange={setData}
+                    {...register("phone", {
+                      required: true,
+                      minLength: {
+                        value: 9,
+                        message: "El número de telèfon ha de tenir 9 dígits",
+                      },
+                      maxLength: {
+                        value: 9,
+                        message: "El número de telèfon ha de tenir 9 dígits",
+                      },
+                    })}
                   />
+                  {errors.phone && (
+                    <p className="form-errors-register">
+                      {errors.phone.message}
+                    </p>
+                  )}
                 </div>
               </div>
-              {error && (
-                <p className="general-error-register">
-                  Alguna cosa no ha anat bé!
-                </p>
-              )}
+              <div className="col">
+                {error && (
+                  <p className="general-error-register">{errorMessage}</p>
+                )}
+              </div>
               <div className="col-md-12 col-lg-6">
                 <div className="d-flex justify-content-end mb-3">
                   <span className="mr-2">Ja tens un usuari?</span>
