@@ -8,12 +8,13 @@ export const BasketList = (props) => {
   const {
     setNumeroProductes,
     numeroProductes,
-    urlAPI,
     fetchGlobal,
     setNProducts,
     nProducts,
   } = props;
   const [baskets, setBaskets] = useState([]);
+
+  const urlAPI = process.env.REACT_APP_URL_API;
 
   const loadBaskets = useCallback(async () => {
     const productsAPI = await fetchGlobal(`${urlAPI}baskets/list`);

@@ -4,9 +4,11 @@ import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 
 export const Login = (props) => {
-  const { fetchGlobal, urlAPI } = props;
+  const { fetchGlobal } = props;
   const history = useHistory();
   const { logIn, setAdminRole } = useContext(AuthContext);
+
+  const urlAPI = process.env.REACT_APP_URL_API;
 
   const [loginData, setLoginData] = useState({
     username: "",

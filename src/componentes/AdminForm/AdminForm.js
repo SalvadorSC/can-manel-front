@@ -5,8 +5,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export const AdminForm = (props) => {
-  const { action, toggleForm, toggleFormEdit, productEdited, urlAPI } = props;
+  const { action, toggleForm, toggleFormEdit, productEdited } = props;
   const { token } = useContext(AuthContext);
+
+  const urlAPI = process.env.REACT_APP_URL_API;
 
   const [productForm, setProductForm] = useState({
     id: null,
@@ -56,10 +58,13 @@ export const AdminForm = (props) => {
     newProduct.append("discount", productForm.discount);
     newProduct.append("date", productForm.date);
     newProduct.append("stock", productForm.stock);
-    const resp = await fetch(urlAPI + "products/new-product/", {
-      method: "POST",
-      body: productForm,
-    });
+    const resp = await fetch(
+      "https://can-mateu.herokuapp.com/products/new-product/",
+      {
+        method: "POST",
+        body: productForm,
+      }
+    );
     if (resp.ok) {
       toggleForm();
       return product;

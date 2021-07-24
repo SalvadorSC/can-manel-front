@@ -3,7 +3,7 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import "./Register.css";
 
 export const Register = (props) => {
-  const { fetchGlobal, urlAPI } = props;
+  const { fetchGlobal } = props;
   const history = useHistory();
   const [error, setError] = useState(false);
   const [registrationData, setRegistrationData] = useState({
@@ -13,6 +13,8 @@ export const Register = (props) => {
     email: "",
     phone: "",
   });
+
+  const urlAPI = process.env.REACT_APP_URL_API;
 
   const setData = (e) => {
     setRegistrationData({

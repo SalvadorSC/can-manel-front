@@ -68,7 +68,7 @@ function App() {
                   <AboutUs />
                 </Route>
                 <Route path="/iniciar-sessio" exact>
-                  <Login urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
+                  <Login fetchGlobal={fetchGlobal} />
                 </Route>
                 <Route path="/tancar-sessio" exact>
                   <LogOut />
@@ -77,7 +77,7 @@ function App() {
                   <UserProfile />
                 </Route>
                 <Route path="/registre" exact>
-                  <Register urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
+                  <Register fetchGlobal={fetchGlobal} />
                 </Route>
                 <Route path="/llista-productes" exact>
                   <ProductList
@@ -102,14 +102,13 @@ function App() {
                 </Route>
                 <Route path="/llista-cistelles" exact>
                   <BasketList
-                    urlAPI={urlAPI}
                     fetchGlobal={fetchGlobal}
                     setNProducts={setNProducts}
                     nProducts={nProducts}
                   />
                 </Route>
                 <Route path="/carro-compra" exact>
-                  <ShoppingBasket products={products} urlAPI={urlAPI} />
+                  <ShoppingBasket products={products} />
                 </Route>
                 <Route path="/administracio" exact>
                   <ProtectedRoute>
@@ -125,7 +124,7 @@ function App() {
                   <AboutUs />
                 </Route>
                 <Route path="/iniciar-sessio" exact>
-                  <Login urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
+                  <Login fetchGlobal={fetchGlobal} />
                 </Route>
                 <Route path="/tancar-sessio" exact>
                   <Login />
@@ -134,7 +133,7 @@ function App() {
                   <UserProfile />
                 </Route>
                 <Route path="/registre" exact>
-                  <Register urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
+                  <Register fetchGlobal={fetchGlobal} />
                 </Route>
                 <Route path="/llista-productes" exact>
                   <ProductList
@@ -159,7 +158,6 @@ function App() {
                 </Route>
                 <Route path="/llista-cistelles" exact>
                   <BasketList
-                    urlAPI={urlAPI}
                     fetchGlobal={fetchGlobal}
                     setNProducts={setNProducts}
                     nProducts={nProducts}
@@ -168,7 +166,6 @@ function App() {
                 <Route path="/carro-compra" exact>
                   <ShoppingBasket
                     products={products}
-                    urlAPI={urlAPI}
                     setNProducts={setNProducts}
                     nProducts={nProducts}
                   />
@@ -184,7 +181,6 @@ function App() {
                       products={products}
                       setProducts={setProducts}
                       fetchGlobal={fetchGlobal}
-                      urlAPI={urlAPI}
                     />
                   </ProtectedRoute>
                 </Route>
