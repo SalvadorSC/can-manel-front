@@ -48,7 +48,9 @@
 .hamburguer-button {
   background-color: var(--color-primary);
   border-radius: 5px;
-  padding: 0;
+  padding-block: 5px;
+  padding-inline: 8px;
+  border: 1px solid var(--color-border);
 }
 .hamburguer-button.btn:focus,
 .hamburguer-button.btn:focus-visible {

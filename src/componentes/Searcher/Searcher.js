@@ -1,5 +1,5 @@
 import "./Searcher.css";
-import { Fade as Hamburger } from "hamburger-react";
+import { FaSearch, FaTimes } from "react-icons/fa";
 import { CSSTransition } from "react-transition-group";
 import { useRef, useState } from "react";
 
@@ -11,13 +11,20 @@ export const Searcher = () => {
     <>
       <aside className="searcher">
         <button className="hamburguer-button btn" type="button">
-          <Hamburger
-            toggled={openSearcher}
-            toggle={setOpenSearcher}
-            direction="right"
-            color="#fff"
-            size={20}
-          />
+          {!openSearcher && (
+            <FaSearch
+              onClick={() => setOpenSearcher(!openSearcher)}
+              color="#fff"
+              size={20}
+            />
+          )}
+          {openSearcher && (
+            <FaTimes
+              onClick={() => setOpenSearcher(!openSearcher)}
+              color="#fff"
+              size={20}
+            />
+          )}
         </button>
         <CSSTransition
           in={openSearcher}
