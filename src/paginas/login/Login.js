@@ -100,9 +100,13 @@ export const Login = (props) => {
             </div>
             {error && <p className="error-login-data">Dades incorrectes</p>}
 
-            <div className="d-flex justify-content-between mb-3">
+            <div className="d-flex align-items-center mb-3">
+              <input
+                type="checkbox"
+                name="recordar-contrasenya"
+                className="mr-2"
+              />
               <span className="mr-2">Recorda la contrasenya</span>
-              <input type="checkbox" name="recordar-contrasenya" className="" />
             </div>
             <div className="form-group text-center">
               <button
