@@ -68,7 +68,7 @@ function App() {
                   <AboutUs />
                 </Route>
                 <Route path="/iniciar-sessio" exact>
-                  <Login urlAPI={urlAPI} fetchGlobal={fetchGlobal} />
+                  <Login />
                 </Route>
                 <Route path="/tancar-sessio" exact>
                   <LogOut />

@@ -2,17 +2,16 @@ import { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "./Register.css";
+import { useFetch } from "../../hooks/useFetch";
 
-export const Register = (props) => {
-  const { fetchGlobal, urlAPI } = props;
+export const Register = () => {
+  const urlAPI = process.env.REACT_APP_URL_API;
+  const { fetchGlobal } = useFetch(urlAPI);
   const {
     register,
     formState: { errors },
     handleSubmit,
-    watch,
   } = useForm();
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [confirmEmail, setConfirmEmail] = useState("");
   const history = useHistory();
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -23,20 +22,6 @@ export const Register = (props) => {
     email: "",
     phone: "",
   });
-
-  const setData = (e) => {
-    setRegistrationData({
-      ...registrationData,
-      [e.target.id]: e.target.value,
-    });
-  };
-
-  const checkPassword = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-  const checkEmail = (e) => {
-    setConfirmEmail(e.target.value);
-  };
 
   const sendUserRegister = async (data) => {
     const {
@@ -108,7 +93,6 @@ export const Register = (props) => {
                     name="name"
                     type="text"
                     className="form-control"
-                    onChange={setData}
                     {...register("name", {
                       required: {
                         value: true,
@@ -131,7 +115,6 @@ export const Register = (props) => {
                     name="surnames"
                     type="text"
                     className="form-control"
-                    onChange={setData}
                     {...register("surnames", {
                       required: {
                         value: true,
@@ -154,7 +137,6 @@ export const Register = (props) => {
                     name="username"
                     type="text"
                     className="form-control"
-                    onChange={setData}
                     {...register("username", {
                       required: {
                         value: true,
@@ -178,7 +160,6 @@ export const Register = (props) => {
                     name="email"
                     type="text"
                     className="form-control"
-                    onChange={setData}
                     {...register("email", {
                       required: {
                         value: true,
@@ -201,7 +182,6 @@ export const Register = (props) => {
                     name="confirmEmail"
                     type="text"
                     className="form-control"
-                    onChange={checkEmail}
                     {...register("confirmEmail", {
                       required: {
                         value: true,
@@ -224,7 +204,6 @@ export const Register = (props) => {
                     name="contrasenya"
                     type="password"
                     className="form-control"
-                    onChange={setData}
                     {...register("password", {
                       required: {
                         value: true,
@@ -254,7 +233,6 @@ export const Register = (props) => {
                     name="contrasenya-confirmar"
                     type="password"
                     className="form-control"
-                    onChange={checkPassword}
                     {...register("confirmPassword", {
                       required: {
                         value: true,
@@ -277,7 +255,6 @@ export const Register = (props) => {
                     name="phone"
                     type="tel"
                     className="form-control"
-                    onChange={setData}
                     {...register("phone", {
                       required: true,
                       minLength: {
