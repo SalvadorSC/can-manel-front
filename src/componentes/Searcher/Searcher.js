@@ -10,21 +10,13 @@ export const Searcher = () => {
   return (
     <>
       <aside className="searcher">
-        <button className="hamburguer-button btn" type="button">
-          {!openSearcher && (
-            <FaSearch
-              onClick={() => setOpenSearcher(!openSearcher)}
-              color="#fff"
-              size={20}
-            />
-          )}
-          {openSearcher && (
-            <FaTimes
-              onClick={() => setOpenSearcher(!openSearcher)}
-              color="#fff"
-              size={20}
-            />
-          )}
+        <button
+          className="hamburguer-button btn"
+          type="button"
+          onClick={() => setOpenSearcher(!openSearcher)}
+        >
+          {!openSearcher && <FaSearch color="#fff" size={20} />}
+          {openSearcher && <FaTimes color="#fff" size={20} />}
         </button>
         <CSSTransition
           in={openSearcher}
