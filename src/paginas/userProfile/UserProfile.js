@@ -1,11 +1,33 @@
-import { useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { useFetch } from "../../hooks/useFetch";
 import "./UserProfile.css";
 
 export const UserProfile = () => {
   const [confirmarContrasenya, setConfirmarContrasenya] = useState(false);
   const [mostrarInfoEditar, setMostrarInfoEditar] = useState(true);
+  const [user, setUser] = useState([]);
+  const { token } = useContext(AuthContext);
+  const urlAPI = process.env.REACT_APP_URL_API;
+  const { fetchGlobal } = useFetch(urlAPI);
+
+  const loadUserInfo = useCallback(async () => {
+    const userInfo = await fetchGlobal(`${urlAPI}users/my-user`, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    if (userInfo) {
+      setUser(userInfo);
+    }
+  }, [fetchGlobal, token, urlAPI]);
+
+  useEffect(() => {
+    loadUserInfo();
+  }, [loadUserInfo]);
+
   const confirmacionContrasenya = (
     <>
       <div className="password-confirmation">
@@ -48,19 +70,19 @@ export const UserProfile = () => {
       <div className="col-md-8 col-sm-12 mb-5">
         <div className=" d-flex justify-content-between">
           <p>Nom:</p>
-          <p>Salvador</p>
+          <p>{user.name}</p>
         </div>
         <div className=" d-flex justify-content-between">
           <p>Cognoms:</p>
-          <p>Sanchez Campos</p>
+          <p>{user.surnames}</p>
         </div>
         <div className=" d-flex justify-content-between">
           <p>Adreça electrónica:</p>
-          <p>sakjdhbash@gmail.com</p>
+          <p>{user.email}</p>
         </div>
         <div className=" d-flex justify-content-between">
           <p>Telefon:</p>
-          <p>+34 662 21 62 82</p>
+          <p>{user.phone}</p>
         </div>
         <button
           type="button"
