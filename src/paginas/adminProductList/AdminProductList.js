@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { AdminProduct } from "../../componentes/AdminProduct/AdminProduct";
 import "./AdminProductList.css";
@@ -7,16 +7,27 @@ import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 
 export const AdminProductList = (props) => {
-  const { products, setProducts, fetchGlobal } = props;
+  const { fetchGlobal } = props;
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
   const [productEdited, setProductEdited] = useState(null);
+  const [products, setProducts] = useState([]);
   const { token } = useContext(AuthContext);
   const toggleForm = () => {
     setFormOpen(!formOpen);
   };
-
   const urlAPI = process.env.REACT_APP_URL_API;
+
+  const loadProducts = useCallback(async () => {
+    const productsAPI = await fetchGlobal(`${urlAPI}products/list`);
+    if (productsAPI) {
+      setProducts(productsAPI);
+    }
+  }, [fetchGlobal, urlAPI]);
+
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
 
   const deleteProduct = async (item) => {
     const resp = await fetchGlobal(urlAPI + "products/product/" + item._id, {
@@ -121,7 +132,5 @@ export const AdminProductList = (props) => {
 };
 
 AdminProductList.propTypes = {
-  products: PropTypes.array.isRequired,
-  setProducts: PropTypes.func.isRequired,
   fetchGlobal: PropTypes.func.isRequired,
 };

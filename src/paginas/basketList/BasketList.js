@@ -5,7 +5,8 @@ import { BasketCard } from "../../componentes/BasketCard/BasketCard";
 import { useCallback, useEffect, useState } from "react";
 
 export const BasketList = (props) => {
-  const { fetchGlobal, setNProducts, nProducts } = props;
+  const { fetchGlobal, shoppingCart, setShoppingCart, setProductsInCart } =
+    props;
   const [baskets, setBaskets] = useState([]);
 
   const urlAPI = process.env.REACT_APP_URL_API;
@@ -28,9 +29,10 @@ export const BasketList = (props) => {
           {baskets.map((basket) => (
             <BasketCard
               basket={basket}
-              setNProducts={setNProducts}
               key={basket._id}
-              nProducts={nProducts}
+              shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
+              setProductsInCart={setProductsInCart}
             />
           ))}
         </div>

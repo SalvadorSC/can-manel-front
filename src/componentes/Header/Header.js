@@ -8,7 +8,7 @@ import { CSSTransition } from "react-transition-group";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Header = (props) => {
-  const { setNProducts, nProducts } = props;
+  const { productsInCart } = props;
 
   const [open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
@@ -141,8 +141,8 @@ export const Header = (props) => {
                 >
                   <div className="d-flex">
                     <FaShoppingBasket />
-                    {nProducts >= 0 && (
-                      <div className="numero-productes">{nProducts}</div>
+                    {productsInCart >= 0 && (
+                      <div className="numero-productes">{productsInCart}</div>
                     )}
                   </div>
                 </Link>

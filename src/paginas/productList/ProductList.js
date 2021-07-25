@@ -2,9 +2,25 @@ import "./ProductList.css";
 import PropTypes from "prop-types";
 import { Searcher } from "../../componentes/Searcher/Searcher";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
+import { useCallback, useEffect, useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
 
 export const ProductList = (props) => {
-  const { setNProducts, nProducts, products } = props;
+  const { shoppingCart, setShoppingCart, setProductsInCart } = props;
+  const [products, setProducts] = useState([]);
+  const urlAPI = process.env.REACT_APP_URL_API;
+  const { fetchGlobal } = useFetch(urlAPI);
+
+  const loadProducts = useCallback(async () => {
+    const productsAPI = await fetchGlobal(`${urlAPI}products/list`);
+    if (productsAPI) {
+      setProducts(productsAPI);
+    }
+  }, [fetchGlobal, urlAPI]);
+
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
 
   return (
     <>
@@ -14,17 +30,14 @@ export const ProductList = (props) => {
           {products.map((product) => (
             <ProductCard
               product={product}
-              setNProducts={setNProducts}
-              nProducts={nProducts}
               key={product._id}
+              shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
+              setProductsInCart={setProductsInCart}
             />
           ))}
         </div>
       </section>
     </>
   );
-};
-
-ProductList.propTypes = {
-  products: PropTypes.array.isRequired,
 };

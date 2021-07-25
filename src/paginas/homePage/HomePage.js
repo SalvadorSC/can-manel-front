@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
 import "./HomePage.css";
 
-export const HomePage = (props) => {
-  const { setNProducts, nProducts, products } = props;
-
+export const HomePage = () => {
   return (
     <main>
       <div>
@@ -37,15 +35,7 @@ export const HomePage = (props) => {
           </div>
         </div>
       </div>
-      <FeaturedProducts
-        setNProducts={setNProducts}
-        nProducts={nProducts}
-        products={products}
-      />
+      <FeaturedProducts />
     </main>
   );
-};
-
-HomePage.propTypes = {
-  products: PropTypes.array.isRequired,
 };
