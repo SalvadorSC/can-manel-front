@@ -13,35 +13,37 @@ export const Footer = () => {
               </h6>
               <ul className="list-unstyled footer-link mt-4">
                 <li>
-                  <a href="link">Pages</a>
+                  <a href="link">Pàgines</a>
                 </li>
                 <li>
-                  <a href="link">Our Team</a>
+                  <a href="link">El nostre equip</a>
                 </li>
                 <li>
-                  <a href="link">Feuchers</a>
+                  <a href="link">Activitats</a>
                 </li>
                 <li>
-                  <a href="link">Pricing</a>
+                  <a href="link">Projectes</a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col-lg-4">
             <div className="">
-              <h6 className="footer-heading text-uppercase text-white">Help</h6>
+              <h6 className="footer-heading text-uppercase text-white">
+                Ajuda
+              </h6>
               <ul className="list-unstyled footer-link mt-4">
                 <li>
-                  <a href="link">Sign Up </a>
+                  <a href="link">Registra't</a>
                 </li>
                 <li>
-                  <a href="link">Login</a>
+                  <a href="link">Inicia sessió</a>
                 </li>
                 <li>
-                  <a href="link">Terms of Services</a>
+                  <a href="link">Condiciones de l'acuerd</a>
                 </li>
                 <li>
-                  <a href="link">Privacy Policy</a>
+                  <a href="link">Política de privacitat</a>
                 </li>
               </ul>
             </div>
