@@ -7,11 +7,12 @@ import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
 
 export const ShoppingBasket = (props) => {
-  const { shoppingCart, setShoppingCart } = props;
+  const { shoppingCart, setProductsInCart } = props;
   const { token } = useContext(AuthContext);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
   const [shoppingCartItems, setShoppingCartItems] = useState([]);
+  const { totalPrice, setTotalPrice } = useContext(AuthContext);
 
   useEffect(() => {
     if (shoppingCart.products && shoppingCart.products !== null) {
@@ -22,12 +23,13 @@ export const ShoppingBasket = (props) => {
             product={product}
             token={token}
             shoppingCart={shoppingCart}
-            setShoppingCart={setShoppingCart}
+            setProductsInCart={setProductsInCart}
           />
         ))
       );
+      setTotalPrice(shoppingCart.price);
     }
-  }, [setShoppingCart, shoppingCart, token, urlAPI]);
+  }, [setProductsInCart, setTotalPrice, shoppingCart, token, urlAPI]);
 
   return (
     <section>
@@ -68,7 +70,7 @@ export const ShoppingBasket = (props) => {
         <div className="row">
           <div className="col-8">TOTAL</div>
           <div className="col-4 text-right">
-            {Math.round(shoppingCart.price * 100) / 100}€
+            {Math.round(totalPrice * 100) / 100}€
           </div>
         </div>
       </div>

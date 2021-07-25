@@ -32,7 +32,11 @@ import { AuthContext } from "./context/AuthContext";
 function App() {
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
-  const [shoppingCart, setShoppingCart] = useState({});
+  const [shoppingCart, setShoppingCart] = useState({
+    _id: "",
+    price: 0,
+    products: [],
+  });
   const [productsInCart, setProductsInCart] = useState(0);
   const token = localStorage.getItem("token");
 
@@ -106,7 +110,10 @@ function App() {
                   <AboutUs />
                 </Route>
                 <Route path="/iniciar-sessio" exact>
-                  <Login fetchGlobal={fetchGlobal} />
+                  <Login
+                    fetchGlobal={fetchGlobal}
+                    setShoppingCart={setShoppingCart}
+                  />
                 </Route>
                 <Route path="/tancar-sessio" exact>
                   <LogOut />
@@ -115,7 +122,10 @@ function App() {
                   <UserProfile />
                 </Route>
                 <Route path="/registre" exact>
-                  <Register fetchGlobal={fetchGlobal} />
+                  <Register
+                    fetchGlobal={fetchGlobal}
+                    setShoppingCart={setShoppingCart}
+                  />
                 </Route>
                 <Route path="/llista-productes" exact>
                   <ProductList
@@ -149,7 +159,7 @@ function App() {
                 <Route path="/carro-compra" exact>
                   <ShoppingBasket
                     shoppingCart={shoppingCart}
-                    setShoppingCart={setShoppingCart}
+                    setProductsInCart={setProductsInCart}
                   />
                 </Route>
                 <Route path="/administracio" exact>
@@ -166,16 +176,22 @@ function App() {
                   <AboutUs />
                 </Route>
                 <Route path="/iniciar-sessio" exact>
-                  <Login fetchGlobal={fetchGlobal} />
+                  <Login
+                    fetchGlobal={fetchGlobal}
+                    setShoppingCart={setShoppingCart}
+                  />
                 </Route>
                 <Route path="/tancar-sessio" exact>
-                  <Login />
+                  <Login setShoppingCart={setShoppingCart} />
                 </Route>
                 <Route path="/perfil" exact>
                   <UserProfile />
                 </Route>
                 <Route path="/registre" exact>
-                  <Register fetchGlobal={fetchGlobal} />
+                  <Register
+                    fetchGlobal={fetchGlobal}
+                    setShoppingCart={setShoppingCart}
+                  />
                 </Route>
                 <Route path="/llista-productes" exact>
                   <ProductList

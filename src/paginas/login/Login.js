@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 
 export const Login = (props) => {
-  const { fetchGlobal } = props;
+  const { fetchGlobal, setShoppingCart } = props;
   const history = useHistory();
   const { logIn, setAdminRole } = useContext(AuthContext);
 
@@ -27,6 +27,11 @@ export const Login = (props) => {
     localStorage.removeItem("token");
     localStorage.removeItem("admin");
     localStorage.removeItem("shoppingCartId");
+    setShoppingCart({
+      _id: "",
+      price: 0,
+      products: [],
+    });
     const resp = await fetchGlobal(urlAPI + "users/login", {
       method: "POST",
       headers: {
