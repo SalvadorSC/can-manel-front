@@ -138,6 +138,9 @@ header {
 .icon-shopping-basket {
   font-size: 23px;
 }
+.logout-header {
+  display: none;
+}
 
 /* BURGER MENU */
 
@@ -292,6 +295,12 @@ header {
   .icon-user {
     margin-left: 15px;
   }
+  .logout-header {
+    display: block;
+    color: var(--color-text);
+    text-decoration: underline;
+    font-size: 12px;
+  }
 
   /* CSS TRANSITION */
 
@@ -364,5 +373,8 @@ header {
   }
   .icon-shopping-basket {
     font-size: 26px;
+  }
+  .logout-header {
+    font-size: 13px;
   }
 }
