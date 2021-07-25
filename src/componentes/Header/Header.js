@@ -3,8 +3,9 @@ import logo from "../../assets/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser, FaBars } from "react-icons/fa";
 import { Fade as Hamburger } from "hamburger-react";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Header = (props) => {
   const { setNProducts, nProducts } = props;
@@ -13,6 +14,7 @@ export const Header = (props) => {
   const [magnifierOpen, setMagnifierOpen] = useState(false);
   const nodeRef = useRef(null);
   const [showBusquedas, setShowBusquedas] = useState(false);
+  const { loggedIn } = useContext(AuthContext);
 
   const toggleHamburger = () => {
     setOpen(!open);
@@ -125,6 +127,11 @@ export const Header = (props) => {
                     onClick={() => setMagnifierOpen(!magnifierOpen)}
                   />
                 </Link>
+                {loggedIn && (
+                  <Link to="/tancar-sessio" className="logout-header mr-3">
+                    TANCAR SESSIÓ
+                  </Link>
+                )}
                 <Link className="icons-navbar icon-user " to="/iniciar-sessio">
                   <FaUser />
                 </Link>
@@ -160,7 +167,6 @@ export const Header = (props) => {
                       to="/llista-productes"
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
-                      href="links"
                     >
                       Fruites i verdures
                       <span className="sr-only">(current)</span>
@@ -171,29 +177,37 @@ export const Header = (props) => {
                       to="/llista-cistelles"
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
-                      href="links"
                     >
                       Cistelles
                     </Link>
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
-                    <a
+                    <Link
+                      to="./sobre-nosaltres"
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
-                      href="links"
                     >
                       Sobre nosaltres
-                    </a>
+                    </Link>
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
-                    <Link
-                      to="/registre"
-                      className="drop-down-link nav-link"
-                      onClick={() => toggleHamburger()}
-                      href="links"
-                    >
-                      Registar-se
-                    </Link>
+                    {loggedIn ? (
+                      <Link
+                        to="/tancar-sessio"
+                        className="drop-down-link nav-link font-weight-bold"
+                        onClick={() => toggleHamburger()}
+                      >
+                        Tancar sessió
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/registre"
+                        className="drop-down-link nav-link"
+                        onClick={() => toggleHamburger()}
+                      >
+                        Registar-se
+                      </Link>
+                    )}
                   </li>
                 </ul>
               </div>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
 export const AuthContextProvider = (props) => {
@@ -8,14 +9,17 @@ export const AuthContextProvider = (props) => {
   const isAdmin = localStorage.getItem("admin");
   const [loggedIn, setLoggedIn] = useState(!!token);
   const [adminRole, setAdminRole] = useState(isAdmin);
+  const history = useHistory();
 
   const logIn = () => {
     setLoggedIn(true);
   };
   const logOut = useCallback(() => {
     localStorage.removeItem("token");
+    localStorage.removeItem("admin");
     setLoggedIn(false);
-  }, []);
+    history.push("./principal");
+  }, [history]);
   return (
     <AuthContext.Provider
       value={{
