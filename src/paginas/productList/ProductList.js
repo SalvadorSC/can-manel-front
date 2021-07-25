@@ -5,6 +5,7 @@ import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 
 export const ProductList = (props) => {
   const { setNProducts, nProducts, products } = props;
+
   return (
     <>
       <Searcher />

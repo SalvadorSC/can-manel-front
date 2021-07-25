@@ -117,7 +117,11 @@ function App() {
                 </Route>
                 <Route path="/administracio-productes" exact>
                   <ProtectedRoute>
-                    <AdminProductList products={products} />
+                    <AdminProductList
+                      products={products}
+                      setProducts={setProducts}
+                      fetchGlobal={fetchGlobal}
+                    />
                   </ProtectedRoute>
                 </Route>
                 <Route path="/sobre-nosaltres" exact>
