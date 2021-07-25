@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import productImage from "../../assets/product.jpeg";
 import "./ProductCard.css";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
@@ -11,10 +11,34 @@ export const ProductCard = (props) => {
   const { setNProducts, nProducts, product } = props;
   const { setLocalCart, localCart } = useContext(CartContext);
   const [addedToCartMessage, setAddedToCartMessage] = useState(false);
-  const [addedItem, setAddedItem] = useState(0);
+  const [shoppingCart, setShoppingCart] = useState({});
   const { token } = useContext(AuthContext);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
+
+  const myShoppingCart = useCallback(async () => {
+    const shoppingCartAPI = await fetchGlobal(
+      `${urlAPI}shopping-carts/shopping-cart`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+    if (shoppingCartAPI) {
+      setShoppingCart(shoppingCartAPI);
+    }
+  }, [fetchGlobal, token, urlAPI]);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      myShoppingCart();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [myShoppingCart]);
 
   const addProduct = async (product) => {
     const productAPI = await fetchGlobal(
@@ -28,12 +52,18 @@ export const ProductCard = (props) => {
         body: JSON.stringify({
           ...product,
           isBasket: false,
-          amount: addedItem + 1,
+          amount: (() => {
+            const productFounded = shoppingCart.products.find((productToFind) =>
+              productToFind.productId
+                ? productToFind.productId === product._id
+                : false
+            );
+            return productFounded ? productFounded.amount + 1 : 1;
+          })(),
         }),
       }
     );
     if (productAPI) {
-      setAddedItem(addedItem + 1);
       addProductToCart();
     }
   };
