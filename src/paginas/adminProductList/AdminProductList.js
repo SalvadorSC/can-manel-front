@@ -123,6 +123,5 @@ export const AdminProductList = (props) => {
 AdminProductList.propTypes = {
   products: PropTypes.array.isRequired,
   setProducts: PropTypes.func.isRequired,
-  urlAPI: PropTypes.string.isRequired,
   fetchGlobal: PropTypes.func.isRequired,
 };

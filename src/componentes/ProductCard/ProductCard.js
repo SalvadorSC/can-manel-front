@@ -4,11 +4,39 @@ import productImage from "../../assets/product.jpeg";
 import "./ProductCard.css";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import { useFetch } from "../../hooks/useFetch";
+import { AuthContext } from "../../context/AuthContext";
 
 export const ProductCard = (props) => {
   const { setNProducts, nProducts, product } = props;
   const { setLocalCart, localCart } = useContext(CartContext);
   const [addedToCartMessage, setAddedToCartMessage] = useState(false);
+  const [addedItem, setAddedItem] = useState(0);
+  const { token } = useContext(AuthContext);
+  const urlAPI = process.env.REACT_APP_URL_API;
+  const { fetchGlobal } = useFetch(urlAPI);
+
+  const addProduct = async (product) => {
+    const productAPI = await fetchGlobal(
+      `${urlAPI}shopping-carts/shopping-cart/add/${product._id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...product,
+          isBasket: false,
+          amount: addedItem + 1,
+        }),
+      }
+    );
+    if (productAPI) {
+      setAddedItem(addedItem + 1);
+      addProductToCart();
+    }
+  };
 
   const addProductToCart = () => {
     /* Check if there's a cart already. */
@@ -56,7 +84,7 @@ export const ProductCard = (props) => {
           <button
             className="button card-button"
             onClick={() => {
-              addProductToCart();
+              addProduct(product);
             }}
           >
             Afegir
@@ -68,5 +96,5 @@ export const ProductCard = (props) => {
 };
 
 ProductCard.propTypes = {
-  products: PropTypes.array.isRequired,
+  product: PropTypes.object.isRequired,
 };

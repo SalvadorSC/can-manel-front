@@ -8,7 +8,6 @@ import { AuthContext } from "../../context/AuthContext";
 
 export const ShoppingBasket = (props) => {
   const { token } = useContext(AuthContext);
-  const [totalPrice, setTotalPrice] = useState(0);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
   const [shoppingCart, setShoppingCart] = useState({});
@@ -25,10 +24,10 @@ export const ShoppingBasket = (props) => {
     );
     if (shoppingCartApi) {
       setShoppingCart(shoppingCartApi);
+      return shoppingCartApi;
     }
-    return shoppingCartApi;
   }, [fetchGlobal, token, urlAPI]);
-  console.log(shoppingCart);
+
   useEffect(() => {
     loadShoppingCart();
   }, [loadShoppingCart]);
@@ -36,17 +35,11 @@ export const ShoppingBasket = (props) => {
     if (shoppingCart.products && shoppingCart.products !== null) {
       setShoppingCartItems(
         shoppingCart.products.map((product) => (
-          <ItemShoppingCart
-            key={product._id}
-            urlAPI={urlAPI}
-            product={product.productId}
-            productImage={productImage}
-            amount={product.amount}
-          />
+          <ItemShoppingCart key={product._id} product={product} token={token} />
         ))
       );
     }
-  }, [shoppingCart, urlAPI]);
+  }, [shoppingCart, token, urlAPI]);
 
   return (
     <section>
@@ -86,7 +79,7 @@ export const ShoppingBasket = (props) => {
       <div className="total">
         <div className="row">
           <div className="col-8">TOTAL</div>
-          <div className="col-4 text-right">{totalPrice}€</div>
+          <div className="col-4 text-right">{shoppingCart.price}€</div>
         </div>
       </div>
       <div className="order-button">
