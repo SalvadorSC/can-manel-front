@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 
 export const ItemShoppingCart = (props) => {
-  const { product, token } = props;
+  const { product, token, shoppingCart, setShoppingCart } = props;
   const [quantity, setQuantity] = useState(product.amount);
   const [productData, setProductData] = useState({});
   const urlAPI = process.env.REACT_APP_URL_API;
@@ -36,19 +36,28 @@ export const ItemShoppingCart = (props) => {
   }, [element, loadElement]);
 
   const modifyProduct = async (product, modifyOrDelete) => {
+    let header = {};
+    if (token) {
+      header = {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      };
+    } else {
+      header = {
+        "Content-Type": "application/json",
+      };
+    }
     const isModify = modifyOrDelete ? "add" : "remove";
     const productAPI = await fetchGlobal(
       `${urlAPI}shopping-carts/shopping-cart/${isModify}/${productOrBasketId}`,
       {
         method: "PUT",
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
+        headers: header,
+        body: JSON.stringify({ ...product, shoppingCartId: shoppingCart._id }),
       }
     );
     if (productAPI) {
+      setShoppingCart(productAPI);
       setProductData(productAPI);
       setQuantity(product.amount);
     }

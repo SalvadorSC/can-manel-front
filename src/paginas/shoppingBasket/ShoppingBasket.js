@@ -7,39 +7,27 @@ import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
 
 export const ShoppingBasket = (props) => {
+  const { shoppingCart, setShoppingCart } = props;
   const { token } = useContext(AuthContext);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
-  const [shoppingCart, setShoppingCart] = useState({});
   const [shoppingCartItems, setShoppingCartItems] = useState([]);
 
-  const loadShoppingCart = useCallback(async () => {
-    const shoppingCartApi = await fetchGlobal(
-      `${urlAPI}shopping-carts/shopping-cart/`,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
-    if (shoppingCartApi) {
-      setShoppingCart(shoppingCartApi);
-      return shoppingCartApi;
-    }
-  }, [fetchGlobal, token, urlAPI]);
-
-  useEffect(() => {
-    loadShoppingCart();
-  }, [loadShoppingCart]);
   useEffect(() => {
     if (shoppingCart.products && shoppingCart.products !== null) {
       setShoppingCartItems(
         shoppingCart.products.map((product) => (
-          <ItemShoppingCart key={product._id} product={product} token={token} />
+          <ItemShoppingCart
+            key={product._id}
+            product={product}
+            token={token}
+            shoppingCart={shoppingCart}
+            setShoppingCart={setShoppingCart}
+          />
         ))
       );
     }
-  }, [shoppingCart, token, urlAPI]);
+  }, [setShoppingCart, shoppingCart, token, urlAPI]);
 
   return (
     <section>
@@ -79,7 +67,9 @@ export const ShoppingBasket = (props) => {
       <div className="total">
         <div className="row">
           <div className="col-8">TOTAL</div>
-          <div className="col-4 text-right">{shoppingCart.price}€</div>
+          <div className="col-4 text-right">
+            {Math.round(shoppingCart.price * 100) / 100}€
+          </div>
         </div>
       </div>
       <div className="order-button">

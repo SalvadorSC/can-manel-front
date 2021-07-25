@@ -8,63 +8,52 @@ import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 
 export const ProductCard = (props) => {
-  const { setNProducts, nProducts, product } = props;
-  const { setLocalCart, localCart } = useContext(CartContext);
+  const { product, shoppingCart, setShoppingCart, setProductsInCart } = props;
   const [addedToCartMessage, setAddedToCartMessage] = useState(false);
-  const [shoppingCart, setShoppingCart] = useState({});
   const { token } = useContext(AuthContext);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
 
-  const myShoppingCart = useCallback(async () => {
-    const shoppingCartAPI = await fetchGlobal(
-      `${urlAPI}shopping-carts/shopping-cart`,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    );
-    if (shoppingCartAPI) {
-      setShoppingCart(shoppingCartAPI);
-    }
-  }, [fetchGlobal, token, urlAPI]);
-
-  useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-      myShoppingCart();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, [myShoppingCart]);
-
   const addProduct = async (product) => {
+    let header = {};
+    if (token) {
+      header = {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      };
+    } else {
+      header = {
+        "Content-Type": "application/json",
+      };
+    }
     const productAPI = await fetchGlobal(
       `${urlAPI}shopping-carts/shopping-cart/add/${product._id}`,
       {
         method: "PUT",
-        headers: {
-          Authorization: "Bearer " + token,
-          "Content-Type": "application/json",
-        },
+        headers: header,
         body: JSON.stringify({
-          ...product,
           isBasket: false,
           amount: (() => {
-            const productFounded = shoppingCart.products.find((productToFind) =>
-              productToFind.productId
-                ? productToFind.productId === product._id
-                : false
-            );
-            return productFounded ? productFounded.amount + 1 : 1;
+            if (shoppingCart.products) {
+              const productFounded = shoppingCart.products.find(
+                (productToFind) =>
+                  productToFind.productId
+                    ? productToFind.productId === product._id
+                    : false
+              );
+              return productFounded ? productFounded.amount + 1 : 1;
+            } else {
+              return 1;
+            }
           })(),
+          shoppingCartId: shoppingCart._id,
         }),
       }
     );
     if (productAPI) {
+      setShoppingCart(productAPI);
       addProductToCart();
+      setProductsInCart(productAPI.products.length);
     }
   };
 
@@ -78,7 +67,7 @@ export const ProductCard = (props) => {
     //}
 
     /* Add Number of products */
-    setNProducts(nProducts + 1);
+    /* setNProducts(nProducts + 1); */
     /* Show message */
     setAddedToCartMessage(true);
     console.log(addedToCartMessage);

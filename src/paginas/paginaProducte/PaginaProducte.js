@@ -1,19 +1,23 @@
 import "./PaginaProducte.css";
 import productImage from "../../assets/product.jpeg";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { useFetch } from "../../hooks/useFetch";
+import { AuthContext } from "../../context/AuthContext";
 
 export const PaginaProducte = (props) => {
-  const { setNProducts, nProducts, products } = props;
+  const { shoppingCart, setShoppingCart, setProductsInCart } = props;
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
+  const [addedToCartMessage, setAddedToCartMessage] = useState(false);
   const history = useHistory();
   const urlAPI = process.env.REACT_APP_URL_API;
   const { id } = useParams();
   const { fetchGlobal } = useFetch(urlAPI);
+  const { token } = useContext(AuthContext);
+
   const loadProduct = useCallback(async () => {
     const productsAPI = await fetchGlobal(`${urlAPI}products/product/${id}`);
     if (productsAPI) {
@@ -24,6 +28,57 @@ export const PaginaProducte = (props) => {
   useEffect(() => {
     loadProduct();
   }, [loadProduct]);
+
+  const addProduct = async (product) => {
+    let header = {};
+    if (token) {
+      header = {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      };
+    } else {
+      header = {
+        "Content-Type": "application/json",
+      };
+    }
+    const productAPI = await fetchGlobal(
+      `${urlAPI}shopping-carts/shopping-cart/add/${product._id}`,
+      {
+        method: "PUT",
+        headers: header,
+        body: JSON.stringify({
+          isBasket: false,
+          amount: (() => {
+            if (shoppingCart.products) {
+              const productFounded = shoppingCart.products.find(
+                (productToFind) =>
+                  productToFind.productId
+                    ? productToFind.productId === product._id
+                    : false
+              );
+              return productFounded ? productFounded.amount + 1 : 1;
+            } else {
+              return 1;
+            }
+          })(),
+          shoppingCartId: shoppingCart._id,
+        }),
+      }
+    );
+    if (productAPI) {
+      setShoppingCart(productAPI);
+      addProductToCart();
+      setProductsInCart(productAPI.products.length);
+    }
+  };
+
+  const addProductToCart = () => {
+    setAddedToCartMessage(true);
+    setTimeout(() => {
+      setAddedToCartMessage(false);
+    }, 1000);
+  };
+
   return (
     <>
       <section className="product-section">
@@ -76,10 +131,19 @@ export const PaginaProducte = (props) => {
                   / Unitat
                 </span>
               </div>
+              <div
+                className={`added-to-cart-message ${
+                  addedToCartMessage ? "show" : ""
+                }`}
+              >
+                Afegit!
+              </div>
               <div className="button-add m-auto">
                 <button
                   className="button btn-product-item"
-                  onClick={() => setNProducts(nProducts + quantity)}
+                  onClick={() => {
+                    addProduct(product);
+                  }}
                 >
                   Afegir al carro
                 </button>
@@ -88,11 +152,7 @@ export const PaginaProducte = (props) => {
           </div>
         </div>
       </section>
-      <FeaturedProducts
-        setNProducts={setNProducts}
-        products={products}
-        nProducts={nProducts}
-      />
+      <FeaturedProducts />
     </>
   );
 };

@@ -26,6 +26,7 @@ export const Login = (props) => {
     e.preventDefault();
     localStorage.removeItem("token");
     localStorage.removeItem("admin");
+    localStorage.removeItem("shoppingCartId");
     const resp = await fetchGlobal(urlAPI + "users/login", {
       method: "POST",
       headers: {
