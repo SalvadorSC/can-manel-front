@@ -8,7 +8,7 @@ export const AdminHomePage = () => {
 
   return (
     <>
-      <section className="admin">
+      <section className="admin mt-5">
         <ul className="admin-tasks list-unstyled">
           <li className="task">
             <Link
@@ -35,33 +35,6 @@ export const AdminHomePage = () => {
             >
               <FaWarehouse size={iconsSize} color={iconsColor} />
               <span>Descomptes</span>
-            </Link>
-          </li>
-          <li className="task">
-            <Link
-              to="/administracio-productes"
-              className="d-flex flex-column align-items-center"
-            >
-              <FaShoppingBasket size={iconsSize} color={iconsColor} />
-              <span>Productes</span>
-            </Link>
-          </li>
-          <li className="task">
-            <Link
-              to="/administracio-productes"
-              className="d-flex flex-column align-items-center"
-            >
-              <FaCrow size={iconsSize} color={iconsColor} />
-              <span>Activitats</span>
-            </Link>
-          </li>
-          <li className="task">
-            <Link
-              to="/administracio-productes"
-              className="d-flex flex-column align-items-center"
-            >
-              <FaWarehouse size={iconsSize} color={iconsColor} />
-              <span>Productes</span>
             </Link>
           </li>
         </ul>
