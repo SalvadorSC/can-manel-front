@@ -9,6 +9,7 @@ export const AuthContextProvider = (props) => {
   const isAdmin = localStorage.getItem("admin");
   const [loggedIn, setLoggedIn] = useState(!!token);
   const [adminRole, setAdminRole] = useState(isAdmin);
+  const [totalPrice, setTotalPrice] = useState(0);
   const history = useHistory();
 
   const logIn = () => {
@@ -30,6 +31,8 @@ export const AuthContextProvider = (props) => {
         adminRole,
         setAdminRole,
         isAdmin,
+        totalPrice,
+        setTotalPrice,
       }}
     >
       {children}

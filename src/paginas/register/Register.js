@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import "./Register.css";
 
 export const Register = (props) => {
-  const { fetchGlobal } = props;
+  const { fetchGlobal, setShoppingCart } = props;
   const {
     register,
     formState: { errors },
@@ -16,6 +16,14 @@ export const Register = (props) => {
   const urlAPI = process.env.REACT_APP_URL_API;
 
   const sendUserRegister = async (data) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("admin");
+    localStorage.removeItem("shoppingCartId");
+    setShoppingCart({
+      _id: "",
+      price: 0,
+      products: [],
+    });
     const {
       username,
       surnames,
@@ -44,6 +52,20 @@ export const Register = (props) => {
         });
         setError(false);
         setRegisterFormOpen(true);
+
+        if (resp.ok) {
+          const resp2 = await fetchGlobal(urlAPI + "users/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+          });
+          const userInfo = resp2;
+          localStorage.setItem("token", userInfo.token);
+          localStorage.setItem("admin", false);
+        }
+
         if (!resp.ok) {
           setError(true);
           setErrorMessage("Alguna cosa no ha anat bé, torna-ho a provar!");

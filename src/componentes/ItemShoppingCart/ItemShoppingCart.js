@@ -1,14 +1,18 @@
 import { FaPlus, FaMinus, FaTimes } from "react-icons/fa";
 import "./ItemShoppingCart.css";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
+import { AuthContext } from "../../context/AuthContext";
 
 export const ItemShoppingCart = (props) => {
-  const { product, token, shoppingCart, setShoppingCart } = props;
+  const { product, token, shoppingCart, setProductsInCart } = props;
   const [quantity, setQuantity] = useState(product.amount);
-  const [productData, setProductData] = useState({});
+  const [price, setPrice] = useState(product.price);
+  const [deletedProduct, setDeletedProduct] = useState(false);
+  const [productData, setProductData] = useState(product);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
+  const { totalPrice, setTotalPrice } = useContext(AuthContext);
 
   const element = product.productId ? "product" : "basket";
   const productOrBasketId =
@@ -57,9 +61,18 @@ export const ItemShoppingCart = (props) => {
       }
     );
     if (productAPI) {
-      setShoppingCart(productAPI);
-      setProductData(productAPI);
+      setProductsInCart(
+        modifyOrDelete
+          ? shoppingCart.products.length
+          : shoppingCart.products.length - 1
+      );
+      if (!modifyOrDelete) {
+        setDeletedProduct(true);
+        setTotalPrice(totalPrice - price);
+        return;
+      }
       setQuantity(product.amount);
+      setPrice(product.amount * productData.priceUnit);
     }
   };
 
@@ -74,7 +87,7 @@ export const ItemShoppingCart = (props) => {
         },
         true
       );
-      loadElement(element);
+      setTotalPrice(totalPrice - productData.priceUnit);
     }
   };
   const plusQuantity = () => {
@@ -88,7 +101,7 @@ export const ItemShoppingCart = (props) => {
         },
         true
       );
-      loadElement(element);
+      setTotalPrice(totalPrice + productData.priceUnit);
     }
   };
   const removeItem = () => {
@@ -103,7 +116,7 @@ export const ItemShoppingCart = (props) => {
 
   return (
     <>
-      {product !== null && (
+      {deletedProduct === false && (
         <tr>
           <td className="d-none d-lg-block">
             <img
@@ -125,7 +138,7 @@ export const ItemShoppingCart = (props) => {
             </div>
           </td>
           <td className="table-total-price d-none d-md-block">
-            {Math.round(product.price * 100) / 100}€
+            {Math.round(price * 100) / 100}€
           </td>
           <td className="items-table">
             <FaTimes className="icon-delete" onClick={() => removeItem()} />

@@ -14,6 +14,19 @@ export const ProductCard = (props) => {
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
 
+  const getAmount = () => {
+    if (shoppingCart.products) {
+      const productFounded = shoppingCart.products.find((productToFind) =>
+        productToFind.productId
+          ? productToFind.productId === product._id
+          : false
+      );
+      return productFounded ? productFounded.amount + 1 : 1;
+    } else {
+      return 1;
+    }
+  };
+
   const addProduct = async (product) => {
     let header = {};
     if (token) {
@@ -33,27 +46,32 @@ export const ProductCard = (props) => {
         headers: header,
         body: JSON.stringify({
           isBasket: false,
-          amount: (() => {
-            if (shoppingCart.products) {
-              const productFounded = shoppingCart.products.find(
-                (productToFind) =>
-                  productToFind.productId
-                    ? productToFind.productId === product._id
-                    : false
-              );
-              return productFounded ? productFounded.amount + 1 : 1;
-            } else {
-              return 1;
-            }
-          })(),
+          amount: getAmount(),
           shoppingCartId: shoppingCart._id,
         }),
       }
     );
     if (productAPI) {
-      setShoppingCart(productAPI);
+      let founded = false;
+      if (shoppingCart.products) {
+        const productsFounded = shoppingCart.products.map((productToFind) => {
+          if (productToFind.productId) {
+            if (productToFind.productId === product._id) {
+              productToFind.amount = getAmount();
+              founded = true;
+            }
+          }
+          return productToFind;
+        });
+        if (founded) {
+          setShoppingCart({ ...shoppingCart, products: productsFounded });
+        } else {
+          shoppingCart.products.push({ product, amount: 1 });
+          setShoppingCart(shoppingCart);
+          setProductsInCart(productAPI.products.length + 1);
+        }
+      }
       addProductToCart();
-      setProductsInCart(productAPI.products.length);
     }
   };
 
