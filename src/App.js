@@ -25,9 +25,7 @@ import { PaginaBasket } from "./paginas/paginaBasket/PaginaBasket";
 import { AuthContextProvider } from "./context/AuthContextProvider";
 import { CartContextProvider } from "./context/CartContextProvider";
 import { ProtectedRoute } from "./componentes/ProtectedRoute/ProtectedRoute";
-import { LogOut } from "./componentes/LogOut/LogOut";
 import { ScrollToTop } from "./componentes/ScrollToTop/ScrollToTop";
-import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const urlAPI = process.env.REACT_APP_URL_API;
@@ -40,20 +38,23 @@ function App() {
   const [productsInCart, setProductsInCart] = useState(0);
   const token = localStorage.getItem("token");
 
-  const userShoppingCart = useCallback(async () => {
-    const shoppingCart = await fetchGlobal(
-      `${urlAPI}shopping-carts/my-shopping-cart`,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
+  const userShoppingCart = useCallback(
+    async (token) => {
+      const shoppingCart = await fetchGlobal(
+        `${urlAPI}shopping-carts/my-shopping-cart`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      if (shoppingCart) {
+        setShoppingCart(shoppingCart);
+        setProductsInCart(shoppingCart.products.length);
       }
-    );
-    if (shoppingCart) {
-      setShoppingCart(shoppingCart);
-      setProductsInCart(shoppingCart.products.length);
-    }
-  }, [fetchGlobal, token, urlAPI]);
+    },
+    [fetchGlobal, urlAPI]
+  );
 
   const myShoppingCart = useCallback(async () => {
     const shoppingCartId = localStorage.getItem("shoppingCartId");
@@ -85,7 +86,7 @@ function App() {
       myShoppingCart();
     } else if (token) {
       localStorage.removeItem("shoppingCartId");
-      userShoppingCart();
+      userShoppingCart(token);
     } else {
       newShoppingCart();
     }
@@ -119,9 +120,6 @@ function App() {
                     userShoppingCart={userShoppingCart}
                   />
                 </Route>
-                {/*  <Route path="/tancar-sessio" exact>
-                  <LogOut />
-                </Route> */}
                 <Route path="/perfil" exact>
                   <UserProfile />
                 </Route>
@@ -164,75 +162,6 @@ function App() {
                   <ShoppingBasket
                     shoppingCart={shoppingCart}
                     setProductsInCart={setProductsInCart}
-                  />
-                </Route>
-                <Route path="/administracio" exact>
-                  <ProtectedRoute>
-                    <AdminHomePage />
-                  </ProtectedRoute>
-                </Route>
-                <Route path="/administracio-productes" exact>
-                  <ProtectedRoute>
-                    <AdminProductList fetchGlobal={fetchGlobal} />
-                  </ProtectedRoute>
-                </Route>
-                <Route path="/sobre-nosaltres" exact>
-                  <AboutUs />
-                </Route>
-                <Route path="/iniciar-sessio" exact>
-                  <Login
-                    fetchGlobal={fetchGlobal}
-                    setShoppingCart={setShoppingCart}
-                    userShoppingCart={userShoppingCart}
-                  />
-                </Route>
-                <Route path="/tancar-sessio" exact>
-                  <Login
-                    setShoppingCart={setShoppingCart}
-                    userShoppingCart={userShoppingCart}
-                  />
-                </Route>
-                <Route path="/perfil" exact>
-                  <UserProfile />
-                </Route>
-                <Route path="/registre" exact>
-                  <Register
-                    fetchGlobal={fetchGlobal}
-                    setShoppingCart={setShoppingCart}
-                  />
-                </Route>
-                <Route path="/llista-productes" exact>
-                  <ProductList
-                    shoppingCart={shoppingCart}
-                    setShoppingCart={setShoppingCart}
-                    setProductsInCart={setProductsInCart}
-                  />
-                </Route>
-                <Route path="/producte/:id" exact>
-                  <PaginaProducte
-                    shoppingCart={shoppingCart}
-                    setShoppingCart={setShoppingCart}
-                    setProductsInCart={setProductsInCart}
-                  />
-                </Route>
-                <Route path="/cistella/:id" exact>
-                  <PaginaBasket
-                    shoppingCart={shoppingCart}
-                    setShoppingCart={setShoppingCart}
-                    setProductsInCart={setProductsInCart}
-                  />
-                </Route>
-                <Route path="/llista-cistelles" exact>
-                  <BasketList
-                    fetchGlobal={fetchGlobal}
-                    shoppingCart={shoppingCart}
-                    setShoppingCart={setShoppingCart}
-                    setProductsInCart={setProductsInCart}
-                  />
-                </Route>
-                <Route path="/carro-compra" exact>
-                  <ShoppingBasket
-                    shoppingCart={shoppingCart}
                     setShoppingCart={setShoppingCart}
                   />
                 </Route>

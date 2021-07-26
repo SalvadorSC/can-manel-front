@@ -37,9 +37,8 @@ export const Login = (props) => {
       localStorage.removeItem("shoppingCartId");
       setError(false);
       const userInfo = await resp.json();
-      console.log(userInfo);
       localStorage.setItem("token", userInfo.token);
-      userShoppingCart();
+      userShoppingCart(userInfo.token);
       const isAdmin = await roleAssigment(userInfo);
       localStorage.setItem("admin", isAdmin);
       setAdminRole(isAdmin);
