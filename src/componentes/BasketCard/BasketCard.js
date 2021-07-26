@@ -74,7 +74,7 @@ export const BasketCard = (props) => {
           setShoppingCart(shoppingCart);
         } else {
           shoppingCart.products.push({
-            productId: basket._id,
+            basketId: basket._id,
             price: basket.priceUnit,
             amount: 1,
           });

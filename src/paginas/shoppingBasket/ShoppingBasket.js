@@ -62,12 +62,8 @@ export const ShoppingBasket = (props) => {
             <th scope="col" style={{ width: "18,33%" }}>
               Quantitat
             </th>
-            <th
-              className="d-none d-md-table-cell"
-              scope="col"
-              style={{ width: "18,33%" }}
-            >
-              Total
+            <th scope="col" style={{ width: "18,33%" }}>
+              <div className="d-none d-sm-block">Total</div>
             </th>
             <th scope="col" style={{ width: "10%" }}></th>
           </tr>
