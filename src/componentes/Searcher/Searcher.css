@@ -1,6 +1,9 @@
 .searcher {
   font-size: 0.8rem;
 }
+.not-found {
+  color: var(--color-primary-dark);
+}
 
 /* CSS TRANSITION */
 
