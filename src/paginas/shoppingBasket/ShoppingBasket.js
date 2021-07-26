@@ -5,6 +5,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 export const ShoppingBasket = (props) => {
   const { shoppingCart, setProductsInCart } = props;
@@ -74,9 +75,9 @@ export const ShoppingBasket = (props) => {
           </div>
         </div>
       </div>
-      <div className="order-button">
+      <Link to="./pagament" className="order-button">
         <button className="button btn-order py-2">Passar per caixa</button>
-      </div>
+      </Link>
     </section>
   );
 };
