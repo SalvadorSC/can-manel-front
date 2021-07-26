@@ -8,6 +8,7 @@ import "./UserProfile.css";
 export const UserProfile = () => {
   const [confirmarContrasenya, setConfirmarContrasenya] = useState(false);
   const [mostrarInfoEditar, setMostrarInfoEditar] = useState(true);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [user, setUser] = useState([]);
   const { token } = useContext(AuthContext);
   const urlAPI = process.env.REACT_APP_URL_API;
@@ -28,25 +29,47 @@ export const UserProfile = () => {
     loadUserInfo();
   }, [loadUserInfo]);
 
+  const checkPassword = async (password) => {
+    const resp = await fetch(`${urlAPI}users/password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username: user.username, password }),
+    });
+    if (!resp.ok) {
+      return false;
+    }
+    return true;
+  };
+
   const confirmacionContrasenya = (
     <>
       <div className="password-confirmation">
         <form className="p-5">
           <label htmlFor="confirmarContrasenya">
-            Si us plau introduiu la contrasenya per poder fer canvis:
+            Si us plau introduiu la contrassenya per poder fer canvis:
           </label>
           <input
             type="password"
             name="confirmarContrasenya"
             id="password-confirmation"
             className="form-control"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <button
             type="button"
             className="button btn-password btn form-control mt-2 px-3"
-            onClick={() => {
-              setConfirmarContrasenya(!confirmarContrasenya);
-              setMostrarInfoEditar(!mostrarInfoEditar);
+            onClick={(e) => {
+              if (!checkPassword(confirmPassword)) {
+                setConfirmarContrasenya(false);
+                setMostrarInfoEditar(false);
+              } else {
+                setConfirmarContrasenya(true);
+                setMostrarInfoEditar(true);
+                e.preventDefault();
+              }
             }}
           >
             Confirmar contrasenya
@@ -77,16 +100,16 @@ export const UserProfile = () => {
           <p>{user.surnames}</p>
         </div>
         <div className=" d-flex justify-content-between">
-          <p>Adreça electrónica:</p>
+          <p>Adreça electrònica:</p>
           <p>{user.email}</p>
         </div>
         <div className=" d-flex justify-content-between">
-          <p>Telefon:</p>
+          <p>Telèon:</p>
           <p>{user.phone}</p>
         </div>
         <button
           type="button"
-          className="button btn-login btn form-control mt-3 px-3"
+          className="button btn-data-purchase btn-login btn form-control mt-3 px-3"
           onClick={() => {
             setConfirmarContrasenya(!confirmarContrasenya);
           }}
@@ -104,7 +127,7 @@ export const UserProfile = () => {
         <Link to="/principal" className="mb-4">
           Dades de compra
         </Link>
-        <Link to="/registro">
+        <Link to="/compra">
           <button
             type="button"
             className="button btn-data-purchase btn form-control mt-2 px-3"
@@ -174,7 +197,7 @@ export const UserProfile = () => {
           </div>
         </div>
         <div className="col-md-12 col-lg-6">
-          <label htmlFor="contrasenya">Contrasenya</label>
+          <label htmlFor="contrasenya">Contrassenya</label>
           <div className="login-options form-group">
             <input
               name="contrasenya"
@@ -186,7 +209,7 @@ export const UserProfile = () => {
         </div>
         <div className="col-md-12 col-lg-6">
           <label htmlFor="contrasenya-confirmar">
-            Confirmació de contrasenya *
+            Confirmació de contrassenya *
           </label>
           <div className="login-options form-group">
             <input
@@ -198,7 +221,7 @@ export const UserProfile = () => {
           </div>
         </div>
         <div className="col-md-12 col-lg-6">
-          <label htmlFor="telefon">Teléfon</label>
+          <label htmlFor="telefon">Telèfon</label>
           <div className="form-group">
             <input
               name="telefon"

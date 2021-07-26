@@ -9,7 +9,7 @@ export const HistorialCard = (props) => {
         <h2 className="heading-section">10-7-2021</h2>
         <hr />
         <div className="d-flex justify-content-between">
-          <span>Tomaquet fresc de Can Mateu</span>
+          <span>Tomàquet fresc de Can Mateu</span>
           <FaImages
             onClick={() => setShowImage(!showImage)}
             className="images-icon"
@@ -20,7 +20,7 @@ export const HistorialCard = (props) => {
         </div>
         <hr />
         <div className="d-flex justify-content-between">
-          <span>Tomaquet fresc de Can Mateu</span>
+          <span>Tomàquet fresc de Can Mateu</span>
           <FaImages
             onClick={() => setShowImage(!showImage)}
             className="images-icon"
@@ -31,7 +31,7 @@ export const HistorialCard = (props) => {
         </div>
         <hr />
         <div className="d-flex justify-content-between">
-          <span>Tomaquet fresc de Can Mateu</span>
+          <span>Tomàquet fresc de Can Mateu</span>
           <FaImages
             onClick={() => setShowImage(!showImage)}
             className="images-icon"

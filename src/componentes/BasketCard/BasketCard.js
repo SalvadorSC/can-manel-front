@@ -51,18 +51,34 @@ export const BasketCard = (props) => {
       let founded = false;
       if (shoppingCart.products) {
         const productsFounded = shoppingCart.products.map((productToFind) => {
-          if (productToFind.basketId) {
-            if (productToFind.basketId === basket._id) {
-              productToFind.amount = getAmount();
-              founded = true;
-            }
+          if (productToFind.basketId && productToFind.basketId === basket._id) {
+            const modifiedProduct = {
+              amount: getAmount(),
+              basketId: basket._id,
+              price: getAmount() * basket.priceUnit,
+            };
+            productToFind = modifiedProduct;
+            founded = true;
           }
           return productToFind;
         });
         if (founded) {
-          setShoppingCart({ ...shoppingCart, products: productsFounded });
+          shoppingCart.products = productsFounded;
+          shoppingCart.price = productsFounded.reduce(
+            (acumulator, { price }) => {
+              acumulator += price;
+              return acumulator;
+            },
+            0
+          );
+          setShoppingCart(shoppingCart);
         } else {
-          shoppingCart.products.push({ basket, amount: 1 });
+          shoppingCart.products.push({
+            productId: basket._id,
+            price: basket.priceUnit,
+            amount: 1,
+          });
+          shoppingCart.price += basket.priceUnit;
           setShoppingCart(shoppingCart);
           setProductsInCart(productAPI.products.length + 1);
         }
@@ -72,21 +88,9 @@ export const BasketCard = (props) => {
   };
 
   const addBasketToCart = () => {
-    /* Check if there's a cart already. */
-    //if(/* yesCart */){
-    /* add item to --> shopping-cart/add/:id */
-    //} else {
-    /* creat new cart --> /new-shopping-cart */
-    /* add item to --> shopping-cart/add/:id */
-    //}
-
-    /* Add Number of products */
-    /*  setNProducts(nProducts + 1); */
-    /* Show message */
     setAddedToCartMessage(true);
     setTimeout(() => {
       setAddedToCartMessage(false);
-      console.log(addedToCartMessage);
     }, 1000);
   };
 

@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 export const ShoppingBasket = (props) => {
-  const { shoppingCart, setProductsInCart } = props;
+  const { shoppingCart, setShoppingCart, setProductsInCart } = props;
   const { token } = useContext(AuthContext);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
@@ -20,17 +20,25 @@ export const ShoppingBasket = (props) => {
       setShoppingCartItems(
         shoppingCart.products.map((product) => (
           <ItemShoppingCart
-            key={product._id}
+            key={product.productId || product.basketId}
             product={product}
             token={token}
             shoppingCart={shoppingCart}
+            setShoppingCart={setShoppingCart}
             setProductsInCart={setProductsInCart}
           />
         ))
       );
       setTotalPrice(shoppingCart.price);
     }
-  }, [setProductsInCart, setTotalPrice, shoppingCart, token, urlAPI]);
+  }, [
+    setProductsInCart,
+    setShoppingCart,
+    setTotalPrice,
+    shoppingCart,
+    token,
+    urlAPI,
+  ]);
 
   return (
     <section>

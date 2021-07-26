@@ -76,13 +76,13 @@ export const Login = (props) => {
             <hr />
           </div>
         </div>
-        <div className="login-wrap p-0">
+        <div className="login-wrap row p-0">
           <form
-            className="signin-form row"
+            className="signin-form col-md-12 col-lg-6"
             onSubmit={sendFormLogIn}
             autoComplete="off"
           >
-            <div className="col-md-12 col-lg-6">
+            <div className="px-5">
               <label htmlFor="username">Nom d'usuari *</label>
               <div className="form-group">
                 <input
@@ -94,7 +94,7 @@ export const Login = (props) => {
                   onChange={setData}
                 />
               </div>
-              <label htmlFor="password">Contrasenya *</label>
+              <label htmlFor="password">Contrassenya *</label>
               <div className="login-options form-group">
                 <input
                   id="password"
@@ -122,18 +122,18 @@ export const Login = (props) => {
                   type="submit"
                   className="button btn-login btn form-control mt-2 px-3"
                 >
-                  Log in
+                  Inicia sessió
                 </button>
               </div>
             </div>
           </form>
 
           <div className="col-md-12 col-lg-6">
-            <div className="mb-5">
+            <div className="mb-5 px-5">
               <p className="mr-2 text-big ">Encara no tens un usuari propi?</p>
               <p className="mr-2 text-center">
-                Crea rápidament un compte a Can Mateu i podrás gaudir d'una
-                experiencia molt més personalitzada, amb descomptes exclusius,
+                Crea ràpidament un compte a Can Mateu i podràs gaudir d'una
+                experiència molt més personalitzada, amb descomptes exclusius,
                 historials de compra i molt més!
               </p>
             </div>
@@ -143,7 +143,7 @@ export const Login = (props) => {
                   type="button"
                   className="button btn-login btn form-control mt-2 px-3"
                 >
-                  Crear un compte
+                  Crea un compte
                 </button>
               </Link>
             </div>
