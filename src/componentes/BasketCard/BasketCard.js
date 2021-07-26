@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./BasketCard.css";
-import productImage from "../../assets/product.jpeg";
-import { useCallback, useContext, useEffect, useState } from "react";
+import basketImage from "../../assets/cistelleseco.png";
+import { useContext, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -98,7 +98,7 @@ export const BasketCard = (props) => {
     <article className="card">
       <img
         className="card-image"
-        src={productImage}
+        src={basketImage}
         alt="Cistella de fruites i verdures de l'hort"
       ></img>
       <div className="card-info">
