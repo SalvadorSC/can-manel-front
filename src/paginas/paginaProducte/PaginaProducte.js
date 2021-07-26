@@ -70,18 +70,37 @@ export const PaginaProducte = (props) => {
       let founded = false;
       if (shoppingCart.products) {
         const productsFounded = shoppingCart.products.map((productToFind) => {
-          if (productToFind.productId) {
-            if (productToFind.productId === product._id) {
-              productToFind.amount = getAmount();
-              founded = true;
-            }
+          if (
+            productToFind.productId &&
+            productToFind.productId === product._id
+          ) {
+            const modifiedProduct = {
+              amount: getAmount(),
+              productId: product._id,
+              price: getAmount() * product.priceUnit,
+            };
+            productToFind = modifiedProduct;
+            founded = true;
           }
           return productToFind;
         });
         if (founded) {
-          setShoppingCart({ ...shoppingCart, products: productsFounded });
+          shoppingCart.products = productsFounded;
+          shoppingCart.price = productsFounded.reduce(
+            (acumulator, { price }) => {
+              acumulator += price;
+              return acumulator;
+            },
+            0
+          );
+          setShoppingCart(shoppingCart);
         } else {
-          shoppingCart.products.push({ product, amount: 1 });
+          shoppingCart.products.push({
+            productId: product._id,
+            price: product.priceUnit,
+            amount: 1,
+          });
+          shoppingCart.price += product.priceUnit;
           setShoppingCart(shoppingCart);
           setProductsInCart(productAPI.products.length + 1);
         }

@@ -5,7 +5,8 @@ import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 
 export const ItemShoppingCart = (props) => {
-  const { product, token, shoppingCart, setProductsInCart } = props;
+  const { product, token, shoppingCart, setShoppingCart, setProductsInCart } =
+    props;
   const [quantity, setQuantity] = useState(product.amount);
   const [price, setPrice] = useState(product.price);
   const [deletedProduct, setDeletedProduct] = useState(false);
@@ -61,6 +62,39 @@ export const ItemShoppingCart = (props) => {
       }
     );
     if (productAPI) {
+      let founded = false;
+      if (shoppingCart.products && modifyOrDelete) {
+        const productsFounded = shoppingCart.products.map((productToFind) => {
+          if (
+            (productToFind.basketId &&
+              productToFind.basketId === productOrBasketId) ||
+            (productToFind.productId &&
+              productToFind.productId === productOrBasketId)
+          ) {
+            const modifiedProduct = {
+              amount: quantity,
+              productId: !product.isBasket ? productOrBasketId : undefined,
+              basketId: product.isBasket ? productOrBasketId : undefined,
+              price: quantity * product.priceUnit,
+            };
+            productToFind = modifiedProduct;
+            founded = true;
+          }
+          return productToFind;
+        });
+        if (founded) {
+          shoppingCart.products = productsFounded;
+          shoppingCart.price = productsFounded.reduce(
+            (acumulator, { price }) => {
+              acumulator += price;
+              return acumulator;
+            },
+            0
+          );
+          setShoppingCart(shoppingCart);
+        }
+        console.log(shoppingCart);
+      }
       setProductsInCart(
         modifyOrDelete
           ? shoppingCart.products.length
@@ -69,10 +103,10 @@ export const ItemShoppingCart = (props) => {
       if (!modifyOrDelete) {
         setDeletedProduct(true);
         setTotalPrice(totalPrice - price);
-        return;
+      } else {
+        setQuantity(quantity);
+        setPrice(quantity * productData.priceUnit);
       }
-      setQuantity(product.amount);
-      setPrice(product.amount * productData.priceUnit);
     }
   };
 
@@ -89,6 +123,7 @@ export const ItemShoppingCart = (props) => {
       );
       setTotalPrice(totalPrice - productData.priceUnit);
     }
+    setQuantity(quantity - 1);
   };
   const plusQuantity = () => {
     if (quantity === productData.stock) {
@@ -101,6 +136,7 @@ export const ItemShoppingCart = (props) => {
         },
         true
       );
+      setQuantity(quantity + 1);
       setTotalPrice(totalPrice + productData.priceUnit);
     }
   };
@@ -111,7 +147,8 @@ export const ItemShoppingCart = (props) => {
       },
       false
     );
-    loadElement(element);
+    setTotalPrice(totalPrice - productData.priceUnit * quantity);
+    setQuantity(product.amount);
   };
 
   return (
