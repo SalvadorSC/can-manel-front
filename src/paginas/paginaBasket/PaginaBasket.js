@@ -1,5 +1,5 @@
 import "./PaginaBasket.css";
-import productImage from "../../assets/product.jpeg";
+import productImage from "../../assets/cistelleseco.png";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
 import { Link, useHistory, useParams } from "react-router-dom";
