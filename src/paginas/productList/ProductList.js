@@ -24,7 +24,7 @@ export const ProductList = (props) => {
 
   return (
     <>
-      <Searcher />
+      <Searcher products={products} setProducts={setProducts} />
       <section className="section">
         <div className="product-list">
           {products.map((product) => (
