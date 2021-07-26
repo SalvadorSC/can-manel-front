@@ -1,24 +1,36 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { FaSearch, FaShoppingBasket, FaUser, FaBars } from "react-icons/fa";
 import { Fade as Hamburger } from "hamburger-react";
-import { useContext, useRef, useState } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { AuthContext } from "../../context/AuthContext";
 
 export const Header = (props) => {
-  const { productsInCart } = props;
+  const { productsInCart, setShoppingCart } = props;
 
   const [open, setOpen] = useState(false);
   const [magnifierOpen, setMagnifierOpen] = useState(false);
   const nodeRef = useRef(null);
   const [showBusquedas, setShowBusquedas] = useState(false);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, setLoggedIn } = useContext(AuthContext);
+  const history = useHistory();
 
   const toggleHamburger = () => {
     setOpen(!open);
   };
+  const logOut = useCallback(() => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("admin");
+    setShoppingCart({
+      _id: "",
+      price: 0,
+      products: [],
+    });
+    setLoggedIn(false);
+    history.push("./principal");
+  }, [history, setLoggedIn, setShoppingCart]);
 
   const busquedas = (
     <>
@@ -128,9 +140,13 @@ export const Header = (props) => {
                   />
                 </Link>
                 {loggedIn && (
-                  <Link to="/tancar-sessio" className="logout-header mr-3">
+                  <button
+                    type="button"
+                    onClick={logOut}
+                    className="logout-header mr-3 btn"
+                  >
                     TANCAR SESSIÓ
-                  </Link>
+                  </button>
                 )}
                 <Link className="icons-navbar icon-user " to="/iniciar-sessio">
                   <FaUser />
@@ -193,9 +209,11 @@ export const Header = (props) => {
                   <li className="col-12 col-lg-2 nav-item">
                     {loggedIn ? (
                       <Link
-                        to="/tancar-sessio"
                         className="drop-down-link nav-link font-weight-bold"
-                        onClick={() => toggleHamburger()}
+                        onClick={() => {
+                          toggleHamburger();
+                          logOut();
+                        }}
                       >
                         Tancar sessió
                       </Link>

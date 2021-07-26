@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 
 export const Login = (props) => {
-  const { fetchGlobal, setShoppingCart } = props;
+  const { fetchGlobal, setShoppingCart, userShoppingCart } = props;
   const history = useHistory();
   const { logIn, setAdminRole } = useContext(AuthContext);
 
@@ -24,45 +24,41 @@ export const Login = (props) => {
 
   const sendFormLogIn = async (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem("admin");
-    localStorage.removeItem("shoppingCartId");
-    setShoppingCart({
-      _id: "",
-      price: 0,
-      products: [],
-    });
-    const resp = await fetchGlobal(urlAPI + "users/login", {
+    const resp = await fetch(urlAPI + "users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(loginData),
     });
-    /*   console.log(resp.error);
-    if (!resp.ok) {
-      setError(true);
-      return;
-    } */
-    setError(false);
-    const userInfo = resp;
-    localStorage.setItem("token", userInfo.token);
-    logIn();
-    const isAdmin = await roleAssigment(userInfo);
-    localStorage.setItem("admin", isAdmin);
-    setAdminRole(isAdmin);
-    if (isAdmin) {
-      history.push("/administracio");
-      return;
+    if (resp.ok) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("admin");
+      localStorage.removeItem("shoppingCartId");
+      setError(false);
+      const userInfo = await resp.json();
+      console.log(userInfo);
+      localStorage.setItem("token", userInfo.token);
+      userShoppingCart();
+      const isAdmin = await roleAssigment(userInfo);
+      localStorage.setItem("admin", isAdmin);
+      setAdminRole(isAdmin);
+      logIn();
+      if (isAdmin) {
+        history.push("/administracio");
+        return;
+      } else {
+        history.push("/principal");
+        return;
+      }
     } else {
-      history.push("/principal");
-      return;
+      setError(true);
     }
   };
 
   const roleAssigment = useCallback(
     async (userInfo) => {
-      const user = await fetchGlobal(`${urlAPI}users/user/${userInfo.userId}`, {
+      const user = await fetchGlobal(`${urlAPI}users/my-user`, {
         headers: {
           Authorization: "Bearer " + userInfo.token,
         },
@@ -84,7 +80,7 @@ export const Login = (props) => {
         <div className="login-wrap p-0">
           <form className="signin-form row" onSubmit={sendFormLogIn}>
             <div className="col-md-12 col-lg-6">
-              <label htmlFor="username">Email *</label>
+              <label htmlFor="username">Nom d'usuari *</label>
               <div className="form-group">
                 <input
                   id="username"
@@ -127,30 +123,28 @@ export const Login = (props) => {
                 </button>
               </div>
             </div>
-
-            <div className="col-md-12 col-lg-6">
-              <div className="mb-5">
-                <p className="mr-2 text-big ">
-                  Encara no tens un usuari propi?
-                </p>
-                <p className="mr-2 text-center">
-                  Crea rápidament un compte a Can Mateu i podrás gaudir d'una
-                  experiencia molt més personalitzada, amb descomptes exclusius,
-                  historials de compra i molt més!
-                </p>
-              </div>
-              <div className="form-group text-center">
-                <Link to="/registre">
-                  <button
-                    type="button"
-                    className="button btn-login btn form-control mt-2 px-3"
-                  >
-                    Crear un compte
-                  </button>
-                </Link>
-              </div>
-            </div>
           </form>
+
+          <div className="col-md-12 col-lg-6">
+            <div className="mb-5">
+              <p className="mr-2 text-big ">Encara no tens un usuari propi?</p>
+              <p className="mr-2 text-center">
+                Crea rápidament un compte a Can Mateu i podrás gaudir d'una
+                experiencia molt més personalitzada, amb descomptes exclusius,
+                historials de compra i molt més!
+              </p>
+            </div>
+            <div className="form-group text-center">
+              <Link to="/registre">
+                <button
+                  type="button"
+                  className="button btn-login btn form-control mt-2 px-3"
+                >
+                  Crear un compte
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

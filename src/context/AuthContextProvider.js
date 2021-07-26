@@ -3,31 +3,25 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
 export const AuthContextProvider = (props) => {
-  const { children } = props;
+  const { children, setShoppingCart } = props;
 
   const token = localStorage.getItem("token");
   const isAdmin = localStorage.getItem("admin");
   const [loggedIn, setLoggedIn] = useState(!!token);
   const [adminRole, setAdminRole] = useState(isAdmin);
   const [totalPrice, setTotalPrice] = useState(0);
-  const history = useHistory();
 
   const logIn = () => {
     setLoggedIn(true);
   };
-  const logOut = useCallback(() => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("admin");
-    setLoggedIn(false);
-    history.push("./principal");
-  }, [history]);
+
   return (
     <AuthContext.Provider
       value={{
         loggedIn,
         token,
         logIn,
-        logOut,
+        setLoggedIn,
         adminRole,
         setAdminRole,
         isAdmin,
