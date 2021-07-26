@@ -26,7 +26,6 @@ export const AdminProduct = (props) => {
   const toggleFormEdit = () => {
     setFormEditOpen(!formEditOpen);
     setProductEdited(product);
-    console.log(product);
   };
   const showImg = () => {
     setOpen(!open);
@@ -65,7 +64,6 @@ export const AdminProduct = (props) => {
             className="icon-edit"
             onClick={() => {
               toggleFormEdit();
-              toggleForm(false);
               setAction("edit");
               setProductEdited(product);
             }}

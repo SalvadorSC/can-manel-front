@@ -2,6 +2,7 @@ import "./AdminForm.css";
 import { FaTimes } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { string } from "prop-types";
 
 export const AdminForm = (props) => {
   const {
@@ -24,28 +25,41 @@ export const AdminForm = (props) => {
   const sendDataToApi = async (tipoDeForm) => {
     if (tipoDeForm === "editar") {
       console.log(tipoDeForm);
-      const editedProductFormData = new FormData();
-      editedProductFormData.append("photoUrl", editedProduct.photoUrl);
-      editedProductFormData.append("name", editedProduct.name);
-      editedProductFormData.append("category", editedProduct.category);
-      editedProductFormData.append("description", editedProduct.description);
-      editedProductFormData.append("priceUnit", editedProduct.priceUnit);
-      editedProductFormData.append("unit", editedProduct.unit);
-      editedProductFormData.append("discount", editedProduct.discount);
-      editedProductFormData.append("date", editedProduct.date);
-      editedProductFormData.append("stock", editedProduct.stock);
-      const resp = await fetch(
-        urlAPI + `products/product/${productToEdit._id}`,
-        {
+
+      if (typeof editedProduct.photoUrl === "string") {
+        console.log(editedProduct);
+        const id = editedProduct._id;
+        delete editedProduct._id;
+        const resp = await fetch(urlAPI + `products/product-no-image/${id}`, {
           method: "PUT",
-          body: editedProductFormData,
+          body: editedProduct,
           headers: {
             Authorization: "Bearer " + token,
           },
-        }
-      );
+        });
+      } else {
+        const editedProductFormData = new FormData();
+        editedProductFormData.append("photoUrl", editedProduct.photoUrl);
+        editedProductFormData.append("name", editedProduct.name);
+        editedProductFormData.append("category", editedProduct.category);
+        editedProductFormData.append("description", editedProduct.description);
+        editedProductFormData.append("priceUnit", editedProduct.priceUnit);
+        editedProductFormData.append("unit", editedProduct.unit);
+        editedProductFormData.append("discount", editedProduct.discount);
+        editedProductFormData.append("date", editedProduct.date);
+        editedProductFormData.append("stock", editedProduct.stock);
+        const resp = await fetch(
+          urlAPI + `products/product/${productToEdit._id}`,
+          {
+            method: "PUT",
+            body: editedProductFormData,
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+      }
       console.log(editedProduct);
-      console.log(editedProductFormData);
       toggleFormEdit();
       loadProducts();
     } else {
@@ -59,6 +73,7 @@ export const AdminForm = (props) => {
       newProduct.append("discount", editedProduct.discount);
       newProduct.append("date", editedProduct.date);
       newProduct.append("stock", editedProduct.stock);
+
       const resp = await fetch(urlAPI + "products/new-product/", {
         method: "POST",
         body: newProduct,

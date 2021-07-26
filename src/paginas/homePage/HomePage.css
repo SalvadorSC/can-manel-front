@@ -9,13 +9,17 @@
   width: 100%;
   height: 460px;
   border-radius: 15px;
-  background-image: url("https://picsum.photos/750/440");
+  background-image: url("https://images.unsplash.com/photo-1471248026681-35a45d5530a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=759&q=80");
   background-size: cover;
 }
 
 .homepage-element-small {
   height: 220px;
-  background-image: url("https://picsum.photos/400/220");
+  background-image: url("https://media.istockphoto.com/photos/masia-in-catalonia-spain-picture-id145154657?b=1&k=6&m=145154657&s=612x612&w=0&h=WaO9ejW95gG1fBP7Ak2m6qAosK3Zd9_u5dHCVs5GNG0=");
+}
+
+.homepage-element-activities {
+  background-image: url("https://images.pexels.com/photos/3771836/pexels-photo-3771836.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
 .homepage-element div {
