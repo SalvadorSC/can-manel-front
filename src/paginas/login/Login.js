@@ -93,7 +93,7 @@ export const Login = (props) => {
                   onChange={setData}
                 />
               </div>
-              <label htmlFor="password">Contrasenya *</label>
+              <label htmlFor="password">Contrassenya *</label>
               <div className="login-options form-group">
                 <input
                   id="password"
@@ -121,7 +121,7 @@ export const Login = (props) => {
                   type="submit"
                   className="button btn-login btn form-control mt-2 px-3"
                 >
-                  Log in
+                  Inicia sessió
                 </button>
               </div>
             </div>
@@ -131,8 +131,8 @@ export const Login = (props) => {
             <div className="mb-5 px-5">
               <p className="mr-2 text-big ">Encara no tens un usuari propi?</p>
               <p className="mr-2 text-center">
-                Crea rápidament un compte a Can Mateu i podrás gaudir d'una
-                experiencia molt més personalitzada, amb descomptes exclusius,
+                Crea ràpidament un compte a Can Mateu i podràs gaudir d'una
+                experiència molt més personalitzada, amb descomptes exclusius,
                 historials de compra i molt més!
               </p>
             </div>
@@ -142,7 +142,7 @@ export const Login = (props) => {
                   type="button"
                   className="button btn-login btn form-control mt-2 px-3"
                 >
-                  Crear un compte
+                  Crea un compte
                 </button>
               </Link>
             </div>

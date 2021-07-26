@@ -67,7 +67,7 @@ export const Header = (props) => {
           <div className="top-navbar row justify-content-between align-items-center">
             <ul className="col-5 d-flex justify-content-center align-items-center my-0">
               <li className="mr-4">
-                <a href="./holalog">Chat with us</a>
+                <a href="./holalog">Contacta'ns</a>
               </li>
               <li className="mr-4">
                 <a href="holalog">+34 662 21 62 97</a>
@@ -119,7 +119,7 @@ export const Header = (props) => {
                     type="text"
                     id=""
                     className="form-control input-search-input"
-                    placeholder="Buscar Productes, categories..."
+                    placeholder="Buscar productes, categories..."
                     required=""
                     autoFocus=""
                     onChange={(e) => mostrarBusquedas(e)}
@@ -211,7 +211,8 @@ export const Header = (props) => {
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
                     {loggedIn ? (
-                      <Link
+                      <button
+                        type="button"
                         className="drop-down-link nav-link font-weight-bold"
                         onClick={() => {
                           toggleHamburger();
@@ -219,7 +220,7 @@ export const Header = (props) => {
                         }}
                       >
                         Tancar sessió
-                      </Link>
+                      </button>
                     ) : (
                       <Link
                         to="/registre"
@@ -242,7 +243,7 @@ export const Header = (props) => {
                     type="text"
                     id=""
                     className="form-control"
-                    placeholder="Buscar Productes, categories..."
+                    placeholder="Buscar productes, categories..."
                     required=""
                     autoFocus=""
                   />
