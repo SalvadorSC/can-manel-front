@@ -7,14 +7,16 @@ const { DateTime } = require("luxon");
 
 export const AdminProduct = (props) => {
   const {
-    product: { name, date, category, _id: id, photoUrl },
+    product: { name, date, category, photoUrl },
     product,
     setAction,
     deleteProduct,
     setProductEdited,
+    toggleForm,
+    loadProducts,
   } = props;
   const [open, setOpen] = useState(false);
-  const [formOpen, setFormOpen] = useState(false);
+  const [formEditOpen, setFormEditOpen] = useState(false);
 
   const onClickDelete = (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ export const AdminProduct = (props) => {
   };
 
   const toggleFormEdit = () => {
-    setFormOpen(!formOpen);
+    setFormEditOpen(!formEditOpen);
     setProductEdited(product);
     console.log(product);
   };
@@ -63,7 +65,9 @@ export const AdminProduct = (props) => {
             className="icon-edit"
             onClick={() => {
               toggleFormEdit();
+              toggleForm(false);
               setAction("edit");
+              setProductEdited(product);
             }}
           />
         </div>
@@ -72,7 +76,14 @@ export const AdminProduct = (props) => {
         </div>
       </div>
 
-      {formOpen && <AdminForm toggleFormEdit={toggleFormEdit} />}
+      {formEditOpen && (
+        <AdminForm
+          productToEdit={product}
+          toggleFormEdit={toggleFormEdit}
+          tipoDeForm="editar"
+          loadProducts={loadProducts}
+        />
+      )}
     </div>
   );
 };

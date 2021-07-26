@@ -41,7 +41,7 @@ input[type="file"] {
 input[type="file"]::-webkit-file-upload-button {
   border: none;
   padding: 5px 12px;
-  background: #9e2baf;
+  background: #969696;
   color: #fff;
   font-size: 1em;
   transition: all 0.4s;
@@ -51,7 +51,7 @@ input[type="file"]::-webkit-file-upload-button {
 input[type="file"]::-ms-browse {
   border: none;
   padding: 5px 12px;
-  background: #9e2baf;
+  background: #dfdfdf;
   color: #fff;
   font-size: 1em;
   transition: all 0.4s;

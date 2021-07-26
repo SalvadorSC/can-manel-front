@@ -13,8 +13,8 @@ export const AdminProductList = (props) => {
   const [productEdited, setProductEdited] = useState(null);
   const [products, setProducts] = useState([]);
   const { token } = useContext(AuthContext);
-  const toggleForm = () => {
-    setFormOpen(!formOpen);
+  const toggleForm = (boolean) => {
+    boolean ? setFormOpen(boolean) : setFormOpen(!formOpen);
   };
   const urlAPI = process.env.REACT_APP_URL_API;
 
@@ -36,9 +36,7 @@ export const AdminProductList = (props) => {
         Authorization: "Bearer " + token,
       },
     });
-    if (resp.ok) {
-      setProducts(products.filter((product) => product._id !== item._id));
-    }
+    setProducts(products.filter((product) => product._id !== item._id));
   };
 
   return (
@@ -90,6 +88,7 @@ export const AdminProductList = (props) => {
         {formOpen && (
           <AdminForm
             action={action}
+            loadProducts={loadProducts}
             toggleForm={toggleForm}
             productEdited={productEdited}
             urlAPI={urlAPI}
@@ -120,7 +119,9 @@ export const AdminProductList = (props) => {
             <AdminProduct
               product={product}
               key={product._id}
+              toggleForm={toggleForm}
               setAction={setAction}
+              loadProducts={loadProducts}
               deleteProduct={deleteProduct}
               setProductEdited={setProductEdited}
             />
