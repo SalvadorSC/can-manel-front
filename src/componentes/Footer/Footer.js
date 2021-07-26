@@ -40,7 +40,7 @@ export const Footer = () => {
                   <a href="link">Inicia sessió</a>
                 </li>
                 <li>
-                  <a href="link">Condiciones de l'acuerd</a>
+                  <a href="link">Condicions de l'acord</a>
                 </li>
                 <li>
                   <a href="link">Política de privacitat</a>

@@ -16,9 +16,6 @@ export const Register = (props) => {
   const urlAPI = process.env.REACT_APP_URL_API;
 
   const sendUserRegister = async (data) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("admin");
-    localStorage.removeItem("shoppingCartId");
     setShoppingCart({
       _id: "",
       price: 0,
@@ -36,7 +33,7 @@ export const Register = (props) => {
     } = data;
     if (password === confirmPassword && email === confirmEmail) {
       try {
-        const resp = await fetchGlobal(urlAPI + "users/new-user", {
+        const resp = await fetch(urlAPI + "users/new-user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -50,22 +47,10 @@ export const Register = (props) => {
             email,
           }),
         });
-        setError(false);
-        setRegisterFormOpen(true);
-
         if (resp.ok) {
-          const resp2 = await fetchGlobal(urlAPI + "users/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ username, password }),
-          });
-          const userInfo = resp2;
-          localStorage.setItem("token", userInfo.token);
-          localStorage.setItem("admin", false);
+          setError(false);
+          setRegisterFormOpen(true);
         }
-
         if (!resp.ok) {
           setError(true);
           setErrorMessage("Alguna cosa no ha anat bé, torna-ho a provar!");

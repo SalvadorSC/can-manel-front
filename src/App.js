@@ -97,7 +97,10 @@ function App() {
         <ScrollToTop />
         <AuthContextProvider>
           <CartContextProvider>
-            <Header productsInCart={productsInCart} />
+            <Header
+              productsInCart={productsInCart}
+              setShoppingCart={setShoppingCart}
+            />
             <div className="container section">
               <Switch>
                 <Route path="/" exact>
@@ -113,11 +116,12 @@ function App() {
                   <Login
                     fetchGlobal={fetchGlobal}
                     setShoppingCart={setShoppingCart}
+                    userShoppingCart={userShoppingCart}
                   />
                 </Route>
-                <Route path="/tancar-sessio" exact>
+                {/*  <Route path="/tancar-sessio" exact>
                   <LogOut />
-                </Route>
+                </Route> */}
                 <Route path="/perfil" exact>
                   <UserProfile />
                 </Route>
@@ -179,10 +183,14 @@ function App() {
                   <Login
                     fetchGlobal={fetchGlobal}
                     setShoppingCart={setShoppingCart}
+                    userShoppingCart={userShoppingCart}
                   />
                 </Route>
                 <Route path="/tancar-sessio" exact>
-                  <Login setShoppingCart={setShoppingCart} />
+                  <Login
+                    setShoppingCart={setShoppingCart}
+                    userShoppingCart={userShoppingCart}
+                  />
                 </Route>
                 <Route path="/perfil" exact>
                   <UserProfile />
