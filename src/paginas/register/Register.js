@@ -85,6 +85,7 @@ export const Register = (props) => {
                   className="signin-form row"
                   noValidate
                   onSubmit={handleSubmit(sendUserRegister)}
+                  autocomplete="off"
                 >
                   <div className="col-md-12 col-lg-6">
                     <label htmlFor="name">Nom *</label>

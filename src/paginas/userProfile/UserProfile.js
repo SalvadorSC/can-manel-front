@@ -94,7 +94,7 @@ export const UserProfile = () => {
           Editar les dades d'usuari
         </button>
       </div>
-      <div className="nav-column-compres col-md-4 col-sm-12 d-flex flex-column">
+      <div className="nav-column-compres col-md-4 col-sm-12 d-flex flex-column text-right">
         <Link to="/historial-compra" className="mb-4">
           Historial de compra
         </Link>
