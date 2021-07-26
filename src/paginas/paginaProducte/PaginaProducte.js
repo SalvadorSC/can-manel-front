@@ -96,7 +96,7 @@ export const PaginaProducte = (props) => {
       setAddedToCartMessage(false);
     }, 1000);
   };
-
+  console.log(product);
   return (
     <>
       <section className="product-section">
@@ -116,7 +116,7 @@ export const PaginaProducte = (props) => {
         <div className="row justify-content-center text-right">
           <div className="item-image col-12 col-md-6">
             <img
-              src={productImage}
+              src={product.photoUrl}
               alt="Cistella de fruites i verdures de l'hort"
             />
           </div>
