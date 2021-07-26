@@ -94,7 +94,7 @@ export const Login = (props) => {
                   onChange={setData}
                 />
               </div>
-              <label htmlFor="password">Contrassenya *</label>
+              <label htmlFor="password">Contrasenya *</label>
               <div className="login-options form-group">
                 <input
                   id="password"
