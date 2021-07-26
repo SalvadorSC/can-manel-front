@@ -148,7 +148,10 @@ export const Header = (props) => {
                     TANCAR SESSIÓ
                   </button>
                 )}
-                <Link className="icons-navbar icon-user " to="/iniciar-sessio">
+                <Link
+                  className="icons-navbar icon-user "
+                  to={!loggedIn ? "/iniciar-sessio" : "/perfil"}
+                >
                   <FaUser />
                 </Link>
                 <Link
