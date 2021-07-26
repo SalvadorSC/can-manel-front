@@ -27,7 +27,7 @@ export const HomePage = () => {
                 <p>Qui som</p>
               </div>
             </Link>
-            <div className="homepage-element homepage-element-small d-flex align-items-end mb-3">
+            <div className="homepage-element homepage-element-small homepage-element-activities d-flex align-items-end mb-3">
               <div className="d-flex align-items-center">
                 <p>Cerca activitats!</p>
               </div>

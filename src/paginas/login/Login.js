@@ -76,13 +76,12 @@ export const Login = (props) => {
             <hr />
           </div>
         </div>
-        <div className="login-wrap p-0">
+        <div className="login-wrap row p-0">
           <form
-            className="signin-form row"
+            className="signin-form col-md-12 col-lg-6"
             onSubmit={sendFormLogIn}
-            autocomplete="off"
           >
-            <div className="col-md-12 col-lg-6">
+            <div className="px-5">
               <label htmlFor="username">Nom d'usuari *</label>
               <div className="form-group">
                 <input
@@ -129,7 +128,7 @@ export const Login = (props) => {
           </form>
 
           <div className="col-md-12 col-lg-6">
-            <div className="mb-5">
+            <div className="mb-5 px-5">
               <p className="mr-2 text-big ">Encara no tens un usuari propi?</p>
               <p className="mr-2 text-center">
                 Crea rápidament un compte a Can Mateu i podrás gaudir d'una
