@@ -218,6 +218,7 @@ export const Header = (props) => {
                           toggleHamburger();
                           logOut();
                         }}
+                        to=""
                       >
                         Tancar sessió
                       </button>

@@ -108,7 +108,7 @@ export const AdminForm = (props) => {
           }
         }}
       />
-      <form onSubmit={(e) => sendPreparedForm(e)}>
+      <form onSubmit={(e) => sendPreparedForm(e)} autoComplete="off">
         <div className="row">
           <div className="select-image-create col-3">
             <label className="file-label" htmlFor="photoUrl">

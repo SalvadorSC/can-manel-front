@@ -80,6 +80,7 @@ export const Login = (props) => {
           <form
             className="signin-form col-md-12 col-lg-6"
             onSubmit={sendFormLogIn}
+            autoComplete="off"
           >
             <div className="px-5">
               <label htmlFor="username">Nom d'usuari *</label>

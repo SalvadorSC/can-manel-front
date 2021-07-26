@@ -26,6 +26,7 @@ import { AuthContextProvider } from "./context/AuthContextProvider";
 import { CartContextProvider } from "./context/CartContextProvider";
 import { ProtectedRoute } from "./componentes/ProtectedRoute/ProtectedRoute";
 import { ScrollToTop } from "./componentes/ScrollToTop/ScrollToTop";
+import { PaymentForm } from "./paginas/paymentForm/PaymentForm";
 
 function App() {
   const urlAPI = process.env.REACT_APP_URL_API;
@@ -177,6 +178,9 @@ function App() {
                 </Route>
                 <Route path="/historial-compra" exact>
                   <HistorialCompra />
+                </Route>
+                <Route path="/pagament" exact>
+                  <PaymentForm />
                 </Route>
                 <Route path="**">
                   <PageNotFound />
