@@ -25,3 +25,8 @@
   width: auto;
   height: auto;
 }
+
+.wrong-password {
+  color: var(--color-primary-dark);
+  padding-block: 5px;
+}
