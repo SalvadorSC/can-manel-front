@@ -9,8 +9,8 @@
   border: 1px solid var(--color-text);
   background-color: var(--color-white);
   position: absolute;
-  top: 400px;
-  right: 114px;
+  top: 287px;
+  right: 80px;
   display: none;
 }
 .basket-products:hover .basket-composition {
