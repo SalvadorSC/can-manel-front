@@ -25,18 +25,19 @@ export const AdminForm = (props) => {
   const sendDataToApi = async (tipoDeForm) => {
     if (tipoDeForm === "editar") {
       console.log(tipoDeForm);
-
       if (typeof editedProduct.photoUrl === "string") {
         console.log(editedProduct);
         const id = editedProduct._id;
         delete editedProduct._id;
         const resp = await fetch(urlAPI + `products/product-no-image/${id}`, {
           method: "PUT",
-          body: editedProduct,
+          body: JSON.stringify(editedProduct),
           headers: {
             Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
           },
         });
+        console.log(editedProduct);
       } else {
         const editedProductFormData = new FormData();
         editedProductFormData.append("photoUrl", editedProduct.photoUrl);
@@ -59,7 +60,6 @@ export const AdminForm = (props) => {
           }
         );
       }
-      console.log(editedProduct);
       toggleFormEdit();
       loadProducts();
     } else {
