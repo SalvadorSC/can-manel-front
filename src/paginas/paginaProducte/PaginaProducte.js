@@ -132,7 +132,7 @@ export const PaginaProducte = (props) => {
           <h3>{product.name}</h3>
           <hr></hr>
         </div>
-        <div className="row justify-content-center text-right">
+        <div className="row justify-content-center text-center">
           <div className="item-image col-12 col-md-6">
             <img
               src={product.photoUrl}
