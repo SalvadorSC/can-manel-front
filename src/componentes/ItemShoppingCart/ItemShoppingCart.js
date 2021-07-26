@@ -40,7 +40,7 @@ export const ItemShoppingCart = (props) => {
     loadElement(element);
   }, [element, loadElement]);
 
-  const modifyProduct = async (product, modifyOrDelete) => {
+  const modifyProduct = async (productToModify, modifyOrDelete) => {
     let header = {};
     if (token) {
       header = {
@@ -53,14 +53,18 @@ export const ItemShoppingCart = (props) => {
       };
     }
     const isModify = modifyOrDelete ? "add" : "remove";
-    const productAPI = await fetchGlobal(
+    const resp = await fetch(
       `${urlAPI}shopping-carts/shopping-cart/${isModify}/${productOrBasketId}`,
       {
         method: "PUT",
         headers: header,
-        body: JSON.stringify({ ...product, shoppingCartId: shoppingCart._id }),
+        body: JSON.stringify({
+          ...productToModify,
+          shoppingCartId: shoppingCart._id,
+        }),
       }
     );
+    const productAPI = resp.json();
     if (productAPI) {
       let founded = false;
       if (shoppingCart.products && modifyOrDelete) {
@@ -72,10 +76,14 @@ export const ItemShoppingCart = (props) => {
               productToFind.productId === productOrBasketId)
           ) {
             const modifiedProduct = {
-              amount: quantity,
-              productId: !product.isBasket ? productOrBasketId : undefined,
-              basketId: product.isBasket ? productOrBasketId : undefined,
-              price: quantity * product.priceUnit,
+              amount: productToModify.amount,
+              productId: !productToModify.isBasket
+                ? productOrBasketId
+                : undefined,
+              basketId: productToModify.isBasket
+                ? productOrBasketId
+                : undefined,
+              price: productToModify.amount * productData.priceUnit,
             };
             productToFind = modifiedProduct;
             founded = true;
@@ -92,21 +100,34 @@ export const ItemShoppingCart = (props) => {
             0
           );
           setShoppingCart(shoppingCart);
+          setPrice(productToModify.amount * productData.priceUnit);
         }
-        console.log(shoppingCart);
+      } else if (!modifyOrDelete) {
+        setDeletedProduct(true);
+        shoppingCart.products = shoppingCart.products.filter(
+          (productToFilter) => {
+            if (
+              productToFilter.basketId &&
+              productToFilter.basketId !== productOrBasketId
+            ) {
+              return true;
+            }
+            if (
+              productToFilter.productId &&
+              productToFilter.productId !== productOrBasketId
+            ) {
+              return true;
+            }
+            return false;
+          }
+        );
+        setShoppingCart(shoppingCart);
       }
       setProductsInCart(
         modifyOrDelete
           ? shoppingCart.products.length
           : shoppingCart.products.length - 1
       );
-      if (!modifyOrDelete) {
-        setDeletedProduct(true);
-        setTotalPrice(totalPrice - price);
-      } else {
-        setQuantity(quantity);
-        setPrice(quantity * productData.priceUnit);
-      }
     }
   };
 
@@ -122,8 +143,8 @@ export const ItemShoppingCart = (props) => {
         true
       );
       setTotalPrice(totalPrice - productData.priceUnit);
+      setQuantity(quantity - 1);
     }
-    setQuantity(quantity - 1);
   };
   const plusQuantity = () => {
     if (quantity === productData.stock) {
@@ -148,7 +169,7 @@ export const ItemShoppingCart = (props) => {
       false
     );
     setTotalPrice(totalPrice - productData.priceUnit * quantity);
-    setQuantity(product.amount);
+    setQuantity(1);
   };
 
   return (
@@ -158,7 +179,7 @@ export const ItemShoppingCart = (props) => {
           <td className="d-none d-lg-block">
             <img
               className="product-img"
-              src={productData.urlPhoto}
+              src={productData.photoUrl}
               alt="fruites i verdures de l'hort"
             />
           </td>
@@ -174,8 +195,10 @@ export const ItemShoppingCart = (props) => {
               <FaPlus className="icon-counter" onClick={() => plusQuantity()} />
             </div>
           </td>
-          <td className="table-total-price d-none d-md-block">
-            {Math.round(price * 100) / 100}€
+          <td className="items-table">
+            <div className="d-none d-sm-block">
+              {Math.round(price * 100) / 100}€
+            </div>
           </td>
           <td className="items-table">
             <FaTimes className="icon-delete" onClick={() => removeItem()} />

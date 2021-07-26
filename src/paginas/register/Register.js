@@ -32,6 +32,7 @@ export const Register = (props) => {
       name,
     } = data;
     if (password === confirmPassword && email === confirmEmail) {
+      const shoppingCartId = localStorage.getItem("shoppingCartId");
       try {
         const resp = await fetch(urlAPI + "users/new-user", {
           method: "POST",
@@ -45,6 +46,7 @@ export const Register = (props) => {
             password,
             phone,
             email,
+            shoppingCartId: shoppingCartId ? shoppingCartId : undefined,
           }),
         });
         if (resp.ok) {
