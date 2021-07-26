@@ -77,7 +77,11 @@ export const Login = (props) => {
           </div>
         </div>
         <div className="login-wrap p-0">
-          <form className="signin-form row" onSubmit={sendFormLogIn}>
+          <form
+            className="signin-form row"
+            onSubmit={sendFormLogIn}
+            autocomplete="off"
+          >
             <div className="col-md-12 col-lg-6">
               <label htmlFor="username">Nom d'usuari *</label>
               <div className="form-group">
