@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import productImage from "../../assets/product.jpeg";
 import "./ProductCard.css";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
