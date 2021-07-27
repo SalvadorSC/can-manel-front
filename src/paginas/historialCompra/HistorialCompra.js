@@ -1,3 +1,4 @@
+import basketImage from "../../assets/cistelleseco.png";
 import "./HistorialCompra.css";
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
@@ -9,7 +10,7 @@ export const HistorialCompra = () => {
     <div className="mostrar-imagen">
       <div className="d-flex align-items-start">
         <div className="image">
-          <img src="https://picsum.photos/400/400" alt="" />
+          <img src={basketImage} alt="Cistella de fruites i verdures" />
         </div>
         <FaTimes
           className="close-image-icon"
