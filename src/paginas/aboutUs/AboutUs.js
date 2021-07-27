@@ -33,7 +33,7 @@ export const AboutUs = () => {
           <img
             src="https://media.istockphoto.com/photos/masia-in-catalonia-spain-picture-id145154657?b=1&k=6&m=145154657&s=612x612&w=0&h=WaO9ejW95gG1fBP7Ak2m6qAosK3Zd9_u5dHCVs5GNG0="
             className="img-about-us w-100"
-            alt=""
+            alt="Masia i terreny de Can Mateu"
           />
         </div>
       </div>

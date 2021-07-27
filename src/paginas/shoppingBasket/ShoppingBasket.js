@@ -1,5 +1,4 @@
 import "./shoppingBasket.css";
-import productImage from "../../assets/lettuce-product.jpg";
 import { ItemShoppingCart } from "../../componentes/ItemShoppingCart/ItemShoppingCart";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";

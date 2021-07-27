@@ -1,5 +1,4 @@
 import "./PaginaProducte.css";
-import productImage from "../../assets/product.jpeg";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { FeaturedProducts } from "../../componentes/FeaturedProducts/FeaturedProducts";
 import { Link, useHistory, useParams } from "react-router-dom";
