@@ -21,6 +21,7 @@ export const AdminForm = (props) => {
   const sendPreparedForm = async (e) => {
     e.preventDefault();
     await sendDataToApi(tipoDeForm);
+    loadProducts();
   };
   const sendDataToApi = async (tipoDeForm) => {
     if (tipoDeForm === "editar") {
@@ -61,7 +62,6 @@ export const AdminForm = (props) => {
         );
       }
       toggleFormEdit();
-      loadProducts();
     } else {
       const newProduct = new FormData();
       newProduct.append("photoUrl", editedProduct.photoUrl);
@@ -84,7 +84,6 @@ export const AdminForm = (props) => {
       if (resp.ok) {
         return toggleForm();
       }
-      loadProducts();
     }
   };
 
