@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export const ShoppingBasket = (props) => {
   const { shoppingCart, setShoppingCart, setProductsInCart } = props;
-  const { token } = useContext(AuthContext);
+  const { token, loggedIn } = useContext(AuthContext);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal } = useFetch(urlAPI);
   const [shoppingCartItems, setShoppingCartItems] = useState([]);
@@ -79,7 +79,10 @@ export const ShoppingBasket = (props) => {
           </div>
         </div>
       </div>
-      <Link to="./pagament" className="order-button">
+      <Link
+        to={!loggedIn ? "/iniciar-sessio" : "/pagament"}
+        className="order-button"
+      >
         <button className="button btn-order py-2">Passar per caixa</button>
       </Link>
     </section>
