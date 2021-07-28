@@ -115,7 +115,6 @@ export const PaginaProducte = (props) => {
       setAddedToCartMessage(false);
     }, 1000);
   };
-  console.log(product);
   return (
     <>
       <section className="product-section">
