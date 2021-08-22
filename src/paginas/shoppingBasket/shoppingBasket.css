@@ -58,6 +58,10 @@ th.product-col {
   margin-top: 30px;
 }
 
+.order-button button {
+  margin-top: 22px;
+}
+
 .btn-order {
   width: 100%;
   display: block;
