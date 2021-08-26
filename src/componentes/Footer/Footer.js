@@ -1,4 +1,10 @@
-import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaPagelines,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 export const Footer = () => {
@@ -11,7 +17,7 @@ export const Footer = () => {
               <h6 className="footer-heading text-uppercase text-white">
                 Informació
               </h6>
-              <ul className="list-unstyled footer-link mt-4">
+              <ul className="footer-link list-unstyled mt-4">
                 <li>
                   <a href="link">Pàgines</a>
                 </li>
@@ -32,12 +38,12 @@ export const Footer = () => {
               <h6 className="footer-heading text-uppercase text-white">
                 Ajuda
               </h6>
-              <ul className="list-unstyled footer-link mt-4">
+              <ul className="footer-link list-unstyled mt-4">
                 <li>
-                  <a href="link">Registra't</a>
+                  <Link to="/registre">Registra't</Link>
                 </li>
                 <li>
-                  <a href="link">Inicia sessió</a>
+                  <Link to="/iniciar-sessio">Inicia sessió</Link>
                 </li>
                 <li>
                   <a href="link">Condicions de l'acord</a>
@@ -54,25 +60,28 @@ export const Footer = () => {
               <h6 className="footer-heading text-uppercase text-white">
                 Contacta'ns
               </h6>
-              <ul className="list-unstyled footer-link mt-4">
-                <li>
-                  <p>Can Mateu</p>
-                </li>
+              <ul className="footer-link list-unstyled mt-4">
                 <li>
                   <p>
-                    <FaMapMarkerAlt /> Carrer Sant Pere 3, 08341, Mura
-                    (Barcelona)
+                    <FaPagelines className="icons-footer" />
+                    Can Mateu
                   </p>
                 </li>
                 <li>
                   <p>
-                    <FaPhoneAlt />
+                    <FaMapMarkerAlt className="icons-footer" />
+                    Carrer Sant Pere 3, 08341, Mura (Barcelona)
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <FaPhoneAlt className="icons-footer" />
                     +34 662 21 62
                   </p>
                 </li>
                 <li>
                   <p>
-                    <FaEnvelope />
+                    <FaEnvelope className="icons-footer" />
                     info@canmateu.com
                   </p>
                 </li>

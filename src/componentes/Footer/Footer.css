@@ -21,8 +21,8 @@
   margin-bottom: 0;
 }
 
-.footer-link a:hover {
-  color: #1bbc9b;
+.icons-footer {
+  margin-right: 5px;
 }
 
 .contact-info {
@@ -58,4 +58,10 @@
   bottom: 0;
   display: block;
   border-bottom: 1px solid #1bbc9b;
+}
+
+@media (min-width: 1024px) {
+  .footer-link a:hover {
+    color: #1bbc9b;
+  }
 }
