@@ -166,6 +166,14 @@ header {
   color: var(--color-text);
 }
 
+.logout-hamburger-menu {
+  text-decoration: underline;
+}
+
+.logout-hamburger-menu:hover {
+  text-decoration: underline;
+}
+
 /* CSS TRANSITION */
 
 .close-navbar {

@@ -213,7 +213,7 @@ export const Header = (props) => {
                     {loggedIn ? (
                       <button
                         type="button"
-                        className="drop-down-link nav-link font-weight-bold"
+                        className="logout-hamburger-menu drop-down-link nav-link btn"
                         onClick={() => {
                           toggleHamburger();
                           logOut();
