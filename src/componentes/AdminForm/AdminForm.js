@@ -105,12 +105,6 @@ export const AdminForm = (props) => {
       />
       <form onSubmit={(e) => sendPreparedForm(e)} autoComplete="off">
         <div className="row">
-          <div className="select-image-create col-3">
-            <label className="file-label" htmlFor="photoUrl">
-              Imatge:
-            </label>
-            <input type="file" id="photoUrl" onChange={(e) => setData(e)} />
-          </div>
           <div className="col form-group pt-4">
             <label htmlFor="name">Nom producte:</label>
             <input
@@ -149,7 +143,7 @@ export const AdminForm = (props) => {
           </div>
         </div>
         <div className="item-price row mt-3">
-          <div className="col-3 form-group">
+          <div className="col-2 form-group">
             <label htmlFor="priceUnit">Preu per unitat:</label>
             <div className="d-flex align-items-center">
               <input
@@ -162,7 +156,7 @@ export const AdminForm = (props) => {
               €
             </div>
           </div>
-          <div className="col-3 form-group">
+          <div className="col-2 form-group">
             <label htmlFor="unit">Unitat:</label>
             <select
               id="unit"
@@ -177,7 +171,7 @@ export const AdminForm = (props) => {
               <option value="units">Unitat</option>
             </select>
           </div>
-          <div className="col-3 form-group">
+          <div className="col-2 form-group">
             <label htmlFor="stock">Stock:</label>
             <input
               type="text"
@@ -187,7 +181,7 @@ export const AdminForm = (props) => {
               value={productToEdit ? editedProduct.stock : null}
             />
           </div>
-          <div className="col-3 form-group">
+          <div className="col-2 form-group">
             <label htmlFor="discount">Descompte:</label>
             <div className="d-flex align-items-center">
               <input
@@ -199,6 +193,12 @@ export const AdminForm = (props) => {
               />
               %
             </div>
+          </div>
+          <div className="select-image-create col">
+            <label className="file-label" htmlFor="photoUrl">
+              Imatge:
+            </label>
+            <input type="file" id="photoUrl" onChange={(e) => setData(e)} />
           </div>
         </div>
         <div className="text-right">
