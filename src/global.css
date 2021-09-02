@@ -42,6 +42,7 @@ input:focus {
 }
 .form-control:focus {
   box-shadow: 0 0 0 0.2rem rgb(200 222 176/ 75%);
+  border-color: transparent !important;
 }
 /* BUTTON MAIN STYLES */
 
