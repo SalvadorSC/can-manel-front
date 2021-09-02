@@ -27,6 +27,8 @@ import { CartContextProvider } from "./context/CartContextProvider";
 import { ProtectedRoute } from "./componentes/ProtectedRoute/ProtectedRoute";
 import { ScrollToTop } from "./componentes/ScrollToTop/ScrollToTop";
 import { PaymentForm } from "./paginas/paymentForm/PaymentForm";
+import { AdminBasketList } from "./paginas/adminBasketList/AdminBasketList";
+import { AdminUsersList } from "./paginas/adminUsersList/AdminUsersList";
 
 function App() {
   const urlAPI = process.env.REACT_APP_URL_API;
@@ -174,6 +176,16 @@ function App() {
                 <Route path="/administracio-productes" exact>
                   <ProtectedRoute>
                     <AdminProductList fetchGlobal={fetchGlobal} />
+                  </ProtectedRoute>
+                </Route>
+                <Route path="/administracio-cistelles" exact>
+                  <ProtectedRoute>
+                    <AdminBasketList fetchGlobal={fetchGlobal} />
+                  </ProtectedRoute>
+                </Route>
+                <Route path="/administracio-usuaris" exact>
+                  <ProtectedRoute>
+                    <AdminUsersList fetchGlobal={fetchGlobal} />
                   </ProtectedRoute>
                 </Route>
                 <Route path="/historial-compra" exact>
