@@ -1,0 +1,23 @@
+.table-titles-user {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-titles-user p {
+  font-weight: bold;
+}
+
+.table-users {
+  border-bottom: 1px solid #dee2e6;
+  margin-top: 30px;
+}
+
+.searcher-users {
+  margin-top: 20px;
+}
+
+.searcher-input-users {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}

@@ -224,11 +224,11 @@ export const Header = (props) => {
                       </button>
                     ) : (
                       <Link
-                        to="/registre"
+                        to="/iniciar-sessio"
                         className="drop-down-link nav-link"
                         onClick={() => toggleHamburger()}
                       >
-                        Registar-se
+                        Iniciar Sessió
                       </Link>
                     )}
                   </li>
