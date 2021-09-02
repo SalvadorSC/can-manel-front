@@ -42,6 +42,8 @@ export const AdminProductList = (props) => {
   return (
     <>
       <section className="admin">
+        <h2>Llista de Productes</h2>
+        <hr />
         <div className="create-item d-flex justify-content-center align-items-center">
           <p>Afegir un nou producte</p>
           <button
