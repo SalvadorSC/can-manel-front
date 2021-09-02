@@ -1,5 +1,11 @@
 import "./AdminHomePage.css";
-import { FaShoppingBasket, FaCrow, FaWarehouse } from "react-icons/fa";
+import {
+  FaShoppingBasket,
+  FaCrow,
+  FaWarehouse,
+  FaAddressBook,
+  FaCarrot,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const AdminHomePage = () => {
@@ -15,8 +21,17 @@ export const AdminHomePage = () => {
               to="/administracio-productes"
               className="d-flex flex-column align-items-center"
             >
-              <FaShoppingBasket size={iconsSize} color={iconsColor} />
+              <FaCarrot size={iconsSize} color={iconsColor} />
               <span>Productes</span>
+            </Link>
+          </li>
+          <li className="task">
+            <Link
+              to="/administracio-cistelles"
+              className="d-flex flex-column align-items-center"
+            >
+              <FaShoppingBasket size={iconsSize} color={iconsColor} />
+              <span>Cistelles</span>
             </Link>
           </li>
           <li className="task">
@@ -26,6 +41,15 @@ export const AdminHomePage = () => {
             >
               <FaCrow size={iconsSize} color={iconsColor} />
               <span>Activitats</span>
+            </Link>
+          </li>
+          <li className="task">
+            <Link
+              to="/administracio-productes"
+              className="d-flex flex-column align-items-center"
+            >
+              <FaAddressBook size={iconsSize} color={iconsColor} />
+              <span>Usuaris</span>
             </Link>
           </li>
           <li className="task">
