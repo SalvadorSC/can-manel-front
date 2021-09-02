@@ -382,6 +382,10 @@ header {
   .icon-shopping-basket {
     font-size: 26px;
   }
+  .icon-admin {
+    font-size: 22px;
+    margin-left: 15px;
+  }
   .logout-header {
     font-size: 13px;
   }
