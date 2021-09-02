@@ -7,6 +7,10 @@ export const AdminUsersList = (props) => {
   const { fetchGlobal } = props;
   const [user, setUser] = useState([]);
   const { token } = useContext(AuthContext);
+  const [message, setMessage] = useState(false);
+  const [inputData, setInputData] = useState({
+    name: "",
+  });
 
   const urlAPI = process.env.REACT_APP_URL_API;
 
@@ -25,27 +29,67 @@ export const AdminUsersList = (props) => {
     loadProducts();
   }, [loadProducts]);
 
+  /* const setList = async (inputData) => {
+    const { name } = inputData;
+    const input = name !== "" ? "name" : undefined;
+    const data = name;
+    if (data !== "" && input !== undefined) {
+      const resp = await fetch(`${urlAPI}users/user/list-by-${input}`);
+      if (resp.ok) {
+        setMessage(false);
+        const usersList = await resp.json();
+        setUser(usersList);
+        return true;
+      }
+      setMessage(true);
+      setUser([]);
+      return false;
+    }
+    const resp = await fetch(`${urlAPI}users/list`);
+    if (resp.ok) {
+      setMessage(false);
+      const usersList = await resp.json();
+      setUser(usersList);
+    }
+    return false;
+  }; */
+
   return (
     <section className="admin">
       <h2>Llista d'usuaris</h2>
       <hr />
-      <div className="searcher-users d-flex">
-        <div className="form-group">
-          <input
-            type="text"
-            className="searcher-input-users form-control"
-            id="name"
-            placeholder="Introdueix un nom..."
-            /*   value={inputData.name}
-            onChange={(e) =>
-              setInputData({ ...inputData, name: e.target.value })
-            } */
-          />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setMessage(false);
+          // setList(inputData);
+        }}
+      >
+        <div className="searcher-users d-flex justify-content-center">
+          <div className="form-group">
+            <input
+              type="text"
+              className="searcher-input-users form-control"
+              id="name"
+              placeholder="Introdueix un nom..."
+              value={inputData.name}
+              onChange={(e) =>
+                setInputData({ ...inputData, name: e.target.value })
+              }
+            />
+          </div>
+          <button type="submit" className="button searcher-button">
+            Buscar
+          </button>
         </div>
-        <button type="submit" className="button searcher-button">
-          Buscar
-        </button>
-      </div>
+      </form>
+      {message && (
+        <div className="text-center">
+          <span className="not-found">
+            No s'ha trobat cap usuari amb aquest nom!
+          </span>
+        </div>
+      )}
       <div className="table-users row">
         <div className="col-12">
           <div className="table-titles-user row">
