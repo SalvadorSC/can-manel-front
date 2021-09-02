@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { AdminProduct } from "../../componentes/AdminProduct/AdminProduct";
 import "./AdminProductList.css";
 import { AdminForm } from "../../componentes/AdminForm/AdminForm";
-import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
 
 export const AdminProductList = (props) => {

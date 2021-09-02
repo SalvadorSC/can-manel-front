@@ -45,7 +45,7 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="/administracio-productes"
+              to="/administracio-usuaris"
               className="d-flex flex-column align-items-center"
             >
               <FaAddressBook size={iconsSize} color={iconsColor} />
