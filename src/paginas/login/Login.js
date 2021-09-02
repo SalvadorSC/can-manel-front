@@ -82,7 +82,7 @@ export const Login = (props) => {
             onSubmit={sendFormLogIn}
             autoComplete="off"
           >
-            <div className="px-5">
+            <div className="container-login">
               <label htmlFor="username">Nom d'usuari *</label>
               <div className="form-group">
                 <input
@@ -109,13 +109,10 @@ export const Login = (props) => {
                 <p className="error-login-data">Les dades no coincideixen!</p>
               )}
 
-              <div className="d-flex align-items-center mb-3">
-                <input
-                  type="checkbox"
-                  name="recordar-contrasenya"
-                  className="mr-2"
-                />
-                <span className="mr-2">Recorda la contrasenya</span>
+              <div className="d-flex align-items-center justify-content-center mb-3">
+                <span className="forgot-password mr-2">
+                  Heu oblidat la vostra contrasenya?
+                </span>
               </div>
               <div className="form-group text-center">
                 <button
@@ -128,20 +125,21 @@ export const Login = (props) => {
             </div>
           </form>
 
-          <div className="col-md-12 col-lg-6">
-            <div className="mb-5 px-5">
-              <p className="mr-2 text-big ">Encara no tens un usuari propi?</p>
-              <p className="mr-2 text-center">
-                Crea ràpidament un compte a Can Mateu i podràs gaudir d'una
-                experiència molt més personalitzada, amb descomptes exclusius,
-                historials de compra i molt més!
+          <div className="container-registration-question col-md-12 col-lg-6">
+            <div className="mb-3 text-center">
+              <p className="text-registration-question mr-2">
+                Encara no tens un usuari propi?{" "}
+                <span className="register-here-mobile"> Registra't aquí!</span>
+              </p>
+              <p className="text-info-registration mr-2 text-left">
+                No et preocupis, crea ràpidament el teu compte a Can Mateu!
               </p>
             </div>
-            <div className="form-group text-center">
+            <div className="register-link form-group">
               <Link to="/registre">
                 <button
                   type="button"
-                  className="button btn-login btn form-control mt-2 px-3"
+                  className="button btn-create-account btn form-control mt-2 px-3"
                 >
                   Crea un compte
                 </button>

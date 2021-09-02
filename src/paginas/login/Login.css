@@ -1,21 +1,90 @@
+.container-login {
+  margin-bottom: 30px;
+}
+
 .btn-login {
-  width: 50%;
+  width: 75%;
+  font-size: 15px;
+  height: 40px;
+}
+
+.btn-create-account {
+  width: 60%;
+  font-size: 13px;
+  height: 40px;
 }
 
 .login-options {
   font-size: 12px;
 }
 
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+.text-registration-question {
+  font-size: 16px;
+  color: var(--color-grey);
 }
 
-.text-big {
-  font-size: 24px;
-  font-weight: medium;
+.text-info-registration {
+  display: none;
 }
+
 .error-login-data {
   color: #b31111;
   font-size: 14px;
+}
+
+.forgot-password {
+  font-size: 13px;
+  color: var(--color-blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-link {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .container-login {
+    margin-inline: 50px;
+  }
+  .btn-login {
+    width: 50%;
+    font-size: 17px;
+    height: 40px;
+  }
+  .btn-create-account {
+    width: 40%;
+    font-size: 15px;
+    height: 40px;
+  }
+  .forgot-password {
+    font-size: 15px;
+  }
+}
+@media (min-width: 991px) {
+  .text-info-registration {
+    display: flex;
+    color: var(--color-text);
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .register-here-mobile {
+    display: none;
+  }
+  .text-registration-question {
+    font-size: 20px;
+    color: var(--color-text);
+    font-weight: bold;
+    text-align: left;
+  }
+  .register-link {
+    text-align: left;
+  }
+  .container-registration-question {
+    padding-left: 60px;
+  }
+  .btn-login,
+  .btn-create-account {
+    height: 45px;
+  }
 }

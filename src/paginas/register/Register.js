@@ -298,7 +298,7 @@ export const Register = (props) => {
                     <div className="form-group text-center">
                       <button
                         type="submit"
-                        className="button btn-login btn form-control mt-2 px-3"
+                        className="button btn-register btn form-control mt-2 px-3"
                       >
                         Registrar-se
                       </button>
