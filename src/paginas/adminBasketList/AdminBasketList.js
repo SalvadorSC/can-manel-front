@@ -114,7 +114,3 @@ export const AdminBasketList = () => {
     </>
   );
 };
-
-AdminBasketList.propTypes = {
-  fetchGlobal: PropTypes.func.isRequired,
-};
