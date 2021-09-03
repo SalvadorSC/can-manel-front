@@ -4,12 +4,13 @@ import { Searcher } from "../../componentes/Searcher/Searcher";
 import { ProductCard } from "../../componentes/ProductCard/ProductCard";
 import { useCallback, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
+import { Loading } from "../../componentes/Loading/Loading";
 
 export const ProductList = (props) => {
   const { shoppingCart, setShoppingCart, setProductsInCart } = props;
   const [products, setProducts] = useState([]);
   const urlAPI = process.env.REACT_APP_URL_API;
-  const { fetchGlobal } = useFetch(urlAPI);
+  const { fetchGlobal, loading } = useFetch(urlAPI);
 
   const loadProducts = useCallback(async () => {
     const productsAPI = await fetchGlobal(`${urlAPI}products/list`);
@@ -38,6 +39,7 @@ export const ProductList = (props) => {
           ))}
         </div>
       </section>
+      {loading && <Loading />}
     </>
   );
 };

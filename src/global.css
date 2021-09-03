@@ -1,4 +1,5 @@
 :root {
+  --color-primary-light: #daebc9;
   --color-primary: #c8deb3;
   --color-primary-dark: #6a983c;
   --color-border: #46760a;
@@ -44,6 +45,7 @@ input:focus {
   box-shadow: 0 0 0 0.2rem rgb(200 222 176/ 75%);
   border-color: transparent !important;
 }
+
 /* BUTTON MAIN STYLES */
 
 .button {

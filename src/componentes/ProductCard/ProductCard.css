@@ -9,6 +9,7 @@
 }
 .card-image {
   border-radius: 15px;
+  min-height: 200px;
 }
 .card-info {
   padding-block: 14px;

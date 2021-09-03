@@ -106,7 +106,7 @@ export const ProductCard = (props) => {
         <img
           className="card-image"
           src={product.photoUrl}
-          alt="Cistella de fruites i verdures de l'hort"
+          alt="Producte de Can Mateu"
         ></img>
         <div className="card-info">
           <Link to={`/producte/${product._id}`}>
