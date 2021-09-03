@@ -14,6 +14,11 @@ export const AdminProductList = () => {
   const [action, setAction] = useState(null);
   const [productEdited, setProductEdited] = useState(null);
   const [products, setProducts] = useState([]);
+  const [message, setMessage] = useState(false);
+  const [inputData, setInputData] = useState({
+    name: "",
+    category: "",
+  });
   const { token } = useContext(AuthContext);
   const toggleForm = (boolean) => {
     boolean ? setFormOpen(boolean) : setFormOpen(!formOpen);
@@ -31,6 +36,35 @@ export const AdminProductList = () => {
   useEffect(() => {
     loadProducts();
   }, [loadProducts]);
+
+  const setList = async (inputData) => {
+    const { name, category } = inputData;
+    const input =
+      name !== "" ? "name" : category !== "" ? "category" : undefined;
+    const data = name || category;
+    console.log(data);
+    if (data !== "" && input !== undefined) {
+      const resp = await fetch(`${urlAPI}products/list-by-${input}/${data}`);
+      console.log(resp);
+      if (resp.ok) {
+        console.log("hola");
+        setMessage(false);
+        const productsList = await resp.json();
+        setProducts(productsList);
+        return true;
+      }
+      setMessage(true);
+      setProducts([]);
+      return false;
+    }
+    const resp = await fetch(`${urlAPI}products/list`);
+    if (resp.ok) {
+      setMessage(false);
+      const productsList = await resp.json();
+      setProducts(productsList);
+    }
+    return false;
+  };
 
   const deleteProduct = async (item) => {
     const resp = await fetchGlobal(urlAPI + "products/product/" + item._id, {
@@ -67,7 +101,14 @@ export const AdminProductList = () => {
             Crear
           </button>
         </div>
-        <div className="row justify-content-between mb-3">
+        <form
+          className="row justify-content-between mb-3"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setMessage(false);
+            setList(inputData);
+          }}
+        >
           <div className="form-group col-5 d-flex align-items-center h-40">
             <label className="col-form-label mr-1" htmlFor="name">
               Buscar per nom:
@@ -77,13 +118,22 @@ export const AdminProductList = () => {
               className="admin-searcher-input form-control"
               id="name"
               placeholder="Introdueix un nom..."
+              onChange={(e) =>
+                setInputData({ ...inputData, name: e.target.value })
+              }
             />
           </div>
           <div className="form-group col-5 d-flex">
             <label className="col-form-label mr-1" htmlFor="category">
               Buscar per categoria:
             </label>
-            <select className="admin-searcher-input form-control" id="category">
+            <select
+              className="admin-searcher-input form-control"
+              id="category"
+              onChange={(e) => {
+                setInputData({ ...inputData, category: e.target.value });
+              }}
+            >
               <option value="all" defaultValue>
                 Totes les categories
               </option>
@@ -95,6 +145,11 @@ export const AdminProductList = () => {
           <button type="submit" className="button searcher-button col-2">
             Filtrar
           </button>
+        </form>
+        <div className="d-flex justify-content-center align-items-center mb-4">
+          {message && (
+            <span className="not-found">No s'ha trobat cap producte!</span>
+          )}
         </div>
 
         {formOpen && (
@@ -143,8 +198,4 @@ export const AdminProductList = () => {
       {loading && <Loading />}
     </>
   );
-};
-
-AdminProductList.propTypes = {
-  fetchGlobal: PropTypes.func.isRequired,
 };
