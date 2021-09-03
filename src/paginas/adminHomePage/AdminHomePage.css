@@ -1,6 +1,6 @@
 .admin-tasks {
   display: grid;
-  gap: 3rem;
+  gap: 10rem;
   grid-auto-flow: dense;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 2rem), 1fr));
 }
