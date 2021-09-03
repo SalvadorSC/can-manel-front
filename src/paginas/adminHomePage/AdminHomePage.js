@@ -36,15 +36,6 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="/administracio-productes"
-              className="d-flex flex-column align-items-center"
-            >
-              <FaCrow size={iconsSize} color={iconsColor} />
-              <span>Activitats</span>
-            </Link>
-          </li>
-          <li className="task">
-            <Link
               to="/administracio-usuaris"
               className="d-flex flex-column align-items-center"
             >
@@ -54,7 +45,16 @@ export const AdminHomePage = () => {
           </li>
           <li className="task">
             <Link
-              to="/administracio-productes"
+              to="/nowhere"
+              className="d-flex flex-column align-items-center"
+            >
+              <FaCrow size={iconsSize} color={iconsColor} />
+              <span>Activitats</span>
+            </Link>
+          </li>
+          <li className="task">
+            <Link
+              to="/nowhere"
               className="d-flex flex-column align-items-center"
             >
               <FaWarehouse size={iconsSize} color={iconsColor} />

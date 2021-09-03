@@ -1,4 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { AdminTotalUsersList } from "../../componentes/AdminTotalUsersList/AdminTotalUsersList";
 import { AuthContext } from "../../context/AuthContext";
 import "./AdminUsersList.css";
@@ -56,6 +58,13 @@ export const AdminUsersList = (props) => {
 
   return (
     <section className="admin">
+      <Link
+        to="/administracio"
+        className="return-link d-flex align-items-center mb-2"
+      >
+        <FaArrowLeft className="mr-2" />
+        Tornar
+      </Link>
       <h2>Llista d'usuaris</h2>
       <hr />
       <form
