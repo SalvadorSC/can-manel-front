@@ -1,14 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import { Link, NavLink, useHistory } from "react-router-dom";
-import {
-  FaSearch,
-  FaShoppingBasket,
-  FaUser,
-  FaBars,
-  FaUsersCog,
-  FaTools,
-} from "react-icons/fa";
+import { FaSearch, FaShoppingBasket, FaUser, FaTools } from "react-icons/fa";
 import { Fade as Hamburger } from "hamburger-react";
 import { useCallback, useContext, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
@@ -21,7 +14,8 @@ export const Header = (props) => {
   const [magnifierOpen, setMagnifierOpen] = useState(false);
   const nodeRef = useRef(null);
   const [showBusquedas, setShowBusquedas] = useState(false);
-  const { loggedIn, setLoggedIn, isAdmin } = useContext(AuthContext);
+  const { loggedIn, setLoggedIn, adminRole, setAdminRole } =
+    useContext(AuthContext);
   const history = useHistory();
 
   const toggleHamburger = () => {
@@ -36,8 +30,9 @@ export const Header = (props) => {
       products: [],
     });
     setLoggedIn(false);
+    setAdminRole(false);
     history.push("./principal");
-  }, [history, setLoggedIn, setShoppingCart]);
+  }, [history, setAdminRole, setLoggedIn, setShoppingCart]);
 
   const busquedas = (
     <>
@@ -161,7 +156,7 @@ export const Header = (props) => {
                 >
                   <FaUser />
                 </Link>
-                {isAdmin ? (
+                {adminRole ? (
                   <Link className="icons-navbar icon-admin" to="/administracio">
                     <div className="d-flex">
                       <FaTools />
