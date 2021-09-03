@@ -6,9 +6,10 @@ import { AdminForm } from "../../componentes/AdminForm/AdminForm";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { Loading } from "../../componentes/Loading/Loading";
+import { useFetch } from "../../hooks/useFetch";
 
-export const AdminProductList = (props) => {
-  const { fetchGlobal } = props;
+export const AdminProductList = () => {
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
   const [productEdited, setProductEdited] = useState(null);
@@ -18,6 +19,7 @@ export const AdminProductList = (props) => {
     boolean ? setFormOpen(boolean) : setFormOpen(!formOpen);
   };
   const urlAPI = process.env.REACT_APP_URL_API;
+  const { fetchGlobal, loading } = useFetch(urlAPI);
 
   const loadProducts = useCallback(async () => {
     const productsAPI = await fetchGlobal(`${urlAPI}products/list`);
@@ -138,6 +140,7 @@ export const AdminProductList = (props) => {
           ))}
         </div>
       </section>
+      {loading && <Loading />}
     </>
   );
 };

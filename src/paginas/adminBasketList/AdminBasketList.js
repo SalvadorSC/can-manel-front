@@ -6,9 +6,10 @@ import { AuthContext } from "../../context/AuthContext";
 import { AdminBasket } from "../../componentes/AdminBasket/AdminBasket";
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { Loading } from "../../componentes/Loading/Loading";
+import { useFetch } from "../../hooks/useFetch";
 
-export const AdminBasketList = (props) => {
-  const { fetchGlobal } = props;
+export const AdminBasketList = () => {
   const [formOpen, setFormOpen] = useState(false);
   const [action, setAction] = useState(null);
   const [productEdited, setProductEdited] = useState(null);
@@ -18,6 +19,7 @@ export const AdminBasketList = (props) => {
     boolean ? setFormOpen(boolean) : setFormOpen(!formOpen);
   };
   const urlAPI = process.env.REACT_APP_URL_API;
+  const { fetchGlobal, loading } = useFetch(urlAPI);
 
   const loadProducts = useCallback(async () => {
     const productsAPI = await fetchGlobal(`${urlAPI}baskets/list`);
@@ -108,6 +110,7 @@ export const AdminBasketList = (props) => {
           ))}
         </div>
       </section>
+      {loading && <Loading />}
     </>
   );
 };

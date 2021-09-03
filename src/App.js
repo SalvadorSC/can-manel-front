@@ -155,7 +155,6 @@ function App() {
                 </Route>
                 <Route path="/llista-cistelles" exact>
                   <BasketList
-                    fetchGlobal={fetchGlobal}
                     shoppingCart={shoppingCart}
                     setShoppingCart={setShoppingCart}
                     setProductsInCart={setProductsInCart}
@@ -175,17 +174,17 @@ function App() {
                 </Route>
                 <Route path="/administracio-productes" exact>
                   <ProtectedRoute>
-                    <AdminProductList fetchGlobal={fetchGlobal} />
+                    <AdminProductList />
                   </ProtectedRoute>
                 </Route>
                 <Route path="/administracio-cistelles" exact>
                   <ProtectedRoute>
-                    <AdminBasketList fetchGlobal={fetchGlobal} />
+                    <AdminBasketList />
                   </ProtectedRoute>
                 </Route>
                 <Route path="/administracio-usuaris" exact>
                   <ProtectedRoute>
-                    <AdminUsersList fetchGlobal={fetchGlobal} />
+                    <AdminUsersList />
                   </ProtectedRoute>
                 </Route>
                 <Route path="/historial-compra" exact>

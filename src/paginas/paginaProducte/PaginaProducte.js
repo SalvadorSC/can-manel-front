@@ -5,6 +5,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
+import { Loading } from "../../componentes/Loading/Loading";
 
 export const PaginaProducte = (props) => {
   const { shoppingCart, setShoppingCart, setProductsInCart } = props;
@@ -14,7 +15,7 @@ export const PaginaProducte = (props) => {
   const history = useHistory();
   const urlAPI = process.env.REACT_APP_URL_API;
   const { id } = useParams();
-  const { fetchGlobal } = useFetch(urlAPI);
+  const { fetchGlobal, loading } = useFetch(urlAPI);
   const { token } = useContext(AuthContext);
 
   const loadProduct = useCallback(async () => {
@@ -126,7 +127,6 @@ export const PaginaProducte = (props) => {
             <FaArrowLeft className="mr-2" />
             Tornar
           </Link>
-
           <h3>{product.name}</h3>
           <hr></hr>
         </div>
@@ -188,6 +188,7 @@ export const PaginaProducte = (props) => {
         </div>
       </section>
       <FeaturedProducts />
+      {loading && <Loading />}
     </>
   );
 };
