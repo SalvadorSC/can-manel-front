@@ -17,7 +17,7 @@ export const AdminUsersList = () => {
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal, loading } = useFetch(urlAPI);
 
-  const loadProducts = useCallback(async () => {
+  const loadUsers = useCallback(async () => {
     const usersAPI = await fetchGlobal(`${urlAPI}users/list`, {
       headers: {
         Authorization: "Bearer " + token,
@@ -29,8 +29,8 @@ export const AdminUsersList = () => {
   }, [fetchGlobal, token, urlAPI]);
 
   useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
+    loadUsers();
+  }, [loadUsers]);
 
   /* const setList = async (inputData) => {
     const { name } = inputData;
