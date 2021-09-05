@@ -102,37 +102,53 @@ export const ProductCard = (props) => {
 
   return (
     <>
-      <article className="card">
-        <img
-          className="card-image"
-          src={product.photoUrl}
-          alt="Producte de Can Mateu"
-        ></img>
-        <div className="card-info">
-          <Link to={`/producte/${product._id}`}>
-            <h4 className="card-title">{product.name}</h4>
-          </Link>
-          <p className="card-description">{product.description}</p>
-        </div>
-        <div className="card-buy d-flex align-items-center justify-content-between">
-          <span className="card-price">{product.priceUnit}€</span>
-          <div
-            className={`added-to-cart-message ${
-              addedToCartMessage ? "show" : ""
-            }`}
-          >
-            Afegit!
+      <div className="card-father col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div className="card-product">
+          <div className="row">
+            <h4 className="card-title-product col-12">{product.name}</h4>
+            <div className="col-4 col-sm-12">
+              <div className="row">
+                <div className="col">
+                  <div className="d-flex justify-content-center align-items-center">
+                    <Link to={`/producte/${product._id}`}>
+                      <img
+                        className="card-image w-100"
+                        src={product.photoUrl}
+                        alt="Producte de Can Mateu"
+                      ></img>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="card-info col">
+              <div className="d-flex align-items-center h-100">
+                <p className="card-description">{product.description}</p>
+              </div>
+            </div>
           </div>
-          <button
-            className="button card-button"
-            onClick={() => {
-              addProduct(product);
-            }}
-          >
-            Afegir
-          </button>
+          <div className="card-buy col-12">
+            <div className="d-flex justify-content-between align-items-center">
+              <span className="card-price">{product.priceUnit}€</span>
+              <div
+                className={`added-to-cart-message ${
+                  addedToCartMessage ? "show" : ""
+                }`}
+              >
+                Afegit!
+              </div>
+              <button
+                className="button card-button"
+                onClick={() => {
+                  addProduct(product);
+                }}
+              >
+                Afegir
+              </button>
+            </div>
+          </div>
         </div>
-      </article>
+      </div>
     </>
   );
 };
