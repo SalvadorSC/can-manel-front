@@ -27,7 +27,7 @@ export const ProductList = (props) => {
     <>
       <Searcher products={products} setProducts={setProducts} />
       <section className="section">
-        <div className="product-list">
+        <div className="product-list row">
           {products.map((product) => (
             <ProductCard
               product={product}

@@ -1,6 +1,7 @@
-.product-list {
+/* .product-list {
   display: grid;
   gap: 2rem;
   grid-auto-flow: dense;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 6rem), 1fr));
 }
+ */
