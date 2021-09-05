@@ -1,4 +1,5 @@
 import { useCallback, useContext, useState } from "react";
+import { FaTimes } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
@@ -7,6 +8,11 @@ export const Login = (props) => {
   const { fetchGlobal, setShoppingCart, userShoppingCart } = props;
   const history = useHistory();
   const { logIn, setAdminRole } = useContext(AuthContext);
+  const [popUpWindow, setPopUpWindow] = useState(false);
+
+  const togglePopUp = () => {
+    setPopUpWindow(!popUpWindow);
+  };
 
   const urlAPI = process.env.REACT_APP_URL_API;
 
@@ -110,7 +116,10 @@ export const Login = (props) => {
               )}
 
               <div className="d-flex align-items-center justify-content-center mb-3">
-                <span className="forgot-password mr-2">
+                <span
+                  className="forgot-password mr-2"
+                  onClick={() => togglePopUp()}
+                >
                   Heu oblidat la vostra contrasenya?
                 </span>
               </div>
@@ -128,7 +137,7 @@ export const Login = (props) => {
           <div className="container-registration-question col-md-12 col-lg-6">
             <div className="mb-3 text-center">
               <p className="text-registration-question mr-2">
-                Encara no tens un usuari propi?{" "}
+                Encara no tens un usuari propi?
                 <span className="register-here-mobile"> Registra't aquí!</span>
               </p>
               <p className="text-info-registration mr-2 text-left">
@@ -148,6 +157,29 @@ export const Login = (props) => {
           </div>
         </div>
       </section>
+      {popUpWindow && (
+        <section>
+          <div className="container-window">
+            <div className="container-pop-up-password ">
+              <FaTimes
+                className="icon-delete icon-pop-up"
+                onClick={() => togglePopUp()}
+              />
+              <h4 className="mb-4">Has oblidat la teva contrasenya?</h4>
+              <p className="mb-4">
+                Introdueix el teu correu amb el que et vas registrar i rebràs
+                els passos per recuperar-la.
+              </p>
+              <input className="form-control mb-2  w-100" type="text" />
+              <div className="d-flex justify-content-center">
+                <button className="button btn btn-recover-password  text-center">
+                  Recuperar la contrasenya
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 };
