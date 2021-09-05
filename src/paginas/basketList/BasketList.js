@@ -24,7 +24,7 @@ export const BasketList = (props) => {
   return (
     <>
       <section className="section">
-        <div className="product-list">
+        <div className="product-list row">
           {baskets.map((basket) => (
             <BasketCard
               basket={basket}
