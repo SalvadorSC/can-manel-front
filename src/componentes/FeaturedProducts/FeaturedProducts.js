@@ -24,7 +24,7 @@ export const FeaturedProducts = () => {
     <>
       <div>
         <p className="text-big mt-5">Productes destacats</p>
-        <div className="product-list">
+        <div className="product-list row">
           {products.slice(0, 4).map((product) => (
             <ProductCard product={product} key={product._id} />
           ))}
