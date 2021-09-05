@@ -95,7 +95,62 @@ export const BasketCard = (props) => {
   };
 
   return (
-    <article className="card">
+    <div className="card-father col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div className="card-basket">
+        <div className="row">
+          <h4 className="card-title-product col-12">{basket.name}</h4>
+          <div className="col-5 col-sm-12">
+            <div className="row">
+              <div className="col">
+                <div className="d-flex justify-content-center align-items-center">
+                  <Link to={`/producte/${basket._id}`}>
+                    <img
+                      className="card-image w-100"
+                      src={basket.photoUrl}
+                      alt="Producte de Can Mateu"
+                    ></img>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="card-info col">
+            <div className="basket-products d-flex align-items-center h-100">
+              <p>Veure composició</p>
+              <div className="basket-composition">
+                {basket.basketProducts.map((product) => (
+                  <li key={product._id}>-{product.name}</li>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="card-buy col-12">
+          <div className="d-flex justify-content-between align-items-center">
+            <span className="card-price">{basket.priceUnit}€</span>
+            <div
+              className={`added-to-cart-message ${
+                addedToCartMessage ? "show" : ""
+              }`}
+            >
+              Afegit!
+            </div>
+            <button
+              className="button card-button"
+              onClick={() => {
+                addBasket(basket);
+              }}
+            >
+              Afegir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+{
+  /* <article className="card-basket">
       <img
         className="card-image"
         src={basketImage}
@@ -132,6 +187,5 @@ export const BasketCard = (props) => {
           Afegir
         </button>
       </div>
-    </article>
-  );
-};
+    </article> */
+}
