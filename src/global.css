@@ -5,6 +5,7 @@
   --color-border: #46760a;
   --color-text: #151515;
   --color-white: #f9f9f9;
+  --color-background-white: #fff;
   --color-red: #af3c45;
   --color-background-hover: #d1d1d1;
   --color-grey: #484949;
@@ -20,6 +21,7 @@ html {
 body {
   font-family: "Poppins";
   color: var(--color-text);
+  background-color: var(--color-background-white);
 }
 a {
   color: var(--color-text);
