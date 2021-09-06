@@ -9,9 +9,14 @@ export const Login = (props) => {
   const history = useHistory();
   const { logIn, setAdminRole } = useContext(AuthContext);
   const [popUpWindow, setPopUpWindow] = useState(false);
+  const [step, setStep] = useState(0);
 
   const togglePopUp = () => {
     setPopUpWindow(!popUpWindow);
+  };
+
+  const stepForward = () => {
+    setStep(step + 1);
   };
 
   const urlAPI = process.env.REACT_APP_URL_API;
@@ -166,16 +171,40 @@ export const Login = (props) => {
                 onClick={() => togglePopUp()}
               />
               <h4 className="mb-4">Has oblidat la teva contrasenya?</h4>
-              <p className="mb-4">
-                Introdueix el teu correu amb el que et vas registrar i rebràs
-                els passos per recuperar-la.
-              </p>
-              <input className="form-control mb-2  w-100" type="text" />
-              <div className="d-flex justify-content-center">
-                <button className="button btn btn-recover-password  text-center">
-                  Recuperar la contrasenya
-                </button>
-              </div>
+              {step === 0 ? (
+                <>
+                  <p className="mb-4">
+                    Introdueix el teu correu amb el que et vas registrar i
+                    rebràs els passos per recuperar-la.
+                  </p>
+                  <input className="form-control mb-2  w-100" type="text" />
+                  <div className="d-flex justify-content-center">
+                    <button
+                      className="button btn btn-recover-password  text-center"
+                      onClick={() => stepForward()}
+                    >
+                      Recuperar la contrasenya
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p className="mb-4">
+                    Hem rebut la vostra solicitud per canviar la contrasenya
+                    correctament. En uns instants rebràs un correu amb els
+                    passos per crear-ne una de nova.
+                  </p>
+                  <p>
+                    Si no t'ha arribat el correu, comprova en la teva carpeta de
+                    spam si hi ha un correu de canmateu@canamteu.com
+                  </p>
+                  <div className="d-flex justify-content-center">
+                    <button className="button btn btn-recover-password  text-center">
+                      Continuar
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>
