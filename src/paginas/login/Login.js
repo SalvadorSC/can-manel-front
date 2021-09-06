@@ -198,11 +198,14 @@ export const Login = (props) => {
                     Si no t'ha arribat el correu, comprova en la teva carpeta de
                     spam si hi ha un correu de canmateu@canamteu.com
                   </p>
-                  <div className="d-flex justify-content-center">
+                  <Link
+                    to="/principal"
+                    className="d-flex justify-content-center"
+                  >
                     <button className="button btn btn-recover-password  text-center">
                       Continuar
                     </button>
-                  </div>
+                  </Link>
                 </>
               )}
             </div>

@@ -2,6 +2,10 @@
   font-size: 20px;
 }
 
+.link-to-home {
+  color: var(--color-primary-dark);
+}
+
 @media (min-width: 768px) {
   .page-not-found p {
     font-size: 30px;
