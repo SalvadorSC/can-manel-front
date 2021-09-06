@@ -189,12 +189,12 @@ export const Login = (props) => {
                 </>
               ) : (
                 <>
-                  <p className="mb-4">
+                  <p className="text-send-email mb-2">
                     Hem rebut la vostra solicitud per canviar la contrasenya
                     correctament. En uns instants rebràs un correu amb els
                     passos per crear-ne una de nova.
                   </p>
-                  <p>
+                  <p className="text-send-email">
                     Si no t'ha arribat el correu, comprova en la teva carpeta de
                     spam si hi ha un correu de canmateu@canamteu.com
                   </p>
