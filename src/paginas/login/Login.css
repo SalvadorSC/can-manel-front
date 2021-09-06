@@ -15,7 +15,7 @@
 }
 
 .btn-recover-password {
-  width: 50%;
+  width: 76%;
   font-size: 13px;
   height: 40px;
   margin-top: 20px;
@@ -63,8 +63,8 @@
 }
 
 .container-pop-up-password {
-  width: 500px;
-  height: 300px;
+  width: 310px;
+  height: 325px;
   padding: 25px;
   position: relative;
   background-color: var(--color-background-white);
@@ -94,6 +94,10 @@
   right: 10px;
 }
 
+p.text-send-email {
+  font-size: 12.5px;
+}
+
 @media (min-width: 768px) {
   .container-login {
     margin-inline: 50px;
@@ -110,6 +114,16 @@
   }
   .forgot-password {
     font-size: 15px;
+  }
+  .container-pop-up-password {
+    width: 500px;
+    height: 300px;
+  }
+  .btn-recover-password {
+    width: 50%;
+  }
+  p.text-send-email {
+    font-size: 14px;
   }
 }
 @media (min-width: 991px) {
