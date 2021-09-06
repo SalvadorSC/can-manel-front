@@ -5,7 +5,7 @@
 
 .product-img {
   width: 100px;
-  height: auto;
+  min-height: 100px;
 }
 
 .icon-counter {
