@@ -3,6 +3,7 @@ import "./ItemShoppingCart.css";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 export const ItemShoppingCart = (props) => {
   const { product, token, shoppingCart, setShoppingCart, setProductsInCart } =
@@ -177,13 +178,32 @@ export const ItemShoppingCart = (props) => {
       {deletedProduct === false && (
         <tr>
           <td className="d-none d-lg-block">
-            <img
-              className="product-img"
-              src={productData.photoUrl}
-              alt="fruites i verdures de l'hort"
-            />
+            <Link
+              to={
+                element === "product"
+                  ? `/producte/${productData._id}`
+                  : `/cistella/${productData._id}`
+              }
+            >
+              <img
+                className="product-img"
+                src={productData.photoUrl}
+                alt="fruites i verdures de l'hort"
+              />
+            </Link>
           </td>
-          <td className="items-table product-item">{productData.name}</td>
+          <td className="items-table product-item">
+            {" "}
+            <Link
+              to={
+                element === "product"
+                  ? `/producte/${productData._id}`
+                  : `/cistella/${productData._id}`
+              }
+            >
+              {productData.name}
+            </Link>
+          </td>
           <td className="items-table">{productData.priceUnit}€</td>
           <td className="items-table">
             <div className="number">
