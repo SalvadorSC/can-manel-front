@@ -9,7 +9,6 @@ export const BasketList = (props) => {
   const [baskets, setBaskets] = useState([]);
   const urlAPI = process.env.REACT_APP_URL_API;
   const { fetchGlobal, loading } = useFetch(urlAPI);
-  console.log(loading);
   const loadBaskets = useCallback(async () => {
     const productsAPI = await fetchGlobal(`${urlAPI}baskets/list`);
     if (productsAPI) {

@@ -42,12 +42,9 @@ export const AdminProductList = () => {
     const input =
       name !== "" ? "name" : category !== "" ? "category" : undefined;
     const data = name || category;
-    console.log(data);
     if (data !== "" && input !== undefined) {
       const resp = await fetch(`${urlAPI}products/list-by-${input}/${data}`);
-      console.log(resp);
       if (resp.ok) {
-        console.log("hola");
         setMessage(false);
         const productsList = await resp.json();
         setProducts(productsList);

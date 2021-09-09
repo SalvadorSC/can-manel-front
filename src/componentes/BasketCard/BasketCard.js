@@ -103,7 +103,7 @@ export const BasketCard = (props) => {
             <div className="row">
               <div className="col">
                 <div className="d-flex justify-content-center align-items-center">
-                  <Link to={`/producte/${basket._id}`}>
+                  <Link to={`/cistella/${basket._id}`}>
                     <img
                       className="card-image w-100"
                       src={basket.photoUrl}
