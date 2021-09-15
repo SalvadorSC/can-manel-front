@@ -13,9 +13,6 @@
   left: 83px;
   display: none;
 }
-.basket-products:hover .basket-composition {
-  display: block;
-}
 
 .card-father {
   border-bottom: 1px solid var(--color-primary-dark);
@@ -141,5 +138,10 @@
   }
   .card-image {
     min-height: 178px;
+  }
+}
+@media (min-width: 950px) {
+  .basket-products:hover .basket-composition {
+    display: block;
   }
 }
