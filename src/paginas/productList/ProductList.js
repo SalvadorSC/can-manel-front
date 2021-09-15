@@ -25,6 +25,8 @@ export const ProductList = (props) => {
 
   return (
     <>
+      <h1 className="title-products">Fruites i verdures</h1>
+      <hr />
       <Searcher products={products} setProducts={setProducts} />
       <section className="section">
         <div className="product-list row">
