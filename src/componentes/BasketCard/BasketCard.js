@@ -115,7 +115,7 @@ export const BasketCard = (props) => {
             </div>
           </div>
           <div className="card-info col">
-            <div className="basket-products d-flex align-items-center h-100">
+            <div className="basket-products d-flex align-items-center h-100 mt-1">
               <p>Veure composició</p>
               <div className="basket-composition">
                 {basket.basketProducts.map((product) => (
