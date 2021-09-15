@@ -3,6 +3,8 @@
   --color-primary: #c8deb3;
   --color-primary-dark: #6a983c;
   --color-border: #46760a;
+  --color-button: #8cbc5b;
+  --color-button-border: #5d8a25;
   --color-text: #151515;
   --color-white: #f9f9f9;
   --color-background-white: #fff;
@@ -53,9 +55,9 @@ input:focus {
 .button {
   padding: 5px 10px;
   color: var(--color-white);
-  background-color: var(--color-primary-dark);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
+  background-color: var(--color-button);
+  border: 1px solid var(--color-button-border);
+  border-radius: 7px;
   transition: all 300ms;
 }
 .button:hover {

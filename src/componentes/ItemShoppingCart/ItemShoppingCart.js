@@ -193,7 +193,6 @@ export const ItemShoppingCart = (props) => {
             </Link>
           </td>
           <td className="items-table product-item">
-            {" "}
             <Link
               to={
                 element === "product"
