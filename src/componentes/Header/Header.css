@@ -216,6 +216,9 @@ header {
   margin-top: -25px;
   padding-block: 10px;
 }
+.icon-admin {
+  display: none;
+}
 
 /* Numero Productes */
 
