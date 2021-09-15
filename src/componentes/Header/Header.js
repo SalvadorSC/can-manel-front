@@ -197,7 +197,7 @@ export const Header = (props) => {
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
                     >
-                      Fruites i verdures
+                      FRUITES I VERDURES
                       <span className="sr-only">(current)</span>
                     </Link>
                   </li>
@@ -207,7 +207,7 @@ export const Header = (props) => {
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
                     >
-                      Cistelles
+                      CISTELLES
                     </Link>
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
@@ -216,7 +216,7 @@ export const Header = (props) => {
                       className="drop-down-link nav-link"
                       onClick={() => toggleHamburger()}
                     >
-                      Sobre nosaltres
+                      SOBRE NOSALTRES
                     </Link>
                   </li>
                   <li className="col-12 col-lg-2 nav-item">
@@ -230,7 +230,7 @@ export const Header = (props) => {
                         }}
                         to=""
                       >
-                        Tancar sessió
+                        TANCAR SESSIÓ
                       </button>
                     ) : (
                       <Link
@@ -238,7 +238,7 @@ export const Header = (props) => {
                         className="drop-down-link nav-link"
                         onClick={() => toggleHamburger()}
                       >
-                        Iniciar Sessió
+                        INICIAR SESSIÓ
                       </Link>
                     )}
                   </li>
@@ -272,17 +272,17 @@ export const Header = (props) => {
               <ul className="categories-nav-list row justify-content-between align-items-center mb-0">
                 <li className="dropdown col-4">
                   <NavLink to="/llista-productes" activeClassName="actual">
-                    Fruites i verdures
+                    FRUITES I VERDURES
                   </NavLink>
                 </li>
                 <li className="dropdown col-4">
                   <NavLink to="/llista-cistelles" activeClassName="actual">
-                    Cistelles
+                    CISTELLES
                   </NavLink>
                 </li>
                 <li className="dropdown col-4">
                   <NavLink to="/sobre-nosaltres" activeClassName="actual">
-                    Qui som
+                    SOBRE NOSALTRES
                   </NavLink>
                 </li>
               </ul>
