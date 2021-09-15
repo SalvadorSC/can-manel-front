@@ -3,7 +3,7 @@ import "./AboutUs.css";
 export const AboutUs = () => {
   return (
     <>
-      <h1>Qui som?</h1>
+      <h2 className="title-about-us">Qui som?</h2>
       <hr />
       <div className="row">
         <div className="col-md-12 col-lg-8">

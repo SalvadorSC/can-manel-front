@@ -1,3 +1,14 @@
 .img-about-us {
   border-radius: 10px;
 }
+
+.title-about-us {
+  font-size: 2.1rem;
+  font-weight: bold;
+}
+
+@media (min-width: 1024px) {
+  .title-about-us {
+    font-size: 2.3rem;
+  }
+}
