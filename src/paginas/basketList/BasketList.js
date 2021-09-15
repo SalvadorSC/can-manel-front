@@ -22,6 +22,8 @@ export const BasketList = (props) => {
 
   return (
     <>
+      <h1 className="title-products">Cistelles</h1>
+      <hr />
       <section className="section">
         <div className="product-list row">
           {baskets.map((basket) => (
