@@ -10,6 +10,25 @@ export const Login = (props) => {
   const { logIn, setAdminRole } = useContext(AuthContext);
   const [popUpWindow, setPopUpWindow] = useState(false);
   const [step, setStep] = useState(0);
+  const [inputData, setInputData] = useState({ recoverEmail: "" });
+  const [errorForgot, setErrorForgot] = useState(false);
+
+  const sendEmailForgotPassword = (e) => {
+    e.preventDefault();
+    if (inputData.recoverEmail !== "" /* && inputData.isEmail() */) {
+      console.log(inputData.recoverEmail);
+      stepForward();
+      setErrorForgot(false);
+    }
+    if (inputData.recoverEmail === "") {
+      setErrorForgot(true);
+      return;
+    }
+  };
+
+  const setDataRecover = (e) => {
+    setInputData({ [e.target.id]: e.target.value });
+  };
 
   const togglePopUp = () => {
     setPopUpWindow(!popUpWindow);
@@ -143,7 +162,10 @@ export const Login = (props) => {
             <div className="mb-3 text-center">
               <p className="text-registration-question mr-2">
                 Encara no tens un usuari propi?
-                <span className="register-here-mobile"> Registra't aquí!</span>
+                <Link to="/registre" className="register-here-mobile">
+                  {" "}
+                  Registra't aquí!
+                </Link>
               </p>
               <p className="text-info-registration mr-2 text-left">
                 No et preocupis, crea ràpidament el teu compte a Can Mateu!
@@ -168,33 +190,43 @@ export const Login = (props) => {
             <div className="container-pop-up-password ">
               <FaTimes
                 className="icon-delete icon-pop-up"
-                onClick={() => togglePopUp()}
+                onClick={() => {
+                  togglePopUp();
+                  setErrorForgot(false);
+                }}
               />
               <h4 className="mb-4">Has oblidat la teva contrasenya?</h4>
               {step === 0 ? (
                 <>
-                  <p className="mb-4">
+                  <p className="mb-2">
                     Introdueix el teu correu amb el que et vas registrar i
                     rebràs els passos per recuperar-la.
                   </p>
-                  <input className="form-control mb-2  w-100" type="text" />
-                  <div className="d-flex justify-content-center">
-                    <button
-                      className="button btn btn-recover-password  text-center"
-                      onClick={() => stepForward()}
-                    >
-                      Recuperar la contrasenya
-                    </button>
-                  </div>
+                  <form onSubmit={sendEmailForgotPassword}>
+                    <input
+                      className="form-control mb-2  w-100"
+                      type="text"
+                      id="recoverEmail"
+                      onChange={setDataRecover}
+                    />
+                    {errorForgot && (
+                      <p className="m-0">Introdueix el correu correctament!</p>
+                    )}
+                    <div className="d-flex justify-content-center">
+                      <button className="button btn btn-recover-password  text-center">
+                        Recuperar la contrasenya
+                      </button>
+                    </div>
+                  </form>
                 </>
               ) : (
                 <>
-                  <p className="text-send-email mb-2">
+                  <p className="mb-4">
                     Hem rebut la vostra solicitud per canviar la contrasenya
                     correctament. En uns instants rebràs un correu amb els
                     passos per crear-ne una de nova.
                   </p>
-                  <p className="text-send-email">
+                  <p>
                     Si no t'ha arribat el correu, comprova en la teva carpeta de
                     spam si hi ha un correu de canmateu@canamteu.com
                   </p>
