@@ -48,7 +48,12 @@ export const AdminBasket = (props) => {
                 <div className="image">
                   <img src={photoUrl} alt="" width="250" />
                 </div>
-                <FaTimes className="close-image-icon" onClick={showImg} />
+                <FaTimes
+                  className="close-image-icon"
+                  onClick={showImg}
+                  height="250"
+                  width="250"
+                />
               </div>
             </div>
           )}

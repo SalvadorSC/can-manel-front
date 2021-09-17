@@ -46,7 +46,7 @@ export const AdminProduct = (props) => {
             <div className="mostrar-imagen" open={open}>
               <div className="d-flex align-items-start">
                 <div className="image">
-                  <img src={photoUrl} alt="" width="250" />
+                  <img src={photoUrl} alt="" height="250" width="250" />
                 </div>
                 <FaTimes className="close-image-icon" onClick={showImg} />
               </div>
