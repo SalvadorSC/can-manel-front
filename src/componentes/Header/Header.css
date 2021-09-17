@@ -386,6 +386,7 @@ header {
     font-size: 26px;
   }
   .icon-admin {
+    display: flex;
     font-size: 22px;
     margin-left: 15px;
   }

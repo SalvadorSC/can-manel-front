@@ -98,6 +98,16 @@ export const AdminProductList = () => {
             Crear
           </button>
         </div>
+
+        {formOpen && (
+          <AdminForm
+            action={action}
+            loadProducts={loadProducts}
+            toggleForm={toggleForm}
+            productEdited={productEdited}
+            urlAPI={urlAPI}
+          />
+        )}
         <form
           className="row justify-content-between mb-3"
           onSubmit={(e) => {
@@ -148,16 +158,6 @@ export const AdminProductList = () => {
             <span className="not-found">No s'ha trobat cap producte!</span>
           )}
         </div>
-
-        {formOpen && (
-          <AdminForm
-            action={action}
-            loadProducts={loadProducts}
-            toggleForm={toggleForm}
-            productEdited={productEdited}
-            urlAPI={urlAPI}
-          />
-        )}
         <div className="table-product row">
           <div className="col-12">
             <div className="table-titles row">
