@@ -118,7 +118,7 @@ export const AdminForm = (props) => {
               Categoria:
             </label>
             <select
-              className="form-control"
+              className="select-form form-control"
               id="category"
               onChange={(e) => setData(e)}
             >
@@ -136,7 +136,7 @@ export const AdminForm = (props) => {
               id="description"
               rows="3"
               cols="25"
-              className="form-control"
+              className="textarea-form form-control"
               onChange={(e) => setData(e)}
               value={productToEdit ? editedProduct.description : null}
             ></textarea>
@@ -144,7 +144,7 @@ export const AdminForm = (props) => {
         </div>
         <div className="item-price row mt-3">
           <div className="col-2 form-group">
-            <label htmlFor="priceUnit">Preu per unitat:</label>
+            <label htmlFor="priceUnit">Preu unitat:</label>
             <div className="d-flex align-items-center">
               <input
                 type="text"
@@ -160,7 +160,7 @@ export const AdminForm = (props) => {
             <label htmlFor="unit">Unitat:</label>
             <select
               id="unit"
-              className="form-control"
+              className="select-form form-control"
               onChange={(e) => setData(e)} /* value={adminProduct.unit} */
             >
               <option value="all" defaultValue>
@@ -198,7 +198,12 @@ export const AdminForm = (props) => {
             <label className="file-label" htmlFor="photoUrl">
               Imatge:
             </label>
-            <input type="file" id="photoUrl" onChange={(e) => setData(e)} />
+            <input
+              className="input-file"
+              type="file"
+              id="photoUrl"
+              onChange={(e) => setData(e)}
+            />
           </div>
         </div>
         <div className="text-right">
