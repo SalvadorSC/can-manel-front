@@ -1,15 +1,23 @@
 /* EDIT/CREATE FORM */
 
 .container-create {
+  width: 65%;
+  height: 400px;
   padding: 20px;
   margin-bottom: 30px;
   border: 1px solid var(--color-background-hover);
   border-radius: 10px;
   background-color: var(--color-primary);
-  position: relative;
+  position: fixed;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 .container-create input,
-textarea {
+option,
+.select-form,
+.textarea-form {
   background-color: #f0f0f0;
 }
 .icon-close-form {
